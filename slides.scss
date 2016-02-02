@@ -1,5 +1,5 @@
 @import "font.css";
-
+$highlight: #49FFE8;
 body {
 	
 	font-family: Helvetica, Arial, sans-serif;
@@ -70,8 +70,7 @@ img.floated {
 
 	h2 { margin: .41em 0; }
 	p { margin: .4em 0; }
-
-	
+	hl {color: $highlight};
 	.slide {
 		width:100%;
 		height:100%;
