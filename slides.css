@@ -30,6 +30,9 @@ body, html {
 
 code, pre, .note {
   color: blue; }
+pre {
+  word-wrap:break-word;
+}
 
 a, a:visited {
   color: darkblue;
