@@ -29,11 +29,21 @@ body, html {
     max-width: 100%; }
 
 code, pre, .note {
-  color: blue; }
+      color:darkblue;
+      background:#f9f9f9;
+      padding:0.1em 0.25em;
+      border-radius: 0.15em;
+      /*border:1px solid blue;*/
+    }
 pre {
   word-wrap:break-word;
 }
-
+hl {
+  color: #3BE0CB; }
+c {
+  color:blue; }
+c::after {
+  content: "> "; }
 a, a:visited {
   color: darkblue;
   text-decoration: none;
@@ -41,7 +51,7 @@ a, a:visited {
   border-bottom: 1px dotted; }
 
 a:hover {
-  color: #B700FF; }
+  color: #3BE0CB; }
 
 .wrap {
   white-space: pre-wrap; }
@@ -76,8 +86,6 @@ table {
     margin: .41em 0; }
   .slides p {
     margin: .4em 0; }
-  .slides hl {
-    color: #49FFE8; }
   .slides .slide {
     width: 100%;
     height: 100%;
