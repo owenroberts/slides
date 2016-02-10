@@ -34,7 +34,9 @@ code, pre, .note {
       padding:0.1em 0.25em;
       border-radius: 0.15em;
       /*border:1px solid blue;*/
+      font-size:1.1em;
     }
+p code { font-size: 1.25em;}
 pre {
   word-wrap:break-word;
 }

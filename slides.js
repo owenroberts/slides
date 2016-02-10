@@ -17,17 +17,20 @@ $(document).ready( function() {
 	$(container).append(slidesBtn);
 	$(container).append(outlineBtn);
 
-	$(slidesBtn).on('click', function() {
+	var setSlides = function() {
 		$(container).addClass('slides');
 		$(container).removeClass('outline');
 		noscroll = false;
-
-	});
-	$(outlineBtn).on('click', function() {
+	};
+	$(slidesBtn).on('click', setSlides);
+	
+	var setOutline = function() {
 		$(container).removeClass('slides');
 		$(container).addClass('outline');
 		noscroll = true;
-	});
+	};
+	$(outlineBtn).on('click', setOutline);
+	setOutline();
 
 	var setSlideNumber = function() {
 		slideNumber = 0;
