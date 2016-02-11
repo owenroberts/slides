@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>cell test</title>
+  <style>
+    body { margin:0;}
+    canvas {
+      width:100%;
+      height:100%;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <script src="p5.min.js"></script>
+  <script>
+
+    function makeGameOfLife() {
+      limits.lonelylimit = 2;
+      limits.lonelyaction = 0;
+    }
+
+    function makeBars() {
+      limits.lonelylimit = 1;
+      limits.lonelyaction = 1;
+    }
+
+    var w = 60;
+    var columns, rows, board;
+    var fps = 0.5;
+    var alive, born, died, none;
+    
+    var limits = {
+      lonelylimit:1,
+      lonelyaction:1
+    }
+    var animationBreak = false;
+
+    var time = 0;
+    var timer = 1000;
+    var div;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      noStroke();
+      frameRate(30);
+
+      columns = Math.floor(windowWidth/w);
+      rows = Math.floor(windowHeight/w);
+      board = Array(columns);
+      
+      alive = color("#ADD8E6"); // state == 1, prevState == 1
+      born  = color("#0000FF"); // state == 1, prevState == 0
+      died  = color("#00008B"); // state == 0, prevState == 1
+      none  = color("white");   // state == 0, prevState == 0
+
+      for (var i = 0; i < columns; i++){
+        board[i] = Array(rows);
+      }
+      
+      init();
+      display();
+    }
+
+    function draw() {
+      div = frameCount % timer / 100;
+
+      if (millis() > timer + time) {
+        generate();
+        time = millis();
+        console.log(div);
+      }
+      
+      
+      display();
+      //if (!animationBreak) setTimeout(function(){requestAnimationFrame(loop)}, 1000/fps);
+    }
+  
+    function Cell(state) { 
+      this.state = state;
+      this.prev = state;
+      this.savePrevious = function() { this.prev = this.state; }
+      this.newState = function(num) { this.state = num; }      
+    }
+
+    function init() {
+      for (var x = 0; x < columns; x++) {
+        for (var y = 0; y < rows; y++) {
+          board[x][y] = new Cell(Math.round(Math.random()));
+        }
+      }
+    }
+    
+    function generate() {
+      for (var i = 0; i < columns; i++){
+        for (var j = 0; j < rows; j++){
+          board[i][j].savePrevious();
+        }
+      }
+      
+      for (var x = 1; x < columns - 1; x++) {
+        for (var y = 1; y < rows - 1; y++) {
+          var n = 0;
+          for (var i = -1; i <= 1; i++) {
+            for (var j = -1; j <= 1; j++) {
+              n += board[x+i][y+j].prev;
+            }
+          }
+          n -= board[x][y].prev; 
+          //lonely 
+          if ((board[x][y].state == 1) && (n < limits.lonelylimit)) {
+            board[x][y].newState(limits.lonelyaction);
+          } 
+          //overpopulated
+          else if ((board[x][y].state == 1) && (n > 3)) {
+            board[x][y].newState(0);
+          } 
+          //just right
+          else if ((board[x][y].state == 0) && (n == 3)) {
+            board[x][y].newState(1);
+          } 
+        }
+      }
+    }
+
+    function display() {          
+      for (var x = 0; x < columns; x++) {
+        for (var y = 0; y < rows; y++) {
+          if ((board[x][y].state) && (board[x][y].prev)) {
+            //var lc = lerpColor(  )
+            fill(alive);
+            rect(x*w, y*w, w, w);
+          } else if ((board[x][y].state)) {
+            var lc = lerpColor( none, alive, div );
+            fill(lc);
+            rect(x*w, y*w, w, w);            
+          } else if ((board[x][y].prev) && !(board[x][y].state)) {
+            var lc = lerpColor( alive, died, div );
+            fill(lc);
+            rect(x*w, y*w, w, w);
+          } else {
+            fill(none);
+            rect(x*w, y*w, w, w);
+          }          
+        }
+      }
+    }
+
+    function stop() {
+      animationBreak = true;
+    }
+    function start() {
+      animationBreak = false;
+    }
+  </script>
+  
+  
+  
+</body>
+</html>
