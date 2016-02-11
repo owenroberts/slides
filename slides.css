@@ -8,6 +8,7 @@ body, html {
 
 * {
   box-sizing: border-box; }
+.key {color:#3E5F7B;}
 
 #slidesBtn {
   position: fixed;
@@ -40,6 +41,7 @@ p code { font-size: 1.25em;}
 pre {
   word-wrap:break-word;
 }
+
 hl {
   color: #3BE0CB; }
 c {
@@ -80,6 +82,13 @@ table {
   height: 100%;
   font-size: 28px;
   color: white; }
+  .slides .key {
+  color:black;
+  background-color:white;
+  display:inline-block;
+  padding:0.25em;
+  border-radius: 0.1em;
+}
   .slides h1 {
     margin: 0;
     text-align: center;
