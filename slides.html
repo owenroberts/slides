@@ -16,100 +16,106 @@
   <script src="p5.min.js"></script>
   <script>
 
-    function makeGameOfLife() {
-      limits.lonelylimit = 2;
-      limits.lonelyaction = 0;
+    function lerpHSB(from, to, amt) {
+      var h = hue(from)         * (1 - amt) + hue(to)         * amt;
+      var s = saturation(from)  * (1 - amt) + saturation(to)  * amt;
+      var b = brightness(from)  * (1 - amt) + brightness(to)  * amt;
+      return color(h, s, b);
     }
 
-    function makeBars() {
-      limits.lonelylimit = 1;
-      limits.lonelyaction = 1;
-    }
-
-    var w;
-    var columns, rows, board;
-    var fps = 0.5;
+    var w, columns, rows, board;
     var alive, born, died, none;
     
-    var limits = {
-      lonelylimit:1,
-      lonelyaction:1
-    }
-    var animationBreak = false;
+    var limits;
 
-    var lerper = 0.001;
-    var lerpinc = 0.005;
+    var lerper = 0;
+    var lerpinc = 0.04;
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
+      console.log(windowWidth);
       noStroke();
       frameRate(30);
 
-      w = windowWidth / 20;
-      columns = Math.floor(windowWidth/w);
-      rows = Math.floor(windowHeight/w);
-     // board = Array(columns);
-      
-      alive = color("red"); // state == 1, prevState == 1
-      born  = color("green"); // state == 1, prevState == 0
-      died  = color("blue"); // state == 0, prevState == 1
-      nothing  = color("green");   // state == 0, prevState == 0
-      console.log(nothing.levels[3]);
+      limits = {
+        lonelylimit:  round(random(0, 2)),
+        lonelyaction: round(random(0, 2))
+      }
+
+      var cmin = 20, cmax = 50;
+      if (windowWidth > windowHeight) w = windowWidth / round(random(cmin, cmax));
+      else w = windowHeight / round(random(cmin, cmax));
+      console.log(w);
+      columns = ceil(windowWidth/w);
+      rows = ceil(windowHeight/w);
+      console.log(columns, rows);
+      console.log(w*columns);
+      board = Array(columns);
+
+      colorMode(HSB, 100);
+      var seed = random(40, 80);
+      var div = 100/12;
+      var change = random(div/2, div);
+      var sat = random(30, 50);
+      var br = random(60,80);
+      alive = color(seed, sat, br);
+      born = color(seed + change, sat, br);
+      died = color(seed - change, sat, br);
+      nothing = color(seed + change/2, sat, br);
 
       for (var i = 0; i < columns; i++){
         board[i] = Array(rows);
       }
       
-      //init();
-      //display();
-      colorMode(RGB, 255);
+      init();
+      display();
     }
 
     function draw() {
-      console.log(nothing.levels[3]);
-      if (lerper < 1) lerper += lerpinc;
-      background("white");
-      //display();
-      colorTest();
-      //if (!animationBreak) setTimeout(function(){requestAnimationFrame(loop)}, 1000/fps);
+      if (lerper < 1) {
+        lerper += lerpinc;
+        display();
+      }
     }
 
     function display() {          
       for (var x = 0; x < columns; x++) {
         for (var y = 0; y < rows; y++) {
-          if ((board[x][y].state) && (board[x][y].prev)) {
-            fill(alive);
-            rect(x*w, y*w, w, w);
-          } else if ((board[x][y].state)) {
-            //var lc = lerpColor( white, born, lerper );
-            //console.log(lc.levels[0], lc.levels[1], lc.levels[2], lc.levels[3]);
-            //console.log(lerper.toFixed(2));
-            fill(born);
-            rect(x*w, y*w, w, w);
-          } else if ((board[x][y].prev) && !(board[x][y].state)) {
-            console.log(lerper);
-            var newcolor = lerpColor(alive, died, lerper.toFixed[2]);
-
+          var cell = board[x][y];
+          if ((cell.state) && (cell.prev)) {
+            cell.setColor(alive);
+            var newcolor = lerpHSB(cell.prevc, alive, lerper);
             fill(newcolor);
             rect(x*w, y*w, w, w);
-          } else {
-            fill(white);
+          } 
+          else if ((board[x][y].state)) {
+            cell.setColor(born);
+            var newcolor = lerpHSB(cell.prevc, born, lerper);
+            fill(newcolor);
             rect(x*w, y*w, w, w);
-          }          
+          } else if ((board[x][y].prev) && !(board[x][y].state)) {
+            cell.setColor(died);
+            var newcolor = lerpHSB(cell.prevc, died, lerper);
+            fill(newcolor);
+            rect(x*w, y*w, w, w);
+          }  else {
+            cell.setColor(nothing);
+            var newcolor = lerpHSB(cell.prevc, nothing, lerper);
+            fill(newcolor);
+            rect(x*w, y*w, w, w);
+          }         
         }
       }
     }
 
-    function colorTest() {
-      stroke("red");
-      
-    }
-  
     function Cell(state) { 
       this.state = state;
       this.prev = state;
-      this.savePrevious = function() { this.prev = this.state; }
-      this.newState = function(num) { this.state = num; }      
+      this.c = nothing;
+      this.prevc = nothing;
+      this.savePrevious = function() { this.prev = this.state; this.prevc = this.c };
+      this.setColor = function(_c) { this.c = _c; };
+      this.newState = function(num) { this.state = num; };      
     }
 
     function init() {
@@ -119,7 +125,7 @@
         }
       }
     }
-    
+
     function generate() {
       lerper = 0;
       for (var i = 0; i < columns; i++){
@@ -153,18 +159,10 @@
       }
     }
 
-
-
-    function stop() {
-      animationBreak = true;
-    }
-    function start() {
-      animationBreak = false;
-    }
     function keyPressed() {
       if (keyCode == LEFT_ARROW || keyCode == UP_ARROW 
           || keyCode == DOWN_ARROW || keyCode == RIGHT_ARROW) {
-        lerper=0.001;//generate();
+          generate();
 
       }
     }
