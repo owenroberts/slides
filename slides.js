@@ -7,6 +7,7 @@ $(document).ready( function() {
 
 	var slides = $('.slide');
 	var isslides = false;
+	var start = true;
 	var slideNumber = 0;
 	var numSlides = slides.length;
 	var scrolling = false;
@@ -23,7 +24,8 @@ $(document).ready( function() {
 
 
 	var setSlides = function() {
-		if (!isslides) {
+		if (!isslides || start) {
+			start = false;
 			isslides = true;
 			$(container).addClass('slides');
 			$(container).removeClass('outline');
@@ -48,8 +50,9 @@ $(document).ready( function() {
 	$(slidesBtn).on('click', setSlides);
 	
 	var setOutline = function() {
-		if (isslides) {
-			isslides = false;	
+		if (isslides || start) {
+			start = false;
+			isslides = false;
 			$(container).removeClass('slides');
 			$(container).addClass('outline');
 			$('#defaultCanvas0').hide();
