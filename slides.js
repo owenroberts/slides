@@ -63,7 +63,7 @@ $(document).ready( function() {
 	};
 	$(outlineBtn).on('click', setOutline);
 	setOutline();
-	setSlides();
+	//setSlides();
 
 	var setSlideNumber = function() {
 		var longslide = $(slides[slideNumber]).attr('class');
