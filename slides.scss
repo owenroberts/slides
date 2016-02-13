@@ -1,7 +1,17 @@
-@import "font.css";
-$highlight: #49FFE8;
+@import "fonts/key.css";
+@import "fonts/apc";
+@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+$highlight: #5DD8C8;
+$apc: "apercu";
+canvas {
+  overflow: hidden;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-99;
+}
 body {
-	
 	font-family: Helvetica, Arial, sans-serif;
 	line-height:1.45;
 }
@@ -9,9 +19,8 @@ body, html {
 	height: 100%;
 }
 
-* {
-	box-sizing: border-box;
-}
+* {box-sizing: border-box;}
+.key {color:#3E5F7B;}
 
 #slidesBtn {
 	position: fixed;
@@ -30,34 +39,38 @@ body, html {
 .outline {
 	width: 600px;
 	margin:0 auto;
+	h1 { padding: 4em 0; }
 	img {
 		max-width:100%;
 	}
+	code, pre, .note { font-size:1.1em; }
 }
+code, .note {
+	background:rgba(#f9f9f9, 0.85);
+	padding:0 .25em;
+	border-radius: 0.15em;
+	color:darkblue;
+}
+pre { word-wrap:break-word; }
 
-code, pre, .note{
-	color:blue;
-}
+hl { color: $highlight; }
+c { color:blue; }
+c::after { content: "> "; }
 a, a:visited {
 	color: darkblue;
 	text-decoration: none;
-	transition: color 100ms;
+	transition: color 300ms;
 	border-bottom: 1px dotted;
 }
-a:hover {
-	color:#B700FF;
-}
+a:hover { color: #3BE0CB; }
 
-.wrap {
-	white-space: pre-wrap;
-}
+.wrap { white-space: pre-wrap; }
+
 img.floated {
 	margin: 1em;
 	float:left;			
 }
-div.floated {
-	float:left;
-}
+div.floated { float:left; }
 
 table {
 	width:100%;
@@ -76,31 +89,45 @@ table {
 	height:100%;
 	font-size: 28px;
 	color:white;
-
-
+	font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
+	position:relative;
+	.key {
+		color:black;
+		background-color:white;
+		display:inline-block;
+		padding:0.25em;
+		border-radius: 0.1em;
+	}
 
 	h1 {
 		margin:0;
 		text-align: center;
-		padding: 13%;
+		/* padding: 13%; */
 	}
 
-	h2 { margin: .41em 0; }
+	h2 { 
+		margin: .41em 0; 
+		text-decoration: underline; 
+	}
 	p { margin: .4em 0; }
 	hl {color: $highlight};
 	.slide {
 		width:100%;
-		height:100%;
+		/* height:100%; */
+
 		&.long {
 			min-height:100%;
 			height:auto;
 		}
 		padding:2%;
-		border-bottom:1px solid black;
+		border-bottom:1px solid white;
 		img {
 			max-height: 90%;
 			max-width:100%;
+			display:block;
+			margin:0 auto;
 		}
+		p.label { text-align: center; }
 		img.ph {
 			width:600px;
 		}
