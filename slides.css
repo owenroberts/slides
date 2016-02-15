@@ -11,7 +11,8 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -99; }
+  z-index: -99;
+  display: none; }
 
 body {
   font-family: Helvetica, Arial, sans-serif;
@@ -40,14 +41,28 @@ body, html {
   width: 50px; }
 
 .outline {
-  width: 600px;
-  margin: 0 auto; }
+  width: 480px;
+  margin: 2em auto; }
   .outline h1 {
-    padding: 4em 0; }
+    padding-top: 4em;
+    border-bottom: 1px solid #5DD8C8; }
+  .outline h2 {
+    padding-top: 2em; }
   .outline img {
     max-width: 100%; }
   .outline code, .outline pre, .outline .note {
     font-size: 1.1em; }
+  .outline .slide:first-child {
+    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+    margin: 8em 0;
+    border-bottom: 1px solid #5DD8C8; }
+    .outline .slide:first-child h1 {
+      margin: 0;
+      padding: 0;
+      border: none; }
+    .outline .slide:first-child p {
+      margin: 0.5em 0;
+      font-size: 1em; }
 
 code, .note {
   background: rgba(249, 249, 249, 0.85);
@@ -125,6 +140,8 @@ table {
     /* height:100%; */
     padding: 2%;
     border-bottom: 1px solid white; }
+    .slides .slide:first-child p {
+      text-align: center; }
     .slides .slide.long {
       min-height: 100%;
       height: auto; }

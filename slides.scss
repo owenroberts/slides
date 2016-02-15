@@ -10,6 +10,7 @@ canvas {
   top:0;
   left:0;
   z-index:-99;
+  display:none;
 }
 body {
 	font-family: Helvetica, Arial, sans-serif;
@@ -37,13 +38,28 @@ body, html {
 }
 
 .outline {
-	width: 600px;
-	margin:0 auto;
-	h1 { padding: 4em 0; }
+	width: 480px;
+	margin:2em auto;
+	h1 { 
+		padding-top: 4em;
+		border-bottom:1px solid $highlight;
+	}
+	h2 { padding-top: 2em; }
 	img {
 		max-width:100%;
 	}
 	code, pre, .note { font-size:1.1em; }
+
+	.slide:first-child {
+		h1 { margin: 0; padding:0; border:none; }
+		font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
+		margin: 8em 0;
+		border-bottom:1px solid $highlight;
+		p { 
+			margin: 0.5em 0;
+			font-size: 1em;
+		}
+	}
 }
 code, .note {
 	background:rgba(#f9f9f9, 0.85);
@@ -112,6 +128,9 @@ table {
 	p { margin: .4em 0; }
 	hl {color: $highlight};
 	.slide {
+		&:first-child {
+			p { text-align: center; }
+		}
 		width:100%;
 		/* height:100%; */
 
