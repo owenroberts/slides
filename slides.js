@@ -45,6 +45,8 @@ $(document).ready( function() {
 					$(firstchild).css({marginTop:(h-elemheight)/4});
 				}	
 			});
+			setSlideNumber();
+			scrollToSlide();
 		}
 	};
 	$(slidesBtn).on('click', setSlides);
