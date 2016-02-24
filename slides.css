@@ -4,165 +4,256 @@
   font-family: 'apercu';
   src: url("../slides/fonts/apercu_medium_pro.otf");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
+
+/* line 6, slides.scss */
 canvas {
   overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
   z-index: -99;
-  display: none; }
+  display: none;
+}
 
+/* line 14, slides.scss */
 body {
   font-family: Helvetica, Arial, sans-serif;
-  line-height: 1.45; }
+  line-height: 1.45;
+}
 
+/* line 18, slides.scss */
 body, html {
-  height: 100%; }
+  height: 100%;
+}
 
+/* line 22, slides.scss */
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
+/* line 23, slides.scss */
 .key {
-  color: #3E5F7B; }
+  color: #3E5F7B;
+}
 
+/* line 25, slides.scss */
 #slidesBtn {
   position: fixed;
   top: 10px;
   right: 60px;
   width: 50px;
-  border-radius-right-top: 0px; }
+  border-radius-right-top: 0px;
+}
 
+/* line 32, slides.scss */
 #outlineBtn {
   position: fixed;
   top: 10px;
   right: 10px;
-  width: 50px; }
+  width: 50px;
+}
 
+/* line 39, slides.scss */
 .outline {
   width: 480px;
-  margin: 2em auto; }
-  .outline h1 {
-    padding-top: 4em;
-    border-bottom: 1px solid #5DD8C8; }
-  .outline h2 {
-    padding-top: 2em; }
-  .outline img {
-    max-width: 100%; }
-  .outline code, .outline pre, .outline .note {
-    font-size: 1.1em; }
-  .outline .slide:first-child {
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
-    margin: 8em 0;
-    border-bottom: 1px solid #5DD8C8; }
-    .outline .slide:first-child h1 {
-      margin: 0;
-      padding: 0;
-      border: none; }
-    .outline .slide:first-child p {
-      margin: 0.5em 0;
-      font-size: 1em; }
+  margin: 2em auto;
+}
+/* line 42, slides.scss */
+.outline h1 {
+  padding-top: 4em;
+  border-bottom: 1px solid #5dd8c8;
+}
+/* line 46, slides.scss */
+.outline h2 {
+  padding-top: 2em;
+}
+/* line 47, slides.scss */
+.outline img {
+  max-width: 100%;
+}
+/* line 50, slides.scss */
+.outline code, .outline pre, .outline .note {
+  font-size: 1.1em;
+}
+/* line 52, slides.scss */
+.outline .slide:first-child {
+  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+  margin: 8em 0;
+  border-bottom: 1px solid #5dd8c8;
+}
+/* line 53, slides.scss */
+.outline .slide:first-child h1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+/* line 57, slides.scss */
+.outline .slide:first-child p {
+  margin: 0.5em 0;
+  font-size: 1em;
+}
 
-code, .note {
+/* line 63, slides.scss */
+code {
   background: rgba(249, 249, 249, 0.85);
   padding: 0 .25em;
   border-radius: 0.15em;
-  color: darkblue; }
+  color: darkblue;
+}
 
+/* line 69, slides.scss */
+.note {
+  color: darkblue;
+}
+
+/* line 70, slides.scss */
 pre {
-  word-wrap: break-word; }
+  word-wrap: break-word;
+}
 
+/* line 72, slides.scss */
 hl {
-  color: #5DD8C8; }
+  color: #5dd8c8;
+}
 
+/* line 73, slides.scss */
 c {
-  color: blue; }
+  color: blue;
+}
 
+/* line 74, slides.scss */
 c::after {
-  content: "> "; }
+  content: "> ";
+}
 
+/* line 75, slides.scss */
 a, a:visited {
   color: darkblue;
   text-decoration: none;
   transition: color 300ms;
-  border-bottom: 1px dotted; }
+  border-bottom: 1px dotted;
+}
 
+/* line 81, slides.scss */
 a:hover {
-  color: #3BE0CB; }
+  color: #3BE0CB;
+}
 
+/* line 83, slides.scss */
 .wrap {
-  white-space: pre-wrap; }
+  white-space: pre-wrap;
+}
 
+/* line 85, slides.scss */
 img.floated {
   margin: 1em;
-  float: left; }
+  float: left;
+}
 
+/* line 89, slides.scss */
 div.floated {
-  float: left; }
+  float: left;
+}
 
+/* line 91, slides.scss */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1em 0; }
-  table td, table th {
-    border: 1px dotted;
-    text-align: left;
-    padding: .25em;
-    margin: .25em; }
+  margin: 1em 0;
+}
+/* line 95, slides.scss */
+table td, table th {
+  border: 1px dotted;
+  text-align: left;
+  padding: .25em;
+  margin: .25em;
+}
 
+/* line 103, slides.scss */
 .slides {
   width: 100%;
   height: 100%;
   font-size: 28px;
   color: white;
   font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
-  position: relative; }
-  .slides .key {
-    color: black;
-    background-color: white;
-    display: inline-block;
-    padding: 0.25em;
-    border-radius: 0.1em; }
-  .slides h1 {
-    margin: 0;
-    text-align: center;
-    /* padding: 13%; */ }
-  .slides h2 {
-    margin: .41em 0;
-    text-decoration: underline; }
-  .slides p {
-    margin: .4em 0; }
-  .slides hl {
-    color: #5DD8C8; }
-  .slides .slide {
-    width: 100%;
-    /* height:100%; */
-    padding: 2%;
-    border-bottom: 1px solid white; }
-    .slides .slide:first-child p {
-      text-align: center; }
-    .slides .slide.long {
-      min-height: 100%;
-      height: auto; }
-    .slides .slide img {
-      max-height: 90%;
-      max-width: 100%;
-      display: block;
-      margin: 0 auto; }
-    .slides .slide p.label {
-      text-align: center; }
-    .slides .slide img.ph {
-      width: 600px; }
-    .slides .slide blockquote {
-      background: rgba(211, 211, 211, 0.7);
-      padding: 1em;
-      border-radius: 0.5em; }
+  position: relative;
+}
+/* line 110, slides.scss */
+.slides .key {
+  color: black;
+  background-color: white;
+  display: inline-block;
+  padding: 0.25em;
+  border-radius: 0.1em;
+}
+/* line 118, slides.scss */
+.slides h1 {
+  margin: 0;
+  text-align: center;
+  /* padding: 13%; */
+}
+/* line 124, slides.scss */
+.slides h2 {
+  margin: .41em 0;
+  text-decoration: underline;
+}
+/* line 128, slides.scss */
+.slides p {
+  margin: .4em 0;
+}
+/* line 129, slides.scss */
+.slides hl {
+  color: #5dd8c8;
+}
+/* line 130, slides.scss */
+.slides .slide {
+  width: 100%;
+  /* height:100%; */
+  padding: 2%;
+  border-bottom: 1px solid white;
+}
+/* line 132, slides.scss */
+.slides .slide:first-child p {
+  text-align: center;
+}
+/* line 137, slides.scss */
+.slides .slide.long {
+  min-height: 100%;
+  height: auto;
+}
+/* line 143, slides.scss */
+.slides .slide img {
+  max-height: 90%;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+/* line 149, slides.scss */
+.slides .slide p.label {
+  text-align: center;
+}
+/* line 150, slides.scss */
+.slides .slide img.ph {
+  width: 600px;
+}
+/* line 154, slides.scss */
+.slides .slide blockquote {
+  background: rgba(211, 211, 211, 0.7);
+  padding: 1em;
+  border-radius: 0.5em;
+}
 
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* line 169, slides.scss */
   .slides {
-    font-size: 2em; } }
+    font-size: 2em;
+  }
+}
 @media only screen and (min-width: 1441px) {
+  /* line 174, slides.scss */
   .slides {
-    font-size: 3em; } }
-
-/*# sourceMappingURL=slides.css.map */
+    font-size: 3em;
+  }
+}

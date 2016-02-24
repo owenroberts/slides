@@ -60,12 +60,13 @@ body, html {
 		}
 	}
 }
-code, .note {
+code {
 	background:rgba(#f9f9f9, 0.85);
 	padding:0 .25em;
 	border-radius: 0.15em;
 	color:darkblue;
 }
+.note { color:darkblue; }
 pre { word-wrap:break-word; }
 
 hl { color: $highlight; }
