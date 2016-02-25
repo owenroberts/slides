@@ -132,13 +132,13 @@ c::after {
 a, a:visited {
   color: darkblue;
   text-decoration: none;
-  transition: color 300ms;
-  border-bottom: 1px dotted;
+  transition: color 100ms;
 }
 
-/* line 81, slides.scss */
+/* line 80, slides.scss */
 a:hover {
   color: #3BE0CB;
+  text-decoration: underline;
 }
 
 /* line 83, slides.scss */

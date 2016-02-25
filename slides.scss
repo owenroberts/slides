@@ -75,10 +75,10 @@ c::after { content: "> "; }
 a, a:visited {
 	color: darkblue;
 	text-decoration: none;
-	transition: color 300ms;
-	border-bottom: 1px dotted;
+	transition: color 100ms;
 }
-a:hover { color: #3BE0CB; }
+a:hover { color: #3BE0CB;
+text-decoration:underline; }
 
 .wrap { white-space: pre-wrap; }
 
