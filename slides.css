@@ -70,7 +70,7 @@ code {
   color: darkblue; }
 
 note {
-  color: darkblue; }
+  color: blue; }
 
 pre {
   word-wrap: break-word; }
@@ -86,8 +86,7 @@ c::after {
 
 a, a:visited {
   color: darkblue;
-  text-decoration: none;
-  transition: color 100ms; }
+  text-decoration: none; }
 
 a:hover {
   color: #3BE0CB;
