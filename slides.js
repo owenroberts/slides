@@ -1,5 +1,7 @@
 $(document).ready( function() {
 
+	var dev = true;
+
 	var container = $('#container');
 
 	var slidesBtn = $('<button>').attr('id', 'slidesBtn');
@@ -31,14 +33,9 @@ $(document).ready( function() {
 			$(container).removeClass('outline');
 			$('#defaultCanvas0').show();
 			noscroll = false;
-	
 			slides.each(function() {
 				var elemheight = $(this).height();
-				//console.log(this, elemheight);
-				if (elemheight > h) {
-					$(this).addClass("long");
-					console.log(this);
-				}
+				if (elemheight > h) { $(this).addClass("long"); }
 				else {
 					$(this).css({height:h});
 					var firstchild = $(this).children()[0];
@@ -67,8 +64,7 @@ $(document).ready( function() {
 		}
 	};
 	$(outlineBtn).on('click', setOutline);
-	setOutline();
-	//setSlides();
+	
 
 	var setSlideNumber = function() {
 		var longslide = $(slides[slideNumber]).attr('class');
@@ -93,8 +89,6 @@ $(document).ready( function() {
 		}
 	}
 	
-	setSlideNumber();
-	
 	var nextSlide = function() {
 		if (slideNumber < numSlides - 1) {
 			slideNumber++;
@@ -109,6 +103,42 @@ $(document).ready( function() {
 		}
 	};
 
+	var slideDraw = function() {
+		var s = $(slides[slideNumber]);
+		if ($('#c'+slideNumber).length) {
+			console.log("shit already exists");
+		} else {
+			var c = $('<canvas>')
+				.attr({
+					id: "c"+slideNumber
+				})
+				.css({
+					width: window.innerWidth,
+					height: window.innerHeight,
+					background: "rgba(255, 255, 255, 0.5)",
+					zIndex:99
+				});
+			s.append(c);
+		}
+	}
+
+
+	setSlideNumber();
+	
+	if (dev) setSlides();
+	else {
+		setOutline();
+		var checkExist = setInterval(function() {
+		   if ($('#defaultCanvas0').length) {
+		      $('#defaultCanvas0').hide();
+		      clearInterval(checkExist);
+		   }
+		}, 50);
+	}
+
+
+	/* events */
+
 	$(document).on('keydown', function(ev) {
 		var key = ev.which;
 		switch (key) {
@@ -120,6 +150,11 @@ $(document).ready( function() {
 			case 37:
 			case 38:
 				previousSlide();
+			break;
+
+			case 32:
+				ev.preventDefault();
+				slideDraw();
 			break;
 		}
 	});

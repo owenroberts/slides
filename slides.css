@@ -10,8 +10,7 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -99;
-  display: none; }
+  z-index: -99;}
 
 body {
   font-family: Helvetica, Arial, sans-serif;
