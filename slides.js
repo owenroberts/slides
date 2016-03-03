@@ -190,9 +190,6 @@ $(document).ready( function() {
 
 	var drawingToggle = function() {
 		var s = $(slides[slideNumber]);
-		console.log(s);
-		console.log(slideNumber);
-		console.log(drawings[slideNumber]);
 		if (drawings[slideNumber]) {
 			drawings[slideNumber].toggle();
 		} else {
