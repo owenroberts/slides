@@ -206,7 +206,7 @@ $(document).ready( function() {
 				.css({
 					border: "8px solid rgba(0, 255, 255, 0.1)",
 					zIndex:99,
-					cursor:"url('/slides/pencil.ico'), crosshair",
+					cursor:"url('../slides/pencil.ico'), crosshair",
 					position:"absolute",
 					top:"8px",
 					left: "8px",
