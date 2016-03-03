@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-	var dev = true;
+	var dev = false;
 
 	var container = $('#container');
 
@@ -188,7 +188,7 @@ $(document).ready( function() {
 
 	var drawings = [];
 
-	var slideToggle = function() {
+	var drawingToggle = function() {
 		var s = $(slides[slideNumber]);
 		console.log(s);
 		console.log(slideNumber);
@@ -237,6 +237,7 @@ $(document).ready( function() {
 	/* events */
 	$(document).on('keydown', function(ev) {
 		var key = ev.which;
+		console.log(ev.which);
 		switch (key) {
 			case 39: 
 			case 40:
@@ -250,8 +251,17 @@ $(document).ready( function() {
 
 			case 32:
 				ev.preventDefault();
-				slideToggle();
+				if (isslides) drawingToggle();
 			break;
+
+			case 79:
+				setOutline();
+			break;
+
+			case 83:
+				setSlides();
+			break;
+
 		}
 	});
 
