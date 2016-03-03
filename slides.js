@@ -132,6 +132,18 @@ $(document).ready( function() {
 		this.diffRange = 1;
 		this.drawOn = false;
 		this.moves = 0;
+		this.active = true;
+
+		this.toggle = function() {
+			if (this.active) {
+				this.active = false;
+				this.c.style.display = "none";
+				this.drawOn = false;
+			} else {
+				this.active = true;
+				this.c.style.display = "block";
+			}
+		}
 
 		this.addLine = function(mx, my) {
 			var newpoint = new Point(event.offsetX, event.offsetY);
@@ -139,7 +151,7 @@ $(document).ready( function() {
 				this.lines.push({
 					start: newpoint,
 					num: this.numRange,
-					diff: getRandom(this.iffRange/2,this.diffRange)
+					diff: getRandom(this.diffRange/2,this.diffRange)
 				});
 				this.lines[this.lines.length - 2].end = newpoint;
 			} else {
@@ -160,7 +172,7 @@ $(document).ready( function() {
 				if (line.end) {
 					var v = new Vector(line.end, line.start);
 					v.divide(line.num);
-					this.ctx.lineWidth = 4;
+					this.ctx.lineWidth = 3;
 					this.ctx.lineCap = 'round';
 					this.ctx.beginPath();
 					for (var i = 0; i < line.num; i++) {
@@ -176,25 +188,34 @@ $(document).ready( function() {
 
 	var drawings = [];
 
-	var slideDraw = function() {
+	var slideToggle = function() {
 		var s = $(slides[slideNumber]);
-		if ($('#c'+slideNumber).length) {
-			console.log("shit already exists");
+		console.log(s);
+		console.log(slideNumber);
+		console.log(drawings[slideNumber]);
+		if (drawings[slideNumber]) {
+			drawings[slideNumber].toggle();
 		} else {
-			var c = $('<canvas>')
+			(function() {
+				var c = $('<canvas>')
 				.attr({
 					id: "c"+slideNumber,
-					width: window.innerWidth,
-					height: window.innerHeight
+					width: s.width(),
+					height: s.height()
 				})
 				.css({
-					background: "rgba(255, 255, 255, 0.1s)",
+					border: "8px solid rgba(0, 255, 255, 0.1)",
 					zIndex:99,
-					cursor:"crosshair"
+					cursor:"url('/slides/pencil.ico'), crosshair",
+					position:"absolute",
+					top:"8px",
+					left: "8px",
 				});
-			s.append(c);
-			var d = new Drawing("#c"+slideNumber);
-			drawings[slideNumber] = d;
+				s.append(c);
+				var d = new Drawing("#c"+slideNumber);
+				drawings[slideNumber] = d;
+			})();
+			requestAnimationFrame(drawLoop);
 		}
 	}
 
@@ -229,7 +250,7 @@ $(document).ready( function() {
 
 			case 32:
 				ev.preventDefault();
-				slideDraw();
+				slideToggle();
 			break;
 		}
 	});
@@ -242,7 +263,6 @@ $(document).ready( function() {
 
 	$(document).on('mousemove', function(event) {
 		if (drawings[slideNumber]) {
-			console.log("move");
 			if (drawings[slideNumber].drawOn) 
 				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
 		}
@@ -250,32 +270,36 @@ $(document).ready( function() {
 
 	$(document).on('mousedown', function(event) {
 		if (drawings[slideNumber]) {
-			if (event.which == 1) drawings[slideNumber].drawOn = true;
-			drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+			if (event.which == 1 && drawings[slideNumber].active) {
+				drawings[slideNumber].drawOn = true;
+				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+			}
 		}
 	});
 
 	$(document).on('mouseup', function(event) {
 		if (drawings[slideNumber]) {
-			if (event.which == 1) drawings[slideNumber].drawOn = false;
-			if (drawings[slideNumber].moves%2==1)  drawings[slideNumber].lines.splice(-1,1);
-			drawings[slideNumber].moves = 0;
+			if (event.which == 1 && drawings[slideNumber].active) {
+				drawings[slideNumber].drawOn = false;
+				if (drawings[slideNumber].moves%2==1) drawings[slideNumber].lines.splice(-1,1);
+				drawings[slideNumber].moves = 0;
+			}
 		}
 	});
 
-	fps = 10;
-	interval = 1000/fps;
-	timer = Date.now();
+	var fps = 10;
+	var interval = 1000/fps;
+	var timer = Date.now();
 
 	var drawLoop = function() {
 		requestAnimationFrame(drawLoop);
-		if (Date.now() > timer + this.interval) {
-			this.timer = Date.now();
+		if (Date.now() > timer + interval) {
+			timer = Date.now();
 			if (drawings[slideNumber])
 				drawings[slideNumber].drawLines();
 		}
 	}
 
-	requestAnimationFrame(drawLoop);
+	
 
 });

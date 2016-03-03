@@ -10,7 +10,7 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -99;}
+  z-index: -99; }
 
 body {
   font-family: Helvetica, Arial, sans-serif;
@@ -126,8 +126,7 @@ table {
     border-radius: 0.1em; }
   .slides h1 {
     margin: 0;
-    text-align: center;
-    /* padding: 13%; */ }
+    text-align: center; }
   .slides h2 {
     margin: .41em 0;
     text-decoration: underline; }
@@ -136,8 +135,8 @@ table {
   .slides hl {
     color: #5DD8C8; }
   .slides .slide {
+    position: relative;
     width: 100%;
-    /* height:100%; */
     padding: 2%;
     border-bottom: 1px solid white; }
     .slides .slide:first-child p {
