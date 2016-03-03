@@ -103,6 +103,79 @@ $(document).ready( function() {
 		}
 	};
 
+	/* helpers */
+	function getRandom(min, max) {
+		   return Math.random() * (max - min) + min;
+	}
+
+	function Point(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	function Vector(a, b) {
+		this.x = a.x - b.x;
+		this.y = a.y - b.y;
+		this.divide = function(n) {
+			this.x /= n;
+			this.y /= n;
+		};
+	}
+
+	function Drawing(canvasId) {
+		this.lines = [];
+		this.c = document.querySelector(canvasId);
+		this.w = this.c.width;
+		this.h = this.c.height;
+		this.ctx = this.c.getContext('2d');
+		this.numRange  = 2;
+		this.diffRange = 1;
+		this.drawOn = false;
+		this.moves = 0;
+
+		this.addLine = function(mx, my) {
+			var newpoint = new Point(event.offsetX, event.offsetY);
+			if (this.moves > 0) {
+				this.lines.push({
+					start: newpoint,
+					num: this.numRange,
+					diff: getRandom(this.iffRange/2,this.diffRange)
+				});
+				this.lines[this.lines.length - 2].end = newpoint;
+			} else {
+				this.lines.push({
+					start: newpoint,
+					num: this.numRange,
+					diff: getRandom(this.diffRange/2,this.diffRange)
+				});
+			}
+			this.moves++;
+		}
+
+
+		this.drawLines = function() {
+			this.ctx.canvas.width = this.ctx.canvas.width;
+			for (var h = 0; h < this.lines.length; h++) {
+				var line = this.lines[h];
+				if (line.end) {
+					var v = new Vector(line.end, line.start);
+					v.divide(line.num);
+					this.ctx.lineWidth = 4;
+					this.ctx.lineCap = 'round';
+					this.ctx.beginPath();
+					for (var i = 0; i < line.num; i++) {
+						var p = new Point(line.start.x + v.x * i, line.start.y + v.y * i);
+						this.ctx.moveTo( p.x + getRandom(-line.diff, line.diff), p.y + getRandom(-line.diff, line.diff) );
+						this.ctx.lineTo( p.x + v.x + getRandom(-line.diff, line.diff), p.y + v.y + getRandom(-line.diff, line.diff) );
+					}
+		      		this.ctx.stroke();
+				}
+			}
+		}
+	}
+
+	var drawings = [];
+
 	var slideDraw = function() {
 		var s = $(slides[slideNumber]);
 		if ($('#c'+slideNumber).length) {
@@ -110,15 +183,18 @@ $(document).ready( function() {
 		} else {
 			var c = $('<canvas>')
 				.attr({
-					id: "c"+slideNumber
+					id: "c"+slideNumber,
+					width: window.innerWidth,
+					height: window.innerHeight
 				})
 				.css({
-					width: window.innerWidth,
-					height: window.innerHeight,
-					background: "rgba(255, 255, 255, 0.5)",
-					zIndex:99
+					background: "rgba(255, 255, 255, 0.1s)",
+					zIndex:99,
+					cursor:"crosshair"
 				});
 			s.append(c);
+			var d = new Drawing("#c"+slideNumber);
+			drawings[slideNumber] = d;
 		}
 	}
 
@@ -138,7 +214,6 @@ $(document).ready( function() {
 
 
 	/* events */
-
 	$(document).on('keydown', function(ev) {
 		var key = ev.which;
 		switch (key) {
@@ -164,5 +239,43 @@ $(document).ready( function() {
 		if (!scrolling && slideOkay) setTimeout(scrollToSlide, 2000);
 		scrolling = true;
 	});
+
+	$(document).on('mousemove', function(event) {
+		if (drawings[slideNumber]) {
+			console.log("move");
+			if (drawings[slideNumber].drawOn) 
+				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+		}
+	});
+
+	$(document).on('mousedown', function(event) {
+		if (drawings[slideNumber]) {
+			if (event.which == 1) drawings[slideNumber].drawOn = true;
+			drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+		}
+	});
+
+	$(document).on('mouseup', function(event) {
+		if (drawings[slideNumber]) {
+			if (event.which == 1) drawings[slideNumber].drawOn = false;
+			if (drawings[slideNumber].moves%2==1)  drawings[slideNumber].lines.splice(-1,1);
+			drawings[slideNumber].moves = 0;
+		}
+	});
+
+	fps = 10;
+	interval = 1000/fps;
+	timer = Date.now();
+
+	var drawLoop = function() {
+		requestAnimationFrame(drawLoop);
+		if (Date.now() > timer + this.interval) {
+			this.timer = Date.now();
+			if (drawings[slideNumber])
+				drawings[slideNumber].drawLines();
+		}
+	}
+
+	requestAnimationFrame(drawLoop);
 
 });

@@ -1,8 +1,8 @@
 <canvas id="c" width="600" height="400"></canvas>
 <script>
-function Vector(x, y) {
-	this.x = x;
-	this.y = y;
+function Vector(a, b) {
+	this.x = a.x - b.x;
+	this.y = a.y - b.y;
 	this.subtract = function(vector) {
 		this.x -= vector.x;
 		this.y -= vector.y;
@@ -23,6 +23,12 @@ function Vector(x, y) {
 		var m = this.magnitude();
 		if (m != 0 && m != 1) this.divide(m);
 	};
+}
+
+function Point(x, y) {
+	this.x = x;
+	this.y = y;
+
 }
 
 function getDistance(a, b) {
@@ -47,10 +53,9 @@ var c = document.querySelector("#c");
 c.style.backgroundColor = "lightblue";
 var ctx = c.getContext('2d');
 
-var a = new Vector(100, 50);
-var b = new Vector(200, 100);
-
-drawAFuckingCircle(a, "green");
+var a = new Point(100, 50);
+drawAFuckingCircle(a, "red");
+var b = new Point(400, 174);
 drawAFuckingCircle(b, "green");
 
 ctx.beginPath();
@@ -61,26 +66,21 @@ ctx.moveTo(a.x, a.y);
 ctx.lineTo(b.x, b.y);
 ctx.stroke();
 
-for (var i = 0; i < 3; i++) {
-  
-  var p = new Vector();
+var num = 10;
+var v = new Vector(b, a);
+v.divide(num);
 
-  var d = getDistance(a, b);
-  var d = d/3;
-  console.log(d);
+for (var i = 0; i < num; i++) {
+	var _a = new Point(a.x + v.x*i, a.y + v.y*i);
 
-  /*p.x = ;
-  p.y = ;*/
-  
-  drawAFuckingCircle(p, "blue");
-  
-  ctx.beginPath();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "red";
-  
-  ctx.moveTo(a.x, a.y);
-  ctx.lineTo(p.x, p.y);
-  ctx.stroke();
+  	ctx.beginPath();
+  	ctx.lineWidth = 2;
+  	ctx.strokeStyle = "rgb(0, " + 60*i + " ," + 30*i + ")"
+  	
+  	ctx.moveTo(_a.x, _a.y);
+  	ctx.lineTo(_a.x + v.x,  _a.y + v.y);
+  	
+  	ctx.stroke();
 }
 </script>
 

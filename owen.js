@@ -31,9 +31,14 @@ function getDistance(a, b) {
 	return Math.sqrt(xs + ys);
 }
 
-function Vector(x, y) {
+function Point(x, y) {
 	this.x = x;
 	this.y = y;
+}
+
+function Vector(a, b) {
+	this.x = a.x - b.x;
+	this.y = a.y - b.y;
 	this.subtract = function(vector) {
 		this.x -= vector.x;
 		this.y -= vector.y;

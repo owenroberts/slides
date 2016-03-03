@@ -5,14 +5,16 @@ var w = c.width;
 var h = c.height;
 var ctx = c.getContext('2d');
 var numRange  = 2;
-var diffRange = 0;
+var diffRange = 1;
 
 var drawOn = false;
 
 var moves = 0;
 
 var addLine = function(mx, my) {
-	var newpoint = new Vector(event.offsetX, event.offsetY);
+	
+	var newpoint = new Point(event.offsetX, event.offsetY);
+	
 	if (moves > 0) {
 		lines.push({
 			start: newpoint,
@@ -59,23 +61,20 @@ function drawLines() {
 		for (var h = 0; h < lines.length; h++) {
 			var line = lines[h];
 			if (line.end) {
-				var xdiff = line.start.x - line.end.x;
-				var ydiff = line.start.y - line.end.y;
-				ctx.lineWidth = 1;
+				var v = new Vector(line.end, line.start);
+				v.divide(line.num);
+
+				ctx.lineWidth = 4;
 				ctx.lineCap = 'round';
 				ctx.beginPath();
-				console.log(line.num);
+
 				for (var i = 0; i < line.num; i++) {
 
-					ctx.lineTo(
-						line.start.x + ( xdiff / line.num * i ), //+ Math.random() * line.diff,  
-						line.start.y + ( ydiff / line.num * i )  //+ Math.random() * line.diff
-					);
+					var p = new Point(line.start.x + v.x * i, line.start.y + v.y * i);
 
-					ctx.lineTo(
-						line.start.x + ( xdiff / line.num * i ), //+ Math.random() * line.diff,  
-						line.start.y + ( ydiff / line.num * i )  //+ Math.random() * line.diff
-					);
+					ctx.moveTo( p.x + getRandom(-line.diff, line.diff), p.y + getRandom(-line.diff, line.diff) );
+
+					ctx.lineTo( p.x + v.x + getRandom(-line.diff, line.diff), p.y + v.y + getRandom(-line.diff, line.diff) );
 					
 				}
 	      		ctx.stroke();
