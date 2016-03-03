@@ -237,7 +237,7 @@ $(document).ready( function() {
 	/* events */
 	$(document).on('keydown', function(ev) {
 		var key = ev.which;
-		console.log(ev.which);
+		//console.log(ev.which);
 		switch (key) {
 			case 39: 
 			case 40:
