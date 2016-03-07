@@ -47,6 +47,7 @@ function setup() {
   
   init();
   display();
+
 }
 
 function draw() {
