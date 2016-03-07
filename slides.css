@@ -41,7 +41,8 @@ body, html {
 
 .outline {
   width: 480px;
-  margin: 2em auto; }
+  margin: 2em auto;
+  /* code, pre, .note { font-size:1.1em; } */ }
   .outline h1 {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8; }
@@ -49,8 +50,6 @@ body, html {
     padding-top: 2em; }
   .outline img {
     max-width: 100%; }
-  .outline code, .outline pre, .outline .note {
-    font-size: 1.1em; }
   .outline .slide:first-child {
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
     margin: 8em 0;
