@@ -49,6 +49,8 @@ body, html {
     padding-top: 2em; }
   .outline img {
     max-width: 100%; }
+  .outline .slide {
+    margin: 1em 0; }
   .outline .slide:first-child {
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
     margin: 8em 0;

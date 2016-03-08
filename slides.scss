@@ -47,7 +47,7 @@ body, html {
 		max-width:100%;
 	}
 	/* code, pre, .note { font-size:1.1em; } */
-
+	.slide {margin:1em 0;}
 	.slide:first-child {
 		h1 { margin: 0; padding:0; border:none; }
 		font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
