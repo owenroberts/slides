@@ -158,6 +158,12 @@ table {
       background: rgba(211, 211, 211, 0.7);
       padding: 1em;
       border-radius: 0.5em; }
+  .slides .drawing {
+    z-index: 99;
+    cursor: url("../slides/pencil.ico"), crosshair;
+    position: absolute;
+    top: 0;
+    left: 0; }
 
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
   .slides {

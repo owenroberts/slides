@@ -4,8 +4,10 @@ $(document).ready( function() {
 
 	var container = $('#container');
 
-	var slidesBtn = $('<button>').attr('id', 'slidesBtn');
-	var outlineBtn = $('<button>').attr('id', 'outlineBtn');
+	var slidesBtn = $('<button>').attr('id', 'slidesBtn').text('Slides');
+	var outlineBtn = $('<button>').attr('id', 'outlineBtn').text('Outline');
+	$(container).append(slidesBtn);
+	$(container).append(outlineBtn);
 
 	var slides = $('.slide');
 	var isslides = false;
@@ -17,13 +19,10 @@ $(document).ready( function() {
 
 	var h = window.innerHeight;
 
-	slidesBtn.text('Slides');
-	outlineBtn.text('Outline');
+	var drawings = [];
 
-	$(container).append(slidesBtn);
-	$(container).append(outlineBtn);
-
-
+	var mousetime = 40;
+	var mousetimer = 0;
 
 	var setSlides = function() {
 		if (!isslides || start) {
@@ -39,7 +38,14 @@ $(document).ready( function() {
 				else {
 					$(this).css({height:h});
 					var firstchild = $(this).children()[0];
+					if (firstchild.dataset.src) {
+						var filename = firstchild.dataset.src;
+						$.getJSON(filename, function(data) {
+							createDrawing(firstchild.parentNode, data);
+						});
+					}
 					$(firstchild).css({marginTop:(h-elemheight)/4});
+
 				}	
 			});
 			setSlideNumber();
@@ -55,6 +61,7 @@ $(document).ready( function() {
 			$(container).removeClass('slides');
 			$(container).addClass('outline');
 			$('#defaultCanvas0').hide();
+			$('canvas').hide();
 			noscroll = true;
 			slides.each(function() {
 				$(this).css({height:"auto"});
@@ -133,15 +140,18 @@ $(document).ready( function() {
 		this.drawOn = false;
 		this.moves = 0;
 		this.active = true;
+		this.preload = false;
 
 		this.toggle = function() {
-			if (this.active) {
-				this.active = false;
-				this.c.style.display = "none";
-				this.drawOn = false;
-			} else {
-				this.active = true;
-				this.c.style.display = "block";
+			if (!this.preload) {
+				if (this.active) {
+					this.active = false;
+					this.c.style.display = "none";
+					this.drawOn = false;
+				} else {
+					this.active = true;
+					this.c.style.display = "block";
+				}
 			}
 		}
 
@@ -172,7 +182,7 @@ $(document).ready( function() {
 				if (line.end) {
 					var v = new Vector(line.end, line.start);
 					v.divide(line.num);
-					this.ctx.lineWidth = 3;
+					this.ctx.lineWidth = 2;
 					this.ctx.lineCap = 'round';
 					this.ctx.beginPath();
 					for (var i = 0; i < line.num; i++) {
@@ -180,40 +190,42 @@ $(document).ready( function() {
 						this.ctx.moveTo( p.x + getRandom(-line.diff, line.diff), p.y + getRandom(-line.diff, line.diff) );
 						this.ctx.lineTo( p.x + v.x + getRandom(-line.diff, line.diff), p.y + v.y + getRandom(-line.diff, line.diff) );
 					}
+					this.ctx.strokeStyle = "#000";
 		      		this.ctx.stroke();
 				}
 			}
 		}
 	}
 
-	var drawings = [];
 
 	var drawingToggle = function() {
-		var s = $(slides[slideNumber]);
+		var s = $(slides[slideNumber])[0];
 		if (drawings[slideNumber]) {
 			drawings[slideNumber].toggle();
 		} else {
-			(function() {
-				var c = $('<canvas>')
-				.attr({
-					id: "c"+slideNumber,
-					width: s.width(),
-					height: s.height()
-				})
-				.css({
-					border: "8px solid rgba(0, 255, 255, 0.1)",
-					zIndex:99,
-					cursor:"url('../slides/pencil.ico'), crosshair",
-					position:"absolute",
-					top:"8px",
-					left: "8px",
-				});
-				s.append(c);
-				var d = new Drawing("#c"+slideNumber);
-				drawings[slideNumber] = d;
-			})();
-			requestAnimationFrame(drawLoop);
+			createDrawing(s);
 		}
+	}
+
+	var createDrawing = function(slide, linesData) {
+		var sn = $(slide).index();
+		var c = $('<canvas>')
+			.attr({
+				id: "c"+sn,
+				width: slide.offsetWidth,
+				height: slide.offsetHeight
+			})
+			.addClass("drawing");
+		slide.appendChild(c[0]);
+		var d = new Drawing("#c"+sn);
+		if (linesData) {
+			d.lines = linesData.lines;
+			d.preload = true;
+			d.active = true;
+			d.c.style.display = "block";
+		}
+		drawings[sn] = d;
+		requestAnimationFrame(drawLoop);
 	}
 
 
@@ -233,8 +245,8 @@ $(document).ready( function() {
 
 	/* events */
 	$(document).on('keydown', function(ev) {
-		var key = ev.which;
 		//console.log(ev.which);
+		var key = ev.which;
 		switch (key) {
 			case 39: 
 			case 40:
@@ -259,8 +271,21 @@ $(document).ready( function() {
 				setSlides();
 			break;
 
+			case 70: // f
+				saveDrawing();
+			break;
+
 		}
 	});
+
+	function saveDrawing() {
+		var jsonfile = JSON.stringify(drawings[slideNumber]);
+		var filename = prompt("Name this file:");
+		if (filename) {
+			var blob = new Blob([jsonfile], {type:"application/x-download;charset=utf-8"});
+			saveAs(blob, filename+".json");
+		}
+	}
 
 	$(document).on("wheel", function() {
 		var slideOkay = setSlideNumber();
@@ -269,9 +294,12 @@ $(document).ready( function() {
 	});
 
 	$(document).on('mousemove', function(event) {
-		if (drawings[slideNumber]) {
-			if (drawings[slideNumber].drawOn) 
-				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+		if (Date.now() > mousetime + mousetimer) {
+			mousetimer = Date.now();
+			if (drawings[slideNumber]) {
+				if (drawings[slideNumber].drawOn) 
+					drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+			}
 		}
 	});
 
@@ -281,7 +309,7 @@ $(document).ready( function() {
 				drawings[slideNumber].drawOn = true;
 				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
 			}
-		}
+		}			
 	});
 
 	$(document).on('mouseup', function(event) {
@@ -302,8 +330,9 @@ $(document).ready( function() {
 		requestAnimationFrame(drawLoop);
 		if (Date.now() > timer + interval) {
 			timer = Date.now();
-			if (drawings[slideNumber])
+			if (drawings[slideNumber]) {
 				drawings[slideNumber].drawLines();
+			}
 		}
 	}
 
