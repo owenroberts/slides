@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-	var dev = true;
+	var dev = false;
 
 	var container = $('#container');
 
