@@ -1,3 +1,8 @@
+/* fixing canvas size
+ save w,h of drawing
+ compare to current slides
+ zoom canvas
+*/
 $(document).ready( function() {
 
 	var dev = false;
@@ -135,8 +140,8 @@ $(document).ready( function() {
 		this.w = this.c.width;
 		this.h = this.c.height;
 		this.ctx = this.c.getContext('2d');
-		this.numRange  = 2;
-		this.diffRange = 1;
+		this.num  = 2;
+		this.diff = 1;
 		this.drawOn = false;
 		this.moves = 0;
 		this.active = true;
@@ -157,20 +162,11 @@ $(document).ready( function() {
 
 		this.addLine = function(mx, my) {
 			var newpoint = new Point(event.offsetX, event.offsetY);
-			if (this.moves > 0) {
-				this.lines.push({
-					start: newpoint,
-					num: this.numRange,
-					diff: getRandom(this.diffRange/2,this.diffRange)
-				});
-				this.lines[this.lines.length - 2].end = newpoint;
-			} else {
-				this.lines.push({
-					start: newpoint,
-					num: this.numRange,
-					diff: getRandom(this.diffRange/2,this.diffRange)
-				});
-			}
+			this.lines.push({
+				s: newpoint
+			});
+			if (this.moves > 0)
+				this.lines[this.lines.length - 2].e = newpoint; 
 			this.moves++;
 		}
 
@@ -179,16 +175,16 @@ $(document).ready( function() {
 			this.ctx.canvas.width = this.ctx.canvas.width;
 			for (var h = 0; h < this.lines.length; h++) {
 				var line = this.lines[h];
-				if (line.end) {
-					var v = new Vector(line.end, line.start);
-					v.divide(line.num);
+				if (line.e) {
+					var v = new Vector(line.e, line.s);
+					v.divide(this.num);
 					this.ctx.lineWidth = 2;
 					this.ctx.lineCap = 'round';
 					this.ctx.beginPath();
-					for (var i = 0; i < line.num; i++) {
-						var p = new Point(line.start.x + v.x * i, line.start.y + v.y * i);
-						this.ctx.moveTo( p.x + getRandom(-line.diff, line.diff), p.y + getRandom(-line.diff, line.diff) );
-						this.ctx.lineTo( p.x + v.x + getRandom(-line.diff, line.diff), p.y + v.y + getRandom(-line.diff, line.diff) );
+					for (var i = 0; i < this.num; i++) {
+						var p = new Point(line.s.x + v.x * i, line.s.y + v.y * i);
+						this.ctx.moveTo( p.x + getRandom(-this.diff, this.diff), p.y + getRandom(-this.diff, this.diff) );
+						this.ctx.lineTo( p.x + v.x + getRandom(-this.diff, this.diff), p.y + v.y + getRandom(-this.diff, this.diff) );
 					}
 					this.ctx.strokeStyle = "#000";
 		      		this.ctx.stroke();
@@ -219,7 +215,7 @@ $(document).ready( function() {
 		slide.appendChild(c[0]);
 		var d = new Drawing("#c"+sn);
 		if (linesData) {
-			d.lines = linesData.lines;
+			d.lines = linesData.l;
 			d.preload = true;
 			d.active = true;
 			d.c.style.display = "block";
@@ -279,7 +275,13 @@ $(document).ready( function() {
 	});
 
 	function saveDrawing() {
-		var jsonfile = JSON.stringify(drawings[slideNumber]);
+		var temp = {
+			l:drawings[slideNumber].lines,
+			w:drawings[slideNumber].w,
+			h:drawings[slideNumber].h
+		}
+		var jsonfile = JSON.stringify(temp);
+		console.log(jsonfile);
 		var filename = prompt("Name this file:");
 		if (filename) {
 			var blob = new Blob([jsonfile], {type:"application/x-download;charset=utf-8"});
