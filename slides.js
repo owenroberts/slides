@@ -1,11 +1,6 @@
-/* fixing canvas size
- save w,h of drawing
- compare to current slides
- zoom canvas
-*/
 $(document).ready( function() {
 
-	var dev = false;
+	var dev = true;
 
 	var container = $('#container');
 
@@ -205,20 +200,36 @@ $(document).ready( function() {
 
 	var createDrawing = function(slide, linesData) {
 		var sn = $(slide).index();
-		var c = $('<canvas>')
+		if (linesData) {
+			var c = $('<canvas>')
+			.attr({
+				id: "c"+sn,
+				width:linesData.w,
+				height:linesData.h
+			})
+			.addClass("drawing");
+			slide.appendChild(c[0]);
+			var d = new Drawing("#c"+sn);
+			var z = slide.offsetWidth / linesData.w;
+			c[0].style.zoom = z;
+			var zd = slide.offsetHeight - z*linesData.h;
+			if (zd > 0) {
+				c[0].style.top = zd + "px";
+			}
+			d.lines = linesData.l;
+			d.preload = true;
+			d.active = true;
+			d.c.style.display = "block";
+		} else {
+			var c = $('<canvas>')
 			.attr({
 				id: "c"+sn,
 				width: slide.offsetWidth,
 				height: slide.offsetHeight
 			})
 			.addClass("drawing");
-		slide.appendChild(c[0]);
-		var d = new Drawing("#c"+sn);
-		if (linesData) {
-			d.lines = linesData.l;
-			d.preload = true;
-			d.active = true;
-			d.c.style.display = "block";
+			slide.appendChild(c[0]);
+			var d = new Drawing("#c"+sn);
 		}
 		drawings[sn] = d;
 		requestAnimationFrame(drawLoop);
