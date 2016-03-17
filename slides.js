@@ -26,6 +26,7 @@ $(document).ready( function() {
 
 	var setSlides = function() {
 		if (!isslides || start) {
+			h = window.innerHeight;
 			start = false;
 			isslides = true;
 			$(container).addClass('slides');
@@ -235,6 +236,21 @@ $(document).ready( function() {
 		requestAnimationFrame(drawLoop);
 	}
 
+	function saveDrawing() {
+		var temp = {
+			l:drawings[slideNumber].lines,
+			w:drawings[slideNumber].w,
+			h:drawings[slideNumber].h
+		}
+		var jsonfile = JSON.stringify(temp);
+		console.log(jsonfile);
+		var filename = prompt("Name this file:");
+		if (filename) {
+			var blob = new Blob([jsonfile], {type:"application/x-download;charset=utf-8"});
+			saveAs(blob, filename+".json");
+		}
+	}
+
 
 	setSlideNumber();
 	
@@ -285,20 +301,27 @@ $(document).ready( function() {
 		}
 	});
 
-	function saveDrawing() {
-		var temp = {
-			l:drawings[slideNumber].lines,
-			w:drawings[slideNumber].w,
-			h:drawings[slideNumber].h
-		}
-		var jsonfile = JSON.stringify(temp);
-		console.log(jsonfile);
-		var filename = prompt("Name this file:");
-		if (filename) {
-			var blob = new Blob([jsonfile], {type:"application/x-download;charset=utf-8"});
-			saveAs(blob, filename+".json");
-		}
+	var rtime;
+	var timeout = false;
+	var delta = 200;
+	$(window).resize(function() {
+	    rtime = new Date();
+	    if (isslides) setOutline();
+	    if (timeout === false) {
+	        timeout = true;
+	        setTimeout(resizeend, delta);
+	    }
+	});
+
+	function resizeend() {
+	    if (new Date() - rtime < delta) {
+	        setTimeout(resizeend, delta);
+	    } else {
+	        timeout = false;
+	       	setSlides();
+	    }               
 	}
+
 
 	$(document).on("wheel", function() {
 		var slideOkay = setSlideNumber();
@@ -322,7 +345,7 @@ $(document).ready( function() {
 				drawings[slideNumber].drawOn = true;
 				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
 			}
-		}			
+		}
 	});
 
 	$(document).on('mouseup', function(event) {
