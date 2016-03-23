@@ -306,10 +306,12 @@ $(document).ready( function() {
 	var delta = 200;
 	$(window).resize(function() {
 	    rtime = new Date();
-	    if (isslides) setOutline();
-	    if (timeout === false) {
+	    if (isslides) {
+	    	setOutline();
+	    	if (timeout === false) {
 	        timeout = true;
-	        setTimeout(resizeend, delta);
+	     	   setTimeout(resizeend, delta);
+	    	}
 	    }
 	});
 
