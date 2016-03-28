@@ -94,6 +94,8 @@ table {
   /* code, pre, .note { font-size:1.1em; } */ }
   .outline note {
     color: darkblue; }
+  .outline code {
+    font-size: 16px; }
   .outline a, .outline a:visited {
     color: blue; }
   .outline a:hover {
