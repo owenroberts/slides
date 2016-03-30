@@ -33,6 +33,30 @@ body, html { height: 100%; }
 	width:50px;
 }
 
+.outline {
+	width: 480px;
+	margin:2em auto;
+	h1 { 
+		padding-top: 4em;
+		border-bottom:1px solid $highlight;
+	}
+	h2 { padding-top: 2em; }
+	img {
+		max-width:100%;
+	}
+	/* code, pre, .note { font-size:1.1em; } */
+	.slide {margin:1em 0;}
+	h1, h2 { font-family: $apc, "Karla", Helvetica, Arial, sans-serif; }
+	.slide:first-child {
+		h1 { margin: 0; padding:0; border:none; }
+		margin: 8em 0;
+		border-bottom:1px solid $highlight;
+		p { 
+			margin: 0.5em 0;
+			font-size: 1em;
+		}
+	}
+}
 
 code {
 	background:rgba(#f9f9f9, 0.85);
@@ -80,10 +104,8 @@ table {
 	line-height: 1.5;
 	margin:2em auto;
 	note { color:darkblue; }
-	a, a:visited { 
-		color: blue;
-		text-decoration: underline;
-	}
+	code { font-size: 16px; }
+	a, a:visited { color: blue; }
 	a:hover {  color: #3BE0CB; }
 	h1 { 
 		padding-top: 4em;
@@ -151,13 +173,14 @@ table {
 			max-height: 90%;
 			max-width:100%;
 			display:block;
-			margin:0 auto;
+			&.centered { margin:0 auto; }
+			&.floated {
+				margin: 1em;
+				float:left;			
+			}
+			&.full { width:600px; }
 		}
 		p.label { text-align: center; }
-		img.ph {
-			width:600px;
-		}
-
 		blockquote {
 			background: rgba(lightgray, 0.7);
 			padding: 1em;
