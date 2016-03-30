@@ -23,31 +23,32 @@ function setup() {
 		lonelyaction: round(random(0, 2))
 	}
 
-  var cmin = 20, cmax = 60;
-  if (windowWidth > windowHeight) w = windowWidth / round(random(cmin, cmax));
-  else w = windowHeight / round(random(cmin, cmax));
-  columns = ceil(windowWidth/w);
-  rows = ceil(windowHeight/w);
-  board = Array(columns);
+	colorMode(HSB, 100);
+	var seed = random(40, 80);
+	var div = 100/12;
+	var change = random(div/2, div);
+	var sat = random(30, 50);
+	var br = random(60,80);
+	alive = color(seed, sat, br);
+	born = color(seed + change, sat, br);
+	died = color(seed - change, sat, br);
+	nothing = color(seed + change/2, sat, br);
 
-  colorMode(HSB, 100);
-  var seed = random(40, 80);
-  var div = 100/12;
-  var change = random(div/2, div);
-  var sat = random(30, 50);
-  var br = random(60,80);
-  alive = color(seed, sat, br);
-  born = color(seed + change, sat, br);
-  died = color(seed - change, sat, br);
-  nothing = color(seed + change/2, sat, br);
+	setupSize();
+	init();
+	display();
+}
 
-  for (var i = 0; i < columns; i++){
-    board[i] = Array(rows);
-  }
-  
-  init();
-  display();
-
+function setupSize() {
+	var cmin = 20, cmax = 60;
+	if (windowWidth > windowHeight) w = windowWidth / round(random(cmin, cmax));
+	else w = windowHeight / round(random(cmin, cmax));
+	columns = ceil(windowWidth/w);
+	rows = ceil(windowHeight/w);
+	board = Array(columns);
+	for (var i = 0; i < columns; i++){
+		board[i] = Array(rows);
+	}
 }
 
 function draw() {
@@ -144,4 +145,10 @@ function keyPressed() {
       generate();
 
   }
+}
+function windowResized() {
+	setupSize();
+	init();
+	display();
+  //resizeCanvas(windowWidth, windowHeight);
 }
