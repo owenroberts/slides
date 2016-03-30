@@ -80,7 +80,10 @@ table {
 	line-height: 1.5;
 	margin:2em auto;
 	note { color:darkblue; }
-	a, a:visited { color: blue; }
+	a, a:visited { 
+		color: blue;
+		text-decoration: underline;
+	}
 	a:hover {  color: #3BE0CB; }
 	h1 { 
 		padding-top: 4em;
@@ -106,6 +109,8 @@ table {
 
 .slides {
 	width:100%;
+	max-width:1200px;
+	margin: 0 auto;
 	height:100%;
 	font-size: 28px;
 	color:white;
@@ -173,16 +178,16 @@ table {
 }
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
 	.slides {
-		font-size:2.5em;
+		font-size:1.75em;
 	}
 }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
 	.slides {
-		font-size:2.5em;
+		font-size:2em;
 	}
 }
 @media only screen and (min-width: 1441px) {
 	.slides {
-		font-size:3em;
+		font-size:2.5em;
 	}
 }

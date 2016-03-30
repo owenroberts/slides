@@ -95,7 +95,8 @@ table {
   .outline note {
     color: darkblue; }
   .outline a, .outline a:visited {
-    color: blue; }
+    color: blue;
+    text-decoration: underline; }
   .outline a:hover {
     color: #3BE0CB; }
   .outline h1 {
@@ -121,6 +122,8 @@ table {
 
 .slides {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: 100%;
   font-size: 28px;
   color: white;
@@ -174,12 +177,12 @@ table {
 
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
   .slides {
-    font-size: 2.5em; } }
+    font-size: 1.75em; } }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
   .slides {
-    font-size: 2.5em; } }
+    font-size: 2em; } }
 @media only screen and (min-width: 1441px) {
   .slides {
-    font-size: 3em; } }
+    font-size: 2.5em; } }
 
 /*# sourceMappingURL=slides.css.map */
