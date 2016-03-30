@@ -51,8 +51,9 @@ body, html {
     max-width: 100%; }
   .outline .slide {
     margin: 1em 0; }
+  .outline h1, .outline h2 {
+    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
   .outline .slide:first-child {
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
     margin: 8em 0;
     border-bottom: 1px solid #5DD8C8; }
     .outline .slide:first-child h1 {
@@ -148,12 +149,16 @@ table {
     .slides .slide img {
       max-height: 90%;
       max-width: 100%;
-      display: block;
-      margin: 0 auto; }
+      display: block; }
+      .slides .slide img.centered {
+        margin: 0 auto; }
+      .slides .slide img.floated {
+        margin: 1em;
+        float: left; }
+      .slides .slide img.full {
+        width: 600px; }
     .slides .slide p.label {
       text-align: center; }
-    .slides .slide img.ph {
-      width: 600px; }
     .slides .slide blockquote {
       background: rgba(211, 211, 211, 0.7);
       padding: 1em;

@@ -48,9 +48,9 @@ body, html {
 	}
 	/* code, pre, .note { font-size:1.1em; } */
 	.slide {margin:1em 0;}
+	h1, h2 { font-family: $apc, "Karla", Helvetica, Arial, sans-serif; }
 	.slide:first-child {
 		h1 { margin: 0; padding:0; border:none; }
-		font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 		margin: 8em 0;
 		border-bottom:1px solid $highlight;
 		p { 
@@ -140,13 +140,14 @@ table {
 			max-height: 90%;
 			max-width:100%;
 			display:block;
-			margin:0 auto;
+			&.centered { margin:0 auto; }
+			&.floated {
+				margin: 1em;
+				float:left;			
+			}
+			&.full { width:600px; }
 		}
 		p.label { text-align: center; }
-		img.ph {
-			width:600px;
-		}
-
 		blockquote {
 			background: rgba(lightgray, 0.7);
 			padding: 1em;
