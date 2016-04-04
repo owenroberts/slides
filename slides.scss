@@ -3,6 +3,9 @@
 @import url(https://fonts.googleapis.com/css?family=Karla);
 $highlight: #5DD8C8;
 $apc: "apercu";
+$apc-bold: "apercu-bold";
+$apc-italic: "apercu-italic";
+$apc-mono: "apercu-mono";
 canvas {
   overflow: hidden;
   position:fixed;
@@ -33,30 +36,6 @@ body, html { height: 100%; }
 	width:50px;
 }
 
-.outline {
-	width: 480px;
-	margin:2em auto;
-	h1 { 
-		padding-top: 4em;
-		border-bottom:1px solid $highlight;
-	}
-	h2 { padding-top: 2em; }
-	img {
-		max-width:100%;
-	}
-	/* code, pre, .note { font-size:1.1em; } */
-	.slide {margin:1em 0;}
-	h1, h2 { font-family: $apc, "Karla", Helvetica, Arial, sans-serif; }
-	.slide:first-child {
-		h1 { margin: 0; padding:0; border:none; }
-		margin: 8em 0;
-		border-bottom:1px solid $highlight;
-		p { 
-			margin: 0.5em 0;
-			font-size: 1em;
-		}
-	}
-}
 
 code {
 	background:rgba(#f9f9f9, 0.85);
@@ -138,6 +117,8 @@ table {
 	color:white;
 	font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 	position:relative;
+	em { font-family: $apc-italic, "Karla", Helvetica, Arial, sans-serif; }
+	strong { font-family: $apc-bold, "Karla", Helvetica, Arial, sans-serif; }
 	.key {
 		color:black;
 		background-color:white;

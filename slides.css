@@ -5,6 +5,21 @@
   src: url("../slides/fonts/apercu_medium_pro.otf");
   font-weight: normal;
   font-style: normal; }
+@font-face {
+  font-family: 'apercu-bold';
+  src: url("../slides/fonts/apercu_bold_pro.otf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'apercu-italic';
+  src: url("../slides/fonts/apercu_medium_italic_pro.otf");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'apercu-mono';
+  src: url("../slides/fonts/apercu_mono_pro.otf");
+  font-weight: normal;
+  font-style: normal; }
 canvas {
   overflow: hidden;
   position: fixed;
@@ -37,32 +52,6 @@ body, html {
   top: 10px;
   right: 10px;
   width: 50px; }
-
-.outline {
-  width: 480px;
-  margin: 2em auto;
-  /* code, pre, .note { font-size:1.1em; } */ }
-  .outline h1 {
-    padding-top: 4em;
-    border-bottom: 1px solid #5DD8C8; }
-  .outline h2 {
-    padding-top: 2em; }
-  .outline img {
-    max-width: 100%; }
-  .outline .slide {
-    margin: 1em 0; }
-  .outline h1, .outline h2 {
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  .outline .slide:first-child {
-    margin: 8em 0;
-    border-bottom: 1px solid #5DD8C8; }
-    .outline .slide:first-child h1 {
-      margin: 0;
-      padding: 0;
-      border: none; }
-    .outline .slide:first-child p {
-      margin: 0.5em 0;
-      font-size: 1em; }
 
 code {
   background: rgba(249, 249, 249, 0.85);
@@ -156,6 +145,10 @@ table {
   color: white;
   font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
   position: relative; }
+  .slides em {
+    font-family: "apercu-italic", "Karla", Helvetica, Arial, sans-serif; }
+  .slides strong {
+    font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif; }
   .slides .key {
     color: black;
     background-color: white;
