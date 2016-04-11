@@ -1,6 +1,7 @@
 @import "fonts/key.css";
 @import "fonts/apc";
 @import url(https://fonts.googleapis.com/css?family=Karla);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
 $highlight: #5DD8C8;
 $apc: "apercu";
 $apc-bold: "apercu-bold";
@@ -16,6 +17,7 @@ canvas {
 body {
 	font-family: Helvetica, Arial, sans-serif;
 	line-height:1.45;
+	background:aliceblue;
 }
 body, html { height: 100%; }
 
@@ -82,9 +84,11 @@ table {
 	width: 560px;
 	line-height: 1.5;
 	margin:2em auto;
+	
+	pre { border-left: 3px solid $highlight; }
 	note { color:darkblue; }
-	code { font-size: 16px; }
-	a, a:visited { color: blue; }
+	code { font-size: 16px; padding-left:8px; }
+	a, a:visited { color: blue; text-decoration: underline; }
 	a:hover {  color: #3BE0CB; }
 	h1 { 
 		padding-top: 4em;
@@ -104,7 +108,11 @@ table {
 		p { 
 			margin: 0.5em 0;
 			font-size: 1em;
+			font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 		}
+	}
+	p {
+		font-family: 'Lora', serif;
 	}
 }
 
