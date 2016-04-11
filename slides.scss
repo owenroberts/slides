@@ -93,8 +93,9 @@ table {
 	h1 { 
 		padding-top: 4em;
 		border-bottom:1px solid $highlight;
+
 	}
-	h2 { padding-top: 2em; }
+	h2 { padding-top: 2em; font-family: $apc, "Karla", Helvetica, Arial, sans-serif;}
 	img {
 		max-width:100%;
 	}
@@ -126,7 +127,8 @@ table {
 	font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 	position:relative;
 	em { font-family: $apc-italic, "Karla", Helvetica, Arial, sans-serif; }
-	strong { font-family: $apc-bold, "Karla", Helvetica, Arial, sans-serif; }
+	strong { font-family: $apc-bold, "Karla", Helvetica, Arial, sans-serif;
+	color: #D1E5F7;}
 	.key {
 		color:black;
 		background-color:white;

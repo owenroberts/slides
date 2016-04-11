@@ -125,7 +125,8 @@ table {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8; }
   .outline h2 {
-    padding-top: 2em; }
+    padding-top: 2em;
+    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
   .outline img {
     max-width: 100%; }
   .outline .slide {
@@ -157,7 +158,8 @@ table {
   .slides em {
     font-family: "apercu-italic", "Karla", Helvetica, Arial, sans-serif; }
   .slides strong {
-    font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif;
+    color: #D1E5F7; }
   .slides .key {
     color: black;
     background-color: white;
