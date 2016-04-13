@@ -111,11 +111,12 @@ table {
   /* code, pre, .note { font-size:1.1em; } */ }
   .outline pre {
     border-left: 3px solid #5DD8C8; }
+    .outline pre code {
+      padding-left: 8px; }
   .outline note {
     color: darkblue; }
   .outline code {
-    font-size: 16px;
-    padding-left: 8px; }
+    font-size: 16px; }
   .outline a, .outline a:visited {
     color: blue;
     text-decoration: underline; }

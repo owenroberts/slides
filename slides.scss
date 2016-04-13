@@ -85,9 +85,13 @@ table {
 	line-height: 1.5;
 	margin:2em auto;
 	
-	pre { border-left: 3px solid $highlight; }
+	pre { border-left: 3px solid $highlight;
+        code {
+            padding-left:8px;
+        }
+    }
 	note { color:darkblue; }
-	code { font-size: 16px; padding-left:8px; }
+	code { font-size: 16px; }
 	a, a:visited { color: blue; text-decoration: underline; }
 	a:hover {  color: #3BE0CB; }
 	h1 { 
