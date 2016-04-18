@@ -46,7 +46,8 @@ code {
 	color:darkblue;
 }
 note { color:blue; }
-pre { word-wrap:break-word; }
+pre { word-wrap:break-word;
+tab-size:4; }
 
 hl { color: $highlight; }
 c { color:blue; }

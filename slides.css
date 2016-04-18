@@ -6,26 +6,21 @@
   src: url("../slides/fonts/apercu_medium_pro.otf");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'apercu-bold';
   src: url("../slides/fonts/apercu_bold_pro.otf");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'apercu-italic';
   src: url("../slides/fonts/apercu_medium_italic_pro.otf");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'apercu-mono';
   src: url("../slides/fonts/apercu_mono_pro.otf");
   font-weight: normal;
   font-style: normal; }
-
-/* line 10, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 canvas {
   overflow: hidden;
   position: fixed;
@@ -33,25 +28,20 @@ canvas {
   left: 0;
   z-index: -99; }
 
-/* line 17, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 body {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.45;
   background: aliceblue; }
 
-/* line 22, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 body, html {
   height: 100%; }
 
-/* line 24, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 * {
   box-sizing: border-box; }
 
-/* line 25, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 .key {
   color: #3E5F7B; }
 
-/* line 27, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 #slidesBtn {
   position: fixed;
   top: 10px;
@@ -59,135 +49,106 @@ body, html {
   width: 50px;
   border-radius-right-top: 0px; }
 
-/* line 34, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 #outlineBtn {
   position: fixed;
   top: 10px;
   right: 10px;
   width: 50px; }
 
-/* line 42, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 code {
   background: rgba(249, 249, 249, 0.85);
-  padding: 0 0.25em;
+  padding: 0 .25em;
   border-radius: 0.15em;
   color: darkblue; }
 
-/* line 48, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 note {
   color: blue; }
 
-/* line 49, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 pre {
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  tab-size: 4; }
 
-/* line 51, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 hl {
   color: #5DD8C8; }
 
-/* line 52, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 c {
   color: blue; }
 
-/* line 53, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 c::after {
   content: "> "; }
 
-/* line 54, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 a, a:visited {
   color: darkblue;
   text-decoration: none; }
 
-/* line 58, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 a:hover {
   color: #3BE0CB;
   text-decoration: underline; }
 
-/* line 63, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 .wrap {
   white-space: pre-wrap; }
 
-/* line 65, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 img.floated {
   margin: 1em;
   float: left; }
 
-/* line 69, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 div.floated {
   float: left; }
 
-/* line 71, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 1em 0; }
-  /* line 75, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   table td, table th {
     border: 1px dotted;
     text-align: left;
     padding: .25em;
     margin: .25em; }
 
-/* line 83, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 .outline {
   width: 560px;
   line-height: 1.5;
   margin: 2em auto;
   /* code, pre, .note { font-size:1.1em; } */ }
-  /* line 88, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline pre {
     border-left: 3px solid #5DD8C8; }
-    /* line 89, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .outline pre code {
       padding-left: 8px; }
-  /* line 91, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline note {
     color: darkblue; }
-  /* line 92, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline code {
     font-size: 16px;
     background: white; }
-  /* line 94, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline a, .outline a:visited {
     color: blue;
     text-decoration: underline; }
-  /* line 95, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline a:hover {
     color: #3BE0CB; }
-  /* line 96, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline h1 {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8; }
-  /* line 101, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline h2 {
     padding-top: 2em;
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  /* line 102, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline img {
     max-width: 100%; }
-  /* line 106, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline .slide {
     margin: 1em 0; }
-  /* line 107, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline .slide:first-child {
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
     margin: 8em 0;
     border-bottom: 1px solid #5DD8C8; }
-    /* line 108, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .outline .slide:first-child h1 {
       margin: 0;
       padding: 0;
       border: none; }
-    /* line 112, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .outline .slide:first-child p {
       margin: 0.5em 0;
       font-size: 1em;
       font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  /* line 118, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .outline p {
     font-family: 'Lora', serif; }
 
-/* line 123, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
 .slides {
   width: 100%;
   max-width: 1200px;
@@ -197,71 +158,54 @@ table {
   color: white;
   font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
   position: relative; }
-  /* line 132, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides em {
     font-family: "apercu-italic", "Karla", Helvetica, Arial, sans-serif; }
-  /* line 133, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides strong {
     font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif;
     color: #D1E5F7; }
-  /* line 135, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides .key {
     color: black;
     background-color: white;
     display: inline-block;
     padding: 0.25em;
     border-radius: 0.1em; }
-  /* line 143, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides h1 {
     margin: 0;
     text-align: center; }
-  /* line 148, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides h2 {
     margin: .41em 0;
     text-decoration: underline; }
-  /* line 152, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides p {
     margin: .4em 0; }
-  /* line 153, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides hl {
     color: #5DD8C8; }
-  /* line 154, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides .slide {
     position: relative;
     width: 100%;
     padding: 2%;
     border-bottom: 1px solid white; }
-    /* line 157, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .slides .slide:first-child p {
       text-align: center; }
-    /* line 160, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .slides .slide.long {
       min-height: 100%;
       height: auto; }
-    /* line 166, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .slides .slide img {
       max-height: 90%;
       max-width: 100%;
       display: block; }
-      /* line 170, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
       .slides .slide img.centered {
         margin: 0 auto; }
-      /* line 171, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
       .slides .slide img.floated {
         margin: 1em;
         float: left; }
-      /* line 175, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
       .slides .slide img.full {
         width: 600px; }
-    /* line 177, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .slides .slide p.label {
       text-align: center; }
-    /* line 178, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
     .slides .slide blockquote {
       background: rgba(211, 211, 211, 0.7);
       padding: 1em;
       border-radius: 0.5em; }
-  /* line 184, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides .drawing {
     z-index: 99;
     cursor: url("../slides/pencil.ico"), crosshair;
@@ -270,17 +214,12 @@ table {
     left: 0; }
 
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
-  /* line 197, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides {
     font-size: 1.75em; } }
-
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
-  /* line 202, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides {
     font-size: 2em; } }
-
 @media only screen and (min-width: 1441px) {
-  /* line 207, /Users/oroberts/Desktop/mmp210/slides/slides.scss */
   .slides {
     font-size: 2.5em; } }
 
