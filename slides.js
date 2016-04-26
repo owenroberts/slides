@@ -45,8 +45,8 @@ $(document).ready( function() {
 							createDrawing(firstchild.parentNode, data);
 						});
 					}
-					$(firstchild).css({marginTop:(h-elemheight)/4});
-
+					if ( !this.className.includes("nomargin") ) 
+						$(firstchild).css({marginTop:(h-elemheight)/4});
 				}	
 			});
 			setSlideNumber();
