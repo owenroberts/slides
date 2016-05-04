@@ -184,6 +184,7 @@ blockquote {
 				float:left;			
 			}
 			&.full { width:600px; }
+			&.half { width: 45%; }
 		}
 		p.label { text-align: center; }
 		blockquote { color: black; }
