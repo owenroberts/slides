@@ -131,7 +131,8 @@ table {
     padding-top: 2em;
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
   .outline img {
-    max-width: 100%; }
+    max-width: 100%;
+    position: relative; }
   .outline .slide {
     margin: 1em 0;
     clear: both; }
