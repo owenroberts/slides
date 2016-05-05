@@ -69,16 +69,6 @@ $(document).ready( function() {
 				var firstchild = $(this).children()[0];
 				$(firstchild).css({marginTop:"auto"});
 			});
-
-			var mag = $('<img>')
-				.attr({src:"../slides/img/mag.png"})
-				.css({cursor:"pointer", position:"relative", top:-38, left:2})
-				.on('click', function() {
-					var imgsib = $(this).prev();
-					console.log(imgsib);
-				});
-			$('img').after(mag);
-
 		}
 	};
 	$(outlineBtn).on('click', setOutline);
