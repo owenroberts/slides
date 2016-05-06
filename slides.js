@@ -51,6 +51,8 @@ $(document).ready( function() {
 			});
 			setSlideNumber();
 			scrollToSlide();
+
+			$('.mag').remove();
 		}
 	};
 	$(slidesBtn).on('click', setSlides);
@@ -69,6 +71,46 @@ $(document).ready( function() {
 				var firstchild = $(this).children()[0];
 				$(firstchild).css({marginTop:"auto"});
 			});
+<<<<<<< HEAD
+=======
+
+			var mag = $('<img>')
+				.attr({src:"../slides/img/mag.png"})
+				.addClass("mag")
+				.css({cursor:"pointer", position:"relative", top:-38, left:2, display:"block"})
+				.on('click', function() {
+					var imgsib = $(this).prev();
+					var imgw = imgsib[0].naturalWidth;
+					var left = 40;
+					if (imgw > window.innerWidth) imgw = window.innerWidth - 80;
+					else left =  (window.innerWidth - imgw) / 2;
+
+					var imgwrap = $('<div>')
+						.attr({id:"image-popup"})
+						.css({
+							position:"fixed", top:0, left:0, bottom:0, right:0,
+							background:"rgba(240, 248, 255,0.9)", zIndex:99
+						});
+					console.log(imgsib[0].src);
+					var newimg = $("<img>")
+						.css({position:"relative", top:"4em", width:imgw, left:left })
+						.attr({src:imgsib[0].src});
+					imgwrap.append(newimg);
+
+					var close = $("<img>")
+						.attr({src:"../slides/img/close.png"})
+						.css({display:"block", cursor:"pointer", position:"relative", top:"4em", left:left})
+						.on('click', function() {
+							$('#image-popup').remove();
+						});
+
+					imgwrap.append(close);
+
+					$('body').append(imgwrap);
+				});
+			$('img').after(mag);
+
+>>>>>>> c2b683f775ab78f5ca6072df234a447b99b828be
 		}
 	};
 	$(outlineBtn).on('click', setOutline);
