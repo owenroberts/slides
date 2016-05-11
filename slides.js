@@ -24,6 +24,16 @@ $(document).ready( function() {
 	var mousetime = 40;
 	var mousetimer = 0;
 
+	slides.each(function() {
+		var firstchild = $(this).children()[0];
+		if (firstchild.dataset.src) {
+			var filename = firstchild.dataset.src;
+			$.getJSON(filename, function(data) {
+				createDrawing(firstchild.parentNode, data);
+			});
+		}
+	});
+
 	var setSlides = function() {
 		if (!isslides || start) {
 			h = window.innerHeight;
@@ -39,16 +49,11 @@ $(document).ready( function() {
 				else {
 					$(this).css({height:h});
 					var firstchild = $(this).children()[0];
-					if (firstchild.dataset.src) {
-						var filename = firstchild.dataset.src;
-						$.getJSON(filename, function(data) {
-							createDrawing(firstchild.parentNode, data);
-						});
-					}
 					if ( !this.className.includes("nomargin") ) 
 						$(firstchild).css({marginTop:(h-elemheight)/4});
 				}	
 			});
+			updateDrawingWidth();
 			setSlideNumber();
 			scrollToSlide();
 
@@ -59,19 +64,19 @@ $(document).ready( function() {
 	
 	var setOutline = function() {
 		if (isslides || start) {
+			updateDrawingWidth();
 			start = false;
 			isslides = false;
 			$(container).removeClass('slides');
 			$(container).addClass('outline');
 			$('#defaultCanvas0').hide();
-			$('canvas').hide();
 			noscroll = true;
 			slides.each(function() {
 				$(this).css({height:"auto"});
 				var firstchild = $(this).children()[0];
 				$(firstchild).css({marginTop:"auto"});
 			});
-
+			updateDrawingWidth();
 			var mag = $('<img>')
 				.attr({src:"../slides/img/mag.png"})
 				.addClass("mag")
@@ -237,6 +242,19 @@ $(document).ready( function() {
 			createDrawing(s);
 		}
 	}
+
+	var updateDrawingWidth = function() {
+		$('.drawing').each( function() {
+			var z = this.parentNode.offsetWidth / this.width;
+			this.style.zoom = z;
+			var zd = (this.parentNode.offsetHeight - (z * this.height))/2;
+			console.log(this.height);
+			if (zd > 0) {
+				this.style.top = zd + "px";
+			}
+		});
+	}
+	
 
 	var createDrawing = function(slide, linesData) {
 		var sn = $(slide).index();
@@ -407,8 +425,8 @@ $(document).ready( function() {
 		requestAnimationFrame(drawLoop);
 		if (Date.now() > timer + interval) {
 			timer = Date.now();
-			if (drawings[slideNumber]) {
-				drawings[slideNumber].drawLines();
+			for (var i = 0; i < slides.length; i++) {
+				if (drawings[i]) drawings[i].drawLines();
 			}
 		}
 	}

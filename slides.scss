@@ -117,9 +117,12 @@ table {
 			font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 		}
 	}
-	p {
-		font-family: 'Lora', serif;
-	}
+	p {font-family: 'Lora', serif;}
+	canvas { 
+		position:relative;
+		z-index: 1;
+		overflow:visible;
+	 }
 }
 
 blockquote {

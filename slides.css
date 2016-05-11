@@ -149,6 +149,10 @@ table {
       font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
   .outline p {
     font-family: 'Lora', serif; }
+  .outline canvas {
+    position: relative;
+    z-index: 1;
+    overflow: visible; }
 
 blockquote {
   background: white;
@@ -208,6 +212,8 @@ blockquote {
         float: left; }
       .slides .slide img.full {
         width: 600px; }
+      .slides .slide img.half {
+        width: 45%; }
     .slides .slide p.label {
       text-align: center; }
     .slides .slide blockquote {
