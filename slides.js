@@ -120,6 +120,7 @@ $(document).ready( function() {
 
 	var setSlideNumber = function() {
 		var longslide = $(slides[slideNumber]).attr('class');
+		
 		if (longslide.indexOf("long") == -1) {
 			slideNumber = 0;
 			for ( var i = 0; i < slides.length; i++) {

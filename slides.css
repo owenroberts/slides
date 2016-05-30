@@ -5,162 +5,246 @@
   font-family: 'apercu';
   src: url("../slides/fonts/apercu_medium_pro.otf");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'apercu-bold';
   src: url("../slides/fonts/apercu_bold_pro.otf");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'apercu-italic';
   src: url("../slides/fonts/apercu_medium_italic_pro.otf");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'apercu-mono';
   src: url("../slides/fonts/apercu_mono_pro.otf");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
+
+/* line 10, slides.scss */
 canvas {
   overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -99; }
+  z-index: -99;
+}
 
+/* line 17, slides.scss */
 body {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 1.45;
-  background: aliceblue; }
+  background: aliceblue;
+}
 
+/* line 22, slides.scss */
 body, html {
-  height: 100%; }
+  height: 100%;
+}
 
+/* line 24, slides.scss */
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
+/* line 25, slides.scss */
 .key {
-  color: #3E5F7B; }
+  color: #3E5F7B;
+}
 
+/* line 27, slides.scss */
 #slidesBtn {
   position: fixed;
   top: 10px;
   right: 60px;
   width: 50px;
-  border-radius-right-top: 0px; }
+  border-radius-right-top: 0px;
+}
 
+/* line 34, slides.scss */
 #outlineBtn {
   position: fixed;
   top: 10px;
   right: 10px;
-  width: 50px; }
+  width: 50px;
+}
 
+/* line 42, slides.scss */
 code {
   background: rgba(249, 249, 249, 0.85);
   padding: 0 .25em;
   border-radius: 0.15em;
-  color: darkblue; }
+  color: darkblue;
+}
 
+/* line 48, slides.scss */
 note {
-  color: blue; }
+  color: blue;
+}
 
+/* line 49, slides.scss */
 pre {
   word-wrap: break-word;
-  tab-size: 4; }
+  tab-size: 4;
+}
 
+/* line 52, slides.scss */
 hl {
-  color: #5DD8C8; }
+  color: #5dd8c8;
+}
 
+/* line 53, slides.scss */
 c {
-  color: blue; }
+  color: blue;
+}
 
+/* line 54, slides.scss */
 c::after {
-  content: "> "; }
+  content: "> ";
+}
 
+/* line 55, slides.scss */
 a, a:visited {
   color: darkblue;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
+/* line 59, slides.scss */
 a:hover {
   color: #3BE0CB;
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
+/* line 64, slides.scss */
 .wrap {
-  white-space: pre-wrap; }
+  white-space: pre-wrap;
+}
 
+/* line 66, slides.scss */
 img.floated {
   margin: 1em;
-  float: left; }
+  float: left;
+}
 
+/* line 70, slides.scss */
 div.floated {
-  float: left; }
+  float: left;
+}
 
+/* line 72, slides.scss */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1em 0; }
-  table td, table th {
-    border: 1px dotted;
-    text-align: left;
-    padding: .25em;
-    margin: .25em; }
+  margin: 1em 0;
+}
+/* line 76, slides.scss */
+table td, table th {
+  border: 1px dotted;
+  text-align: left;
+  padding: .25em;
+  margin: .25em;
+}
 
+/* line 84, slides.scss */
 .outline {
   width: 560px;
   line-height: 1.5;
   margin: 2em auto;
-  /* code, pre, .note { font-size:1.1em; } */ }
-  .outline pre {
-    border-left: 3px solid #5DD8C8; }
-    .outline pre code {
-      padding-left: 8px; }
-  .outline note {
-    color: darkblue; }
-  .outline code {
-    font-size: 16px;
-    background: white; }
-  .outline a, .outline a:visited {
-    color: blue;
-    text-decoration: underline; }
-  .outline a:hover {
-    color: #3BE0CB; }
-  .outline h1 {
-    padding-top: 4em;
-    border-bottom: 1px solid #5DD8C8; }
-  .outline h2 {
-    padding-top: 2em;
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  .outline img {
-    max-width: 100%; }
-  .outline .slide {
-    margin: 1em 0;
-    clear: both; }
-  .outline .slide:first-child {
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
-    margin: 8em 0;
-    border-bottom: 1px solid #5DD8C8; }
-    .outline .slide:first-child h1 {
-      margin: 0;
-      padding: 0;
-      border: none; }
-    .outline .slide:first-child p {
-      margin: 0.5em 0;
-      font-size: 1em;
-      font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  .outline p {
-    font-family: 'Lora', serif; }
-  .outline canvas {
-    position: relative;
-    z-index: 1;
-    overflow: visible; }
+  /* code, pre, .note { font-size:1.1em; } */
+}
+/* line 89, slides.scss */
+.outline pre {
+  border-left: 3px solid #5dd8c8;
+}
+/* line 90, slides.scss */
+.outline pre code {
+  padding-left: 8px;
+}
+/* line 92, slides.scss */
+.outline note {
+  color: darkblue;
+}
+/* line 93, slides.scss */
+.outline code {
+  font-size: 16px;
+  background: white;
+}
+/* line 95, slides.scss */
+.outline a, .outline a:visited {
+  color: blue;
+  text-decoration: underline;
+}
+/* line 96, slides.scss */
+.outline a:hover {
+  color: #3BE0CB;
+}
+/* line 97, slides.scss */
+.outline h1 {
+  padding-top: 4em;
+  border-bottom: 1px solid #5dd8c8;
+  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+}
+/* line 103, slides.scss */
+.outline h2 {
+  padding-top: 2em;
+  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+}
+/* line 104, slides.scss */
+.outline img {
+  max-width: 100%;
+}
+/* line 108, slides.scss */
+.outline .slide {
+  margin: 1em 0;
+  clear: both;
+}
+/* line 110, slides.scss */
+.outline .slide:first-child {
+  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+  margin: 8em 0;
+  border-bottom: 1px solid #5dd8c8;
+}
+/* line 111, slides.scss */
+.outline .slide:first-child h1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+/* line 115, slides.scss */
+.outline .slide:first-child p {
+  margin: 0.5em 0;
+  font-size: 1em;
+  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+}
+/* line 121, slides.scss */
+.outline p {
+  font-family: 'Lora', serif;
+}
+/* line 122, slides.scss */
+.outline canvas {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
 
+/* line 129, slides.scss */
 blockquote {
   background: white;
   padding: 1em;
   margin: 0;
   border-radius: 0.5em;
-  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
+  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+}
 
+/* line 137, slides.scss */
 .slides {
   width: 100%;
   max-width: 1200px;
@@ -169,84 +253,132 @@ blockquote {
   font-size: 28px;
   color: white;
   font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
-  position: relative; }
-  .slides em {
-    font-family: "apercu-italic", "Karla", Helvetica, Arial, sans-serif; }
-  .slides strong {
-    font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif;
-    color: #D1E5F7; }
-  .slides .key {
-    color: black;
-    background-color: white;
-    display: inline-block;
-    padding: 0.25em;
-    border-radius: 0.1em; }
-  .slides h1 {
-    margin: 0;
-    text-align: center; }
-  .slides h2 {
-    margin: .41em 0;
-    text-decoration: underline; }
-  .slides p {
-    margin: .4em 0; }
-  .slides hl {
-    color: #5DD8C8; }
-  .slides .slide {
-    position: relative;
-    width: 100%;
-    padding: 2%;
-    border-bottom: 1px solid white; }
-    .slides .slide:first-child p {
-      text-align: center; }
-    .slides .slide.long {
-      min-height: 100%;
-      height: auto; }
-    .slides .slide img {
-      max-height: 90%;
-      max-width: 100%;
-      display: block; }
-      .slides .slide img.centered {
-        margin: 0 auto; }
-      .slides .slide img.floated {
-        margin: 1em;
-        float: left; }
-      .slides .slide img.full {
-        width: 600px; }
-      .slides .slide img.half {
-        width: 45%; }
-    .slides .slide p.label {
-      text-align: center; }
-    .slides .slide blockquote {
-      color: black; }
-  .slides .drawing {
-    z-index: 99;
-    cursor: url("../slides/pencil.ico"), crosshair;
-    position: absolute;
-    top: 0;
-    left: 0; }
+  position: relative;
+}
+/* line 146, slides.scss */
+.slides em {
+  font-family: "apercu-italic", "Karla", Helvetica, Arial, sans-serif;
+}
+/* line 147, slides.scss */
+.slides strong {
+  font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif;
+  color: #D1E5F7;
+}
+/* line 149, slides.scss */
+.slides .key {
+  color: black;
+  background-color: white;
+  display: inline-block;
+  padding: 0.25em;
+  border-radius: 0.1em;
+}
+/* line 157, slides.scss */
+.slides h1 {
+  margin: 0;
+  text-align: center;
+}
+/* line 162, slides.scss */
+.slides h2 {
+  margin: .41em 0;
+  text-decoration: underline;
+}
+/* line 166, slides.scss */
+.slides p {
+  margin: .4em 0;
+}
+/* line 167, slides.scss */
+.slides hl {
+  color: #5dd8c8;
+}
+/* line 168, slides.scss */
+.slides .slide {
+  position: relative;
+  width: 100%;
+  padding: 2%;
+  border-bottom: 1px solid white;
+}
+/* line 171, slides.scss */
+.slides .slide:first-child p {
+  text-align: center;
+}
+/* line 174, slides.scss */
+.slides .slide.long {
+  min-height: 100%;
+  height: auto;
+}
+/* line 180, slides.scss */
+.slides .slide img {
+  max-height: 90%;
+  max-width: 100%;
+  display: block;
+}
+/* line 184, slides.scss */
+.slides .slide img.centered {
+  margin: 0 auto;
+}
+/* line 185, slides.scss */
+.slides .slide img.floated {
+  margin: 1em;
+  float: left;
+}
+/* line 189, slides.scss */
+.slides .slide img.full {
+  width: 600px;
+}
+/* line 190, slides.scss */
+.slides .slide img.half {
+  width: 45%;
+}
+/* line 192, slides.scss */
+.slides .slide p.label {
+  text-align: center;
+}
+/* line 193, slides.scss */
+.slides .slide blockquote {
+  color: black;
+}
+/* line 196, slides.scss */
+.slides .drawing {
+  z-index: 99;
+  cursor: url("../slides/pencil.ico"), crosshair;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
+/* line 206, slides.scss */
 .video {
   position: relative;
   padding-bottom: 56.25%;
   /* 16:9 */
   padding-top: 25px;
-  height: 0; }
+  height: 0;
+}
 
+/* line 213, slides.scss */
 .video video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
+  /* line 225, slides.scss */
   .slides {
-    font-size: 1.75em; } }
+    font-size: 1.75em;
+  }
+}
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* line 230, slides.scss */
   .slides {
-    font-size: 2em; } }
+    font-size: 2em;
+  }
+}
 @media only screen and (min-width: 1441px) {
+  /* line 235, slides.scss */
   .slides {
-    font-size: 2.5em; } }
-
-/*# sourceMappingURL=slides.css.map */
+    font-size: 2.5em;
+  }
+}
