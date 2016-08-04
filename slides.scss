@@ -130,8 +130,9 @@ blockquote {
 	background: white;
 	padding: 1em;
 	margin:0;
-	border-radius: 0.5em;
+	box-shadow: -0.25em 0.25em 0 $highlight;
 	font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
+	a { font-size: 0.75em;  }
 }
 
 .slides {
