@@ -7,6 +7,7 @@ function lerpHSB(from, to, amt) {
 
 var w, columns, rows, board;
 var alive, born, died, none;
+var canvas;
 
 var limits;
 
@@ -14,7 +15,7 @@ var lerper = 0;
 var lerpinc = 0.04;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	canvas = createCanvas(windowWidth, windowHeight);
 	noStroke();
 	frameRate(30);
 
@@ -147,8 +148,9 @@ function keyPressed() {
   }
 }
 function windowResized() {
+  canvas.elt.style.width = windowWidth + "px";
+  canvas.elt.style.height = windowHeight + "px";
 	setupSize();
 	init();
 	display();
-  //resizeCanvas(windowWidth, windowHeight);
 }
