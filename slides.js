@@ -105,7 +105,7 @@ $(document).ready( function() {
 					imgwrap.append(newimg);
 
 					var close = $("<img>")
-						.attr({src:"../slides/img/close.png"})
+						.attr({src:jslocation + "/img/close.png"})
 						.css({display:"block", cursor:"pointer", position:"relative", top:"4em", left:left})
 						.on('click', function() {
 							$('#image-popup').remove();
