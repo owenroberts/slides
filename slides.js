@@ -310,8 +310,7 @@ $(document).ready( function() {
 		}
 	}
 
-
-	setSlideNumber();
+	if (slides.length > 0) setSlideNumber();
 	
 	if (dev) setSlides();
 	else {
@@ -331,26 +330,26 @@ $(document).ready( function() {
 		var key = ev.which;
 		switch (key) {
 			case 39: 
-			case 40:
+			case 40: // up right
 				nextSlide();
 			break;
 			
 			case 37:
-			case 38:
+			case 38: // down left
 				previousSlide();
 			break;
 
-			case 32:
+			case 32: // space
 				ev.preventDefault();
 				if (isslides) drawingToggle();
 			break;
 
-			case 79:
+			case 79: //o
 				setOutline();
 			break;
 
-			case 83:
-				setSlides();
+			case 83: //s
+				if (slides.length > 0) setSlides();
 			break;
 
 			case 70: // f
@@ -385,9 +384,11 @@ $(document).ready( function() {
 
 
 	$(document).on("wheel", function() {
-		var slideOkay = setSlideNumber();
-		if (!scrolling && slideOkay) setTimeout(scrollToSlide, 2000);
-		scrolling = true;
+		if (isslides) {
+			var slideOkay = setSlideNumber();
+			if (!scrolling && slideOkay) setTimeout(scrollToSlide, 2000);
+			scrolling = true;
+		}
 	});
 
 	$(document).on('mousemove', function(event) {
