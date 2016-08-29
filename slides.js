@@ -94,7 +94,6 @@ $(document).ready( function() {
 							position:"fixed", top:0, left:0, bottom:0, right:0,
 							background:"rgba(240, 248, 255,0.9)", zIndex:99
 						});
-					console.log(imgsib[0].src);
 					var newimg = $("<img>")
 						.css({position:"relative", top:"4em", width:imgw, left:left })
 						.attr({src:imgsib[0].src});
@@ -120,7 +119,6 @@ $(document).ready( function() {
 
 	var setSlideNumber = function() {
 		var longslide = $(slides[slideNumber]).attr('class');
-		
 		if (longslide.indexOf("long") == -1) {
 			slideNumber = 0;
 			for ( var i = 0; i < slides.length; i++) {
@@ -249,7 +247,6 @@ $(document).ready( function() {
 			var z = this.parentNode.offsetWidth / this.width;
 			this.style.zoom = z;
 			var zd = (this.parentNode.offsetHeight - (z * this.height))/2;
-			console.log(this.height);
 			if (zd > 0) {
 				this.style.top = zd + "px";
 			}
