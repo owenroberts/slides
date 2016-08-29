@@ -9,6 +9,9 @@ $(document).ready( function() {
 	$(container).append(slidesBtn);
 	$(container).append(outlineBtn);
 
+	var jslocation = $('script[src*="slides/slides"]').attr('src');
+	jslocation = jslocation.replace('slides.js','');
+
 	var slides = $('.slide');
 	var isslides = false;
 	var start = true;
@@ -77,8 +80,9 @@ $(document).ready( function() {
 				$(firstchild).css({marginTop:"auto"});
 			});
 			updateDrawingWidth();
+			
 			var mag = $('<img>')
-				.attr({src:"../slides/img/mag.png"})
+				.attr({src:jslocation + "/img/mag.png"})
 				.addClass("mag")
 				.css({cursor:"pointer", position:"relative", top:-38, left:2, display:"block"})
 				.on('click', function() {
@@ -100,7 +104,7 @@ $(document).ready( function() {
 					imgwrap.append(newimg);
 
 					var close = $("<img>")
-						.attr({src:"../slides/img/close.png"})
+						.attr({src:jslocation + "/img/close.png"})
 						.css({display:"block", cursor:"pointer", position:"relative", top:"4em", left:left})
 						.on('click', function() {
 							$('#image-popup').remove();
