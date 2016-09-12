@@ -79,7 +79,7 @@ c::after {
 
 a, a:visited {
   color: darkblue;
-  text-decoration: none; }
+  transition: color 300ms; }
 
 a:hover {
   color: #3BE0CB;
@@ -208,6 +208,8 @@ blockquote {
       max-height: 90%;
       max-width: 100%;
       display: block; }
+      .slides .slide img.fit {
+        height: 100%; }
       .slides .slide img.centered {
         margin: 0 auto; }
       .slides .slide img.floated {

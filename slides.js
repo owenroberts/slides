@@ -48,10 +48,10 @@ $(document).ready( function() {
 			noscroll = false;
 			slides.each(function() {
 				var elemheight = $(this).height();
+				var firstchild = $(this).children()[0];
 				if (elemheight > h) { $(this).addClass("long"); }
 				else {
 					$(this).css({height:h});
-					var firstchild = $(this).children()[0];
 					if ( !this.className.includes("nomargin") ) 
 						$(firstchild).css({marginTop:(h-elemheight)/4});
 				}	

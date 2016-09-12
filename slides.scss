@@ -54,7 +54,7 @@ c { color:blue; }
 c::after { content: "> "; }
 a, a:visited {
 	color: darkblue;
-	text-decoration: none;
+	transition: color 300ms;
 }
 a:hover { 
 	color: #3BE0CB;
@@ -182,6 +182,7 @@ blockquote {
 			max-height: 90%;
 			max-width:100%;
 			display:block;
+			&.fit { height:100%; }
 			&.centered { margin:0 auto; }
 			&.floated {
 				margin: 1em;
