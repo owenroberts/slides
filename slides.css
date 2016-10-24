@@ -128,7 +128,7 @@ table {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8;
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  .outline h2 {
+  .outline h2, .outline h3 {
     padding-top: 2em;
     font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
   .outline img {
@@ -148,7 +148,7 @@ table {
       margin: 0.5em 0;
       font-size: 1em;
       font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
-  .outline p {
+  .outline p, .outline li {
     font-family: 'Lora', serif; }
   .outline canvas {
     position: relative;

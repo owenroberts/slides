@@ -100,7 +100,7 @@ table {
 		font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 
 	}
-	h2 { padding-top: 2em; font-family: $apc, "Karla", Helvetica, Arial, sans-serif;}
+	h2, h3 { padding-top: 2em; font-family: $apc, "Karla", Helvetica, Arial, sans-serif;}
 	img {
 		max-width:100%;
 	}
@@ -118,7 +118,7 @@ table {
 			font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
 		}
 	}
-	p {font-family: 'Lora', serif;}
+	p, li {font-family: 'Lora', serif;}
 	canvas { 
 		position:relative;
 		z-index: 1;
