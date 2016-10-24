@@ -57,9 +57,7 @@ $(document).ready( function() {
 				}	
 			});
 			updateDrawingWidth();
-			setSlideNumber();
 			scrollToSlide();
-
 			$('.mag').remove();
 		}
 	};
@@ -121,7 +119,7 @@ $(document).ready( function() {
 	$(outlineBtn).on('click', setOutline);
 	
 
-	var setSlideNumber = function() {
+	var setSlideNumber = function(num) {
 		var longslide = $(slides[slideNumber]).attr('class');
 		if (longslide.indexOf("long") == -1) {
 			slideNumber = 0;
