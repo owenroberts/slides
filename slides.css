@@ -180,7 +180,7 @@ blockquote {
     color: #D1E5F7; }
   .slides .key {
     color: black;
-    background-color: white;
+    font-size: 1.75em;
     display: inline-block;
     padding: 0.25em;
     border-radius: 0.1em; }
@@ -226,9 +226,7 @@ blockquote {
   .slides .drawing {
     z-index: 99;
     cursor: url("../slides/pencil.ico"), crosshair;
-    position: absolute;
-    top: 0;
-    left: 0; }
+    position: relative; }
 
 .video {
   position: relative;

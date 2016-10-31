@@ -27,15 +27,14 @@ $(document).ready( function() {
 	var mousetime = 40;
 	var mousetimer = 0;
 
-	slides.each(function() {
-		var firstchild = $(this).children()[0];
-		if (firstchild.dataset.src) {
-			var filename = firstchild.dataset.src;
-			$.getJSON(filename, function(data) {
-				createDrawing(firstchild.parentNode, data);
-			});
-		}
-	});
+
+	$('div[data-src*="json"]').each(function() {
+		var parent = this.parentNode;
+		var filename = this.dataset.src;
+		$.getJSON(filename, function(data) {
+			createDrawing(parent, data);
+		});
+	})
 
 	var setSlides = function() {
 		if (!isslides || start) {
@@ -262,10 +261,6 @@ $(document).ready( function() {
 		$('.drawing').each( function() {
 			var z = this.parentNode.offsetWidth / this.width;
 			this.style.zoom = z;
-			var zd = (this.parentNode.offsetHeight - (z * this.height))/2;
-			if (zd > 0) {
-				this.style.top = zd + "px";
-			}
 		});
 	}
 	
@@ -280,14 +275,11 @@ $(document).ready( function() {
 				height:linesData.h
 			})
 			.addClass("drawing");
+			console.log(slide);
 			slide.appendChild(c[0]);
 			var d = new Drawing("#c"+sn);
 			var z = slide.offsetWidth / linesData.w;
 			c[0].style.zoom = z;
-			var zd = slide.offsetHeight - z*linesData.h;
-			if (zd > 0) {
-				c[0].style.top = zd + "px";
-			}
 			d.lines = linesData.l;
 			d.preload = true;
 			d.active = true;
