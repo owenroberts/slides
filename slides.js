@@ -85,10 +85,24 @@ $(document).ready( function() {
 				.css({cursor:"pointer", position:"relative", top:-38, left:2, display:"block"})
 				.on('click', function() {
 					var imgsib = $(this).prev();
+					console.log(imgsib);
 					var imgw = imgsib[0].naturalWidth;
-					var left = 40;
-					if (imgw > window.innerWidth) imgw = window.innerWidth - 80;
-					else left =  (window.innerWidth - imgw) / 2;
+					var imgh = imgsib[0].naturalHeight;
+					var ratio = imgw/imgh;
+					console.log(imgh, ratio);
+					var margin = 40;
+					var left, top;
+					
+					if (imgh > window.innerHeight) {
+						imgh = window.innerHeight - margin*2;
+						imgw = imgh * ratio;
+					} else if (imgw > window.innerWidth) {
+						imgw = window.innerWidth - margin*2;
+					}
+					left =  (window.innerWidth - imgw) / 2;
+					top = (window.innerHeight - imgh) / 2;
+
+					console.log(imgh, top);
 
 					var imgwrap = $('<div>')
 						.attr({id:"image-popup"})
@@ -97,13 +111,13 @@ $(document).ready( function() {
 							background:"rgba(240, 248, 255,0.9)", zIndex:99
 						});
 					var newimg = $("<img>")
-						.css({position:"relative", top:"4em", width:imgw, left:left })
+						.css({position:"relative", top:top, width:imgw, left:left })
 						.attr({src:imgsib[0].src});
 					imgwrap.append(newimg);
 
 					var close = $("<img>")
 						.attr({src:jslocation + "/img/close.png"})
-						.css({display:"block", cursor:"pointer", position:"relative", top:"4em", left:left})
+						.css({display:"block", cursor:"pointer", position:"relative", top:top, left:left})
 						.on('click', function() {
 							$('#image-popup').remove();
 						});
