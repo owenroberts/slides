@@ -422,6 +422,7 @@ $(document).ready( function() {
 	var interval = 1000/fps;
 	var timer = Date.now();
 
+
 	var drawLoop = function() {
 		requestAnimationFrame(drawLoop);
 		if (Date.now() > timer + interval) {
