@@ -108,6 +108,20 @@ table {
 	/* code, pre, .note { font-size:1.1em; } */
 	.slide {margin:1em 0;
 		clear:both;}
+	.utube {
+		position: relative;
+		width:100%;
+		padding-bottom: 56.25%; /* 16:9 */
+		padding-top: 25px;
+		height: 0;
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
 	.slide:first-child {
 		h1 { margin: 0; padding:0; border:none; }
 		font-family: $apc, "Karla", Helvetica, Arial, sans-serif;
@@ -193,8 +207,21 @@ blockquote {
 			&.half { width: 45%; }
 		}
 		p.label { text-align: center; }
-		blockquote { color: black; }
-		
+		blockquote { color: black; }		
+	}
+	.utube {
+		margin-top:0;
+		position: relative;
+		padding-bottom: 56.25%; /* 16:9 */
+		padding-top: 25px;
+		height: 0;
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 	.drawing {
 		z-index:99;
