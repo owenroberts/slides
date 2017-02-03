@@ -1,5 +1,5 @@
 @import url(fonts/key.css);
-@import url(https://fonts.googleapis.com/css?family=Karla);
+@import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
 @font-face {
   font-family: 'apercu';
@@ -29,7 +29,7 @@ canvas {
   z-index: -99; }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Karla", Helvetica, Arial, sans-serif;
   line-height: 1.45;
   background: aliceblue; }
 
@@ -127,10 +127,10 @@ table {
   .outline h1 {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8;
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline h2, .outline h3 {
     padding-top: 2em;
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline img {
     max-width: 100%; }
   .outline .slide {
@@ -150,7 +150,7 @@ table {
       width: 100%;
       height: 100%; }
   .outline .slide:first-child {
-    font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Karla", Helvetica, Arial, sans-serif;
     margin: 8em 0;
     border-bottom: 1px solid #5DD8C8; }
     .outline .slide:first-child h1 {
@@ -160,7 +160,7 @@ table {
     .outline .slide:first-child p {
       margin: 0.5em 0;
       font-size: 1em;
-      font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
+      font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline p, .outline li {
     font-family: 'Lora', serif; }
   .outline canvas {
@@ -173,7 +173,7 @@ blockquote {
   padding: 1em;
   margin: 0;
   box-shadow: -0.25em 0.25em 0 #5DD8C8;
-  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif; }
+  font-family: "Karla", Helvetica, Arial, sans-serif; }
   blockquote a {
     font-size: 0.75em; }
 
@@ -184,12 +184,12 @@ blockquote {
   height: 100%;
   font-size: 28px;
   color: white;
-  font-family: "apercu", "Karla", Helvetica, Arial, sans-serif;
+  font-family: "Karla", Helvetica, Arial, sans-serif;
   position: relative; }
   .slides em {
-    font-family: "apercu-italic", "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Karla", Helvetica, Arial, sans-serif; }
   .slides strong {
-    font-family: "apercu-bold", "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Karla", Helvetica, Arial, sans-serif;
     color: #D1E5F7; }
   .slides .key {
     color: black;
