@@ -58,8 +58,7 @@ body, html {
 code {
   background: rgba(249, 249, 249, 0.85);
   padding: 0 .25em;
-  border-radius: 0.15em;
-  color: darkblue; }
+  border-radius: 0.15em; }
 
 note {
   color: blue; }
@@ -119,6 +118,10 @@ table {
   .outline code {
     font-size: 16px;
     background: white; }
+  .outline p code {
+    color: blue; }
+  .outline li code {
+    color: blue; }
   .outline a, .outline a:visited {
     color: blue;
     text-decoration: underline; }
@@ -191,6 +194,8 @@ blockquote {
   .slides strong {
     font-family: "Karla", Helvetica, Arial, sans-serif;
     color: #D1E5F7; }
+  .slides code {
+    color: black; }
   .slides .key {
     color: black;
     font-size: 1.75em;

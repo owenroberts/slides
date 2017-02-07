@@ -43,7 +43,6 @@ code {
 	background:rgba(#f9f9f9, 0.85);
 	padding:0 .25em;
 	border-radius: 0.15em;
-	color:darkblue;
 }
 note { color:blue; }
 pre { word-wrap:break-word;
@@ -93,6 +92,8 @@ table {
 	note { color:darkblue; }
 	code { font-size: 16px; 
 	background:white;}
+	p code {color: blue;}
+	li code {color: blue;}
 	a, a:visited { color: blue; text-decoration: underline; }
 	a:hover {  color: #3BE0CB; }
 	h1 { 
@@ -161,6 +162,7 @@ blockquote {
 	em { font-family:"Karla", Helvetica, Arial, sans-serif; }
 	strong { font-family:  "Karla", Helvetica, Arial, sans-serif;
 	color: #D1E5F7;}
+	code {color:black;}
 	.key {
 		color:black;
 		font-size:1.75em;
