@@ -91,6 +91,9 @@ img.floated {
   margin: 1em;
   float: left; }
 
+video {
+  max-width: 100%; }
+
 div.floated {
   float: left; }
 
@@ -106,7 +109,8 @@ table {
 
 .outline {
   width: 560px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.4;
   margin: 2em auto;
   /* code, pre, .note { font-size:1.1em; } */ }
   .outline pre {
@@ -196,6 +200,8 @@ blockquote {
     color: #D1E5F7; }
   .slides code {
     color: black; }
+  .slides img + img {
+    margin-top: 1em; }
   .slides .key {
     color: black;
     font-size: 1.75em;

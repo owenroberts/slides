@@ -67,6 +67,7 @@ img.floated {
 	margin: 1em;
 	float:left;			
 }
+video { max-width:100%; }
 div.floated { float:left; }
 
 table {
@@ -83,7 +84,8 @@ table {
 
 .outline {
 	width: 560px;
-	line-height: 1.5;
+	font-size:15px;
+	line-height: 1.4;
 	margin:2em auto;
 	
 	pre { border-left: 3px solid $highlight;
@@ -105,6 +107,7 @@ table {
 	img {
 		max-width:100%;
 	}
+	
 	/* code, pre, .note { font-size:1.1em; } */
 	.slide {margin:1em 0;
 		clear:both;}
@@ -163,6 +166,7 @@ blockquote {
 	strong { font-family:  "Karla", Helvetica, Arial, sans-serif;
 	color: #D1E5F7;}
 	code {color:black;}
+	img + img { margin-top:1em; }
 	.key {
 		color:black;
 		font-size:1.75em;

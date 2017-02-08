@@ -79,16 +79,14 @@ $(document).ready( function() {
 			updateDrawingWidth();
 			
 			var mag = $('<img>')
-				.attr({src:jslocation + "/img/mag.png"})
+				.attr({src:jslocation + "img/mag.png"})
 				.addClass("mag")
-				.css({cursor:"pointer", position:"relative", top:-38, left:2, display:"block"})
+				.css({cursor:"pointer", position:"relative", top:-30, left:2, display:"block", width:'24px'})
 				.on('click', function() {
 					var imgsib = $(this).prev();
-					console.log(imgsib);
 					var imgw = imgsib[0].naturalWidth;
 					var imgh = imgsib[0].naturalHeight;
 					var ratio = imgw/imgh;
-					console.log(imgh, ratio);
 					var margin = 40;
 					var left, top;
 					
@@ -107,7 +105,7 @@ $(document).ready( function() {
 						.attr({id:"image-popup"})
 						.css({
 							position:"fixed", top:0, left:0, bottom:0, right:0,
-							background:"rgba(240, 248, 255,0.9)", zIndex:99
+							background:"rgba(207, 218, 255,0.975)", zIndex:99
 						});
 					var newimg = $("<img>")
 						.css({position:"relative", top:top, width:imgw, left:left })
