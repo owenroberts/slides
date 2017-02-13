@@ -1,4 +1,4 @@
-$(document).ready( function() {
+var setupSlides = function() {
 
 	var dev = false;
 
@@ -318,10 +318,10 @@ $(document).ready( function() {
 	else {
 		setOutline();
 		var checkExist = setInterval(function() {
-		   if ($('#defaultCanvas0').length) {
-		      $('#defaultCanvas0').hide();
-		      clearInterval(checkExist);
-		   }
+			if ($('#defaultCanvas0').length) {
+				$('#defaultCanvas0').hide();
+				clearInterval(checkExist);
+			}
 		}, 50);
 	}
 
@@ -422,11 +422,10 @@ $(document).ready( function() {
 		}
 	});
 
+	// for drawings loaded into notes
 	var fps = 10;
 	var interval = 1000/fps;
 	var timer = Date.now();
-
-
 	var drawLoop = function() {
 		requestAnimationFrame(drawLoop);
 		if (Date.now() > timer + interval) {
@@ -436,7 +435,18 @@ $(document).ready( function() {
 			}
 		}
 	}
+};
 
-	
-
+$(document).ready( function() {
+	if (window.mobilecheck()) {
+		document.getElementById("container").className = "outline";
+		var checkExist = setInterval(function() {
+			if ($('#defaultCanvas0').length) {
+				$('#defaultCanvas0').remove();
+				clearInterval(checkExist);
+			}
+		}, 50);
+	} else {
+		setupSlides();
+	}
 });

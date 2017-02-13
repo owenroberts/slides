@@ -53,103 +53,103 @@ function setupSize() {
 }
 
 function draw() {
-  if (lerper < 1) {
-    lerper += lerpinc;
-    display();
-  }
+	if (lerper < 1) {
+		lerper += lerpinc;
+		display();
+	}
 }
 
 function display() {          
-  for (var x = 0; x < columns; x++) {
-    for (var y = 0; y < rows; y++) {
-      var cell = board[x][y];
-      if ((cell.state) && (cell.prev)) {
-        cell.setColor(alive);
-        var newcolor = lerpHSB(cell.prevc, alive, lerper);
-        fill(newcolor);
-        rect(x*w, y*w, w, w);
-      } 
-      else if ((board[x][y].state)) {
-        cell.setColor(born);
-        var newcolor = lerpHSB(cell.prevc, born, lerper);
-        fill(newcolor);
-        rect(x*w, y*w, w, w);
-      } else if ((board[x][y].prev) && !(board[x][y].state)) {
-        cell.setColor(died);
-        var newcolor = lerpHSB(cell.prevc, died, lerper);
-        fill(newcolor);
-        rect(x*w, y*w, w, w);
-      }  else {
-        cell.setColor(nothing);
-        var newcolor = lerpHSB(cell.prevc, nothing, lerper);
-        fill(newcolor);
-        rect(x*w, y*w, w, w);
-      }         
-    }
-  }
+	for (var x = 0; x < columns; x++) {
+		for (var y = 0; y < rows; y++) {
+			var cell = board[x][y];
+			if ((cell.state) && (cell.prev)) {
+				cell.setColor(alive);
+				var newcolor = lerpHSB(cell.prevc, alive, lerper);
+				fill(newcolor);
+				rect(x*w, y*w, w, w);
+			} 
+			else if ((board[x][y].state)) {
+				cell.setColor(born);
+				var newcolor = lerpHSB(cell.prevc, born, lerper);
+				fill(newcolor);
+				rect(x*w, y*w, w, w);
+			} else if ((board[x][y].prev) && !(board[x][y].state)) {
+				cell.setColor(died);
+				var newcolor = lerpHSB(cell.prevc, died, lerper);
+				fill(newcolor);
+				rect(x*w, y*w, w, w);
+			}  else {
+				cell.setColor(nothing);
+				var newcolor = lerpHSB(cell.prevc, nothing, lerper);
+				fill(newcolor);
+				rect(x*w, y*w, w, w);
+			}         
+		}
+	}
 }
 
 function Cell(state) { 
-  this.state = state;
-  this.prev = state;
-  this.c = nothing;
-  this.prevc = nothing;
-  this.savePrevious = function() { this.prev = this.state; this.prevc = this.c };
-  this.setColor = function(_c) { this.c = _c; };
-  this.newState = function(num) { this.state = num; };      
+	this.state = state;
+	this.prev = state;
+	this.c = nothing;
+	this.prevc = nothing;
+	this.savePrevious = function() { this.prev = this.state; this.prevc = this.c };
+	this.setColor = function(_c) { this.c = _c; };
+	this.newState = function(num) { this.state = num; };      
 }
 
 function init() {
-  for (var x = 0; x < columns; x++) {
-    for (var y = 0; y < rows; y++) {
-      board[x][y] = new Cell(Math.round(Math.random()));
-    }
-  }
+	for (var x = 0; x < columns; x++) {
+		for (var y = 0; y < rows; y++) {
+		  board[x][y] = new Cell(Math.round(Math.random()));
+		}
+	}
 }
 
 function generate() {
-  lerper = 0;
-  for (var i = 0; i < columns; i++){
-    for (var j = 0; j < rows; j++){
-      board[i][j].savePrevious();
-    }
-  }
-  
-  for (var x = 1; x < columns - 1; x++) {
-    for (var y = 1; y < rows - 1; y++) {
-      var n = 0;
-      for (var i = -1; i <= 1; i++) {
-        for (var j = -1; j <= 1; j++) {
-          n += board[x+i][y+j].prev;
-        }
-      }
-      n -= board[x][y].prev; 
-      //lonely 
-      if ((board[x][y].state == 1) && (n < limits.lonelylimit)) {
-        board[x][y].newState(limits.lonelyaction);
-      } 
-      //overpopulated
-      else if ((board[x][y].state == 1) && (n > 3)) {
-        board[x][y].newState(0);
-      } 
-      //just right
-      else if ((board[x][y].state == 0) && (n == 3)) {
-        board[x][y].newState(1);
-      } 
-    }
-  }
+	lerper = 0;
+	for (var i = 0; i < columns; i++){
+		for (var j = 0; j < rows; j++){
+			board[i][j].savePrevious();
+		}
+	}
+	
+	for (var x = 1; x < columns - 1; x++) {
+		for (var y = 1; y < rows - 1; y++) {
+			var n = 0;
+			for (var i = -1; i <= 1; i++) {
+				for (var j = -1; j <= 1; j++) {
+				  n += board[x+i][y+j].prev;
+				}
+			}
+			n -= board[x][y].prev; 
+			//lonely 
+			if ((board[x][y].state == 1) && (n < limits.lonelylimit)) {
+				board[x][y].newState(limits.lonelyaction);
+			} 
+			//overpopulated
+			else if ((board[x][y].state == 1) && (n > 3)) {
+				board[x][y].newState(0);
+			} 
+			//just right
+			else if ((board[x][y].state == 0) && (n == 3)) {
+				board[x][y].newState(1);
+			} 
+		}
+	}
 }
 
 function keyPressed() {
-  if (keyCode == LEFT_ARROW || keyCode == UP_ARROW 
-      || keyCode == DOWN_ARROW || keyCode == RIGHT_ARROW) {
-      generate();
+	if (keyCode == LEFT_ARROW || keyCode == UP_ARROW 
+		|| keyCode == DOWN_ARROW || keyCode == RIGHT_ARROW) {
+		generate();
 
-  }
+	}
 }
 function windowResized() {
-  canvas.elt.style.width = windowWidth + "px";
-  canvas.elt.style.height = windowHeight + "px";
+	canvas.elt.style.width = windowWidth + "px";
+	canvas.elt.style.height = windowHeight + "px";
 	setupSize();
 	init();
 	display();

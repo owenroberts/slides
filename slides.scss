@@ -230,7 +230,7 @@ blockquote {
 	}
 	.drawing {
 		z-index:99;
-		cursor:url('../slides/pencil.ico'), crosshair;
+		cursor:url('../slides/img/pencil.ico'), crosshair;
 		position:relative;
 	}
 }
@@ -257,7 +257,9 @@ a[name], a[name]:hover {
 }
 
 @media only screen and (max-width: 640px) {
-
+	.outline {
+		width: 100%;
+	}
 }
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
 	.slides {
