@@ -397,6 +397,7 @@ var setupSlides = function() {
 		if (Date.now() > mousetime + mousetimer) {
 			mousetimer = Date.now();
 			if (drawings[slideNumber]) {
+				console.log(event.offsetX, event.offsetY);
 				if (drawings[slideNumber].drawOn) 
 					drawings[slideNumber].addLine(event.offsetX, event.offsetY);
 			}
