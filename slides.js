@@ -4,10 +4,12 @@ var setupSlides = function() {
 
 	var container = $('#container');
 
-	var slidesBtn = $('<button>').attr('id', 'slidesBtn').text('Slides');
-	var outlineBtn = $('<button>').attr('id', 'outlineBtn').text('Outline');
-	$(container).append(slidesBtn);
-	$(container).append(outlineBtn);
+	if (!container.hasClass("noslides")) {
+		var slidesBtn = $('<button>').attr('id', 'slidesBtn').text('Slides');
+		var outlineBtn = $('<button>').attr('id', 'outlineBtn').text('Outline');
+		$(container).append(slidesBtn);
+		$(container).append(outlineBtn);
+	}
 
 	var jslocation = $('script[src*="slides/slides"]').attr('src');
 	jslocation = jslocation.replace('slides.js','');
@@ -397,7 +399,6 @@ var setupSlides = function() {
 		if (Date.now() > mousetime + mousetimer) {
 			mousetimer = Date.now();
 			if (drawings[slideNumber]) {
-				console.log(event.offsetX, event.offsetY);
 				if (drawings[slideNumber].drawOn) 
 					drawings[slideNumber].addLine(event.offsetX, event.offsetY);
 			}
