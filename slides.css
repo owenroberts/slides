@@ -42,6 +42,9 @@ body, html {
 .key {
   color: #3E5F7B; }
 
+.karla {
+  font-family: "Karla", Helvetica, Arial, sans-serif; }
+
 #slidesBtn {
   position: fixed;
   top: 10px;
