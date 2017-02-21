@@ -267,8 +267,7 @@ blockquote {
       height: 100%; }
   .slides .drawing {
     z-index: 99;
-    cursor: url("../slides/img/pencil.ico"), crosshair;
-    position: relative; }
+    cursor: url("../slides/img/pencil.ico"), crosshair; }
 
 .video {
   position: relative;
