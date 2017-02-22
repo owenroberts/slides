@@ -64,10 +64,11 @@ body, html {
   width: 50px; }
 
 code {
-  background: rgba(249, 249, 249, 0.85);
+  background: white;
   padding: 0 .25em;
   border-radius: 0.15em;
-  font-family: Monaco, monospace; }
+  font-family: Monaco, monospace;
+  color: black; }
 
 note {
   color: blue; }
@@ -122,16 +123,15 @@ table {
   line-height: 1.4;
   margin: 2em auto;
   /* code, pre, .note { font-size:1.1em; } */ }
+  .outline note {
+    font-family: "Karla", Helvetica, Arial, sans-serif; }
+  .outline code {
+    background: white; }
   .outline pre code {
     padding-left: 8px;
     border-left: 3px solid #5DD8C8;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
-  .outline note {
-    font-family: "Karla", Helvetica, Arial, sans-serif; }
-  .outline code {
-    background: white;
-    border: 1px solid lightgray; }
   .outline p code {
     color: blue; }
   .outline li code {
@@ -205,16 +205,22 @@ blockquote {
   position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
-  user-select: none; }
+  user-select: none;
+  /* code {color:black;} */
+  /* wtf figure out later */ }
   .slides em {
     font-family: "Karla", Helvetica, Arial, sans-serif; }
   .slides strong {
     font-family: "Karla", Helvetica, Arial, sans-serif;
     color: #D1E5F7; }
-  .slides code {
-    color: black; }
   .slides img + img {
     margin-top: 1em; }
+  .slides pre code {
+    border: 1px solid lightgray;
+    padding-left: 8px;
+    border-left: 3px solid #5DD8C8;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
   .slides .key {
     color: black;
     font-size: 1.75em;

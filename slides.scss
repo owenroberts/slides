@@ -46,10 +46,11 @@ body, html { height: 100%; }
 
 
 code {
-	background:rgba(#f9f9f9, 0.85);
+	background:white;
 	padding:0 .25em;
 	border-radius: 0.15em;
 	font-family: Monaco, monospace;
+	color:black;
 }
 note { color:blue; }
 pre { word-wrap:break-word;
@@ -89,12 +90,19 @@ table {
 	}	
 }
 
+
+
 .outline {
 	width: 560px;
 	font-size:18px;
 	line-height: 1.4;
 	margin:2em auto;
 	
+	
+	note { font-family: "Karla", Helvetica, Arial, sans-serif; }
+	code { 
+		background:white;
+	}
 	pre { 
         code {
         	padding-left:8px;
@@ -103,11 +111,6 @@ table {
         	border-bottom-left-radius: 0;
         }
     }
-	note { font-family: "Karla", Helvetica, Arial, sans-serif; }
-	code { 
-		background:white;
-		border: 1px solid lightgray;
-	}
 	p code {color: blue;}
 	li code {color: blue;}
 	a, a:visited { color: blue; text-decoration: underline; }
@@ -182,8 +185,19 @@ blockquote {
 	em { font-family:"Karla", Helvetica, Arial, sans-serif; }
 	strong { font-family:  "Karla", Helvetica, Arial, sans-serif;
 	color: #D1E5F7;}
-	code {color:black;}
+	/* code {color:black;} */
 	img + img { margin-top:1em; }
+
+	/* wtf figure out later */
+		pre { 
+			code {
+				border: 1px solid lightgray;
+				padding-left:8px;
+				border-left: 3px solid $highlight;
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		}
 	.key {
 		color:black;
 		font-size:1.75em;
