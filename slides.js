@@ -11,7 +11,7 @@ var setupSlides = function() {
 		$(container).append(outlineBtn);
 	}
 
-	var jslocation = $('script[src*="slides/slides"]').attr('src');
+	var jslocation = $('script[src*="slides.js"]').attr('src');
 	jslocation = jslocation.replace('slides.js','');
 
 	var slides = $('.slide');
@@ -25,6 +25,7 @@ var setupSlides = function() {
 	var h = window.innerHeight;
 
 	var drawings = [];
+	var loadedDrawings = [];
 
 	var mousetime = 40;
 	var mousetimer = 0;
@@ -34,7 +35,7 @@ var setupSlides = function() {
 		var parent = this.parentNode;
 		var filename = this.dataset.src;
 		$.getJSON(filename, function(data) {
-			createDrawing(parent, data);
+			loadDrawing(parent, data);
 		});
 	})
 
@@ -170,77 +171,66 @@ var setupSlides = function() {
 	};
 
 	/* helpers */
-	function getRandom(min, max) {
-		   return Math.random() * (max - min) + min;
-	}
 
-	function Point(x, y) {
-		this.x = x;
-		this.y = y;
-	}
-
-	function Vector(a, b) {
-		this.x = a.x - b.x;
-		this.y = a.y - b.y;
-		this.divide = function(n) {
-			this.x /= n;
-			this.y /= n;
-		};
-	}
-
-	function Drawing(canvasId) {
+	function Drawing(canvas) {
 		this.lines = [];
-		this.c = document.querySelector(canvasId);
-		this.w = this.c.width;
-		this.h = this.c.height;
-		this.ctx = this.c.getContext('2d');
+		this.canvas = canvas;
+		this.w = this.canvas.width;
+		this.h = this.canvas.height;
+		this.ctx = this.canvas.getContext('2d');
 		this.num  = 2;
 		this.diff = 1;
 		this.drawOn = false;
 		this.moves = 0;
 		this.active = true;
 		this.preload = false;
+		this.c = "000"
 
 		this.toggle = function() {
 			if (!this.preload) {
 				if (this.active) {
 					this.active = false;
-					this.c.style.display = "none";
+					this.canvas.style.display = "none";
 					this.drawOn = false;
 				} else {
 					this.active = true;
-					this.c.style.display = "block";
+					this.canvas.style.display = "block";
 				}
 			}
 		}
 
 		this.addLine = function(mx, my) {
-			var newpoint = new Point(event.offsetX, event.offsetY);
+
+			var newVec = new Vector(event.offsetX, event.offsetY);
 			this.lines.push({
-				s: newpoint
+				s: newVec
 			});
 			if (this.moves > 0)
-				this.lines[this.lines.length - 2].e = newpoint; 
+				this.lines[this.lines.length - 2].e = newVec; 
 			this.moves++;
 		}
 
+		this.clearCanvas = function() {
+			this.ctx.clearRect(0, 0, this.w, this.h);
+		}
 
 		this.drawLines = function() {
-			this.ctx.canvas.width = this.ctx.canvas.width;
 			for (var h = 0; h < this.lines.length; h++) {
 				var line = this.lines[h];
 				if (line.e) {
-					var v = new Vector(line.e, line.s);
+					var v = new Vector(line.e.x, line.e.y);
+					v.subtract(line.s);
 					v.divide(this.num);
 					this.ctx.lineWidth = 2;
 					this.ctx.lineCap = 'round';
 					this.ctx.beginPath();
+					this.ctx.moveTo( line.s.x + getRandom(-this.diff, this.diff), line.s.y + getRandom(-this.diff, this.diff) );
 					for (var i = 0; i < this.num; i++) {
-						var p = new Point(line.s.x + v.x * i, line.s.y + v.y * i);
-						this.ctx.moveTo( p.x + getRandom(-this.diff, this.diff), p.y + getRandom(-this.diff, this.diff) );
+						var p = new Vector(line.s.x + v.x * i, line.s.y + v.y * i);
 						this.ctx.lineTo( p.x + v.x + getRandom(-this.diff, this.diff), p.y + v.y + getRandom(-this.diff, this.diff) );
 					}
-					this.ctx.strokeStyle = "#000";
+
+					this.ctx.strokeStyle= "#"+this.c;
 		      		this.ctx.stroke();
 				}
 			}
@@ -251,10 +241,42 @@ var setupSlides = function() {
 	var drawingToggle = function() {
 		var s = $(slides[slideNumber])[0];
 		if (drawings[slideNumber]) {
-			drawings[slideNumber].toggle();
-		} else {
-			createDrawing(s);
+			for (var i = 0; i < drawings[slideNumber].length; i++) {
+				drawings[slideNumber][i].toggle();
+			}
+		}	
+		createDrawing(s);
+		if ($('#color-menu').length)
+			$('#color-menu').toggle();
+		else createColorMenu();
+	}
+	var colors = { pink:"FF0DD0", purple:"7C0CE8", blue: "0014FF", lightblue: "0C9BE8", green:"00FFC1"};
+	var createColorMenu = function() {
+		var colorMenu = $('<div>')
+			.attr('id', 'color-menu')
+			.css({
+				position:"fixed",
+				zIndex: "99",
+				top:"0",
+				right:"0"
+			});
+		
+		for (var color in colors) {
+			var colorButton = $('<button>')
+				.attr('id', color)
+				.css({
+					width:"60px", 
+					height:"60px", 
+					border:"10px solid lightgray", 
+					background:"#"+colors[color]
+				});
+			colorButton.click(function() {
+				createDrawing(slides[slideNumber]);
+				drawings[slideNumber][drawings[slideNumber].length-1].c = colors[this.id];
+			});
+			$(colorMenu).append(colorButton);
 		}
+		$(container).append(colorMenu);
 	}
 
 	var updateDrawingWidth = function() {
@@ -263,50 +285,94 @@ var setupSlides = function() {
 			this.style.zoom = z;
 		});
 	}
+
+	var createDrawing = function(slide) {
+		var sn = $(slide).index();
+		var canvas;
+		if ($('#c'+sn).length) {
+			canvas = $('#c'+sn);
+		} else {
+			canvas = $('<canvas>')
+				.attr({
+					id: "c"+sn,
+					width: slide.offsetWidth,
+					height: slide.offsetHeight
+				})
+				.addClass("drawing");
+		}
+		slide.appendChild(canvas[0]);
+		var d = new Drawing(canvas[0]);
+		if (!drawings[sn]) drawings[sn] = [];
+		drawings[sn].push(d);
+		startLoop();
+	}
 	
 
-	var createDrawing = function(slide, linesData) {
+	var loadDrawing = function(slide, linesData) {
 		var sn = $(slide).index();
-		if (linesData) {
-			var c = $('<canvas>')
+		var canvas = $('<canvas>')
 			.attr({
-				id: "c"+sn,
-				width:linesData.w,
-				height:linesData.h
+				id: "can"+sn,
+				width: linesData.w,
+				height: linesData.h
 			})
-			.addClass("drawing");
-			console.log(slide);
-			slide.appendChild(c[0]);
-			var d = new Drawing("#c"+sn);
-			var z = slide.offsetWidth / linesData.w;
-			c[0].style.zoom = z;
-			d.lines = linesData.l;
-			d.preload = true;
-			d.active = true;
-			d.c.style.display = "block";
-		} else {
-			var c = $('<canvas>')
-			.attr({
-				id: "c"+sn,
-				width: slide.offsetWidth,
-				height: slide.offsetHeight
-			})
-			.addClass("drawing");
-			slide.appendChild(c[0]);
-			var d = new Drawing("#c"+sn);
+			.addClass("loaded");
+			slide.appendChild(canvas[0]);
+		var d = new Drawing(canvas[0]);
+		var z = slide.offsetWidth / linesData.w;
+		canvas[0].style.zoom = z;
+		// this is temp fix
+		d.lines = linesData.d[0].l;
+		d.preload = true;
+		d.active = true;
+		d.canvas.style.display = "block";
+		d.c = linesData.c;
+		if (!loadedDrawings[sn]) loadedDrawings[sn] = [];
+		loadedDrawings[sn].push(d);
+		startLoop();	
+	}
+
+
+	// for drawings loaded into notes
+	var fps = 10;
+	var interval = 1000/fps;
+	var timer = Date.now();
+	var drawLoop = function() {
+		if (Date.now() > timer + interval) {
+			timer = Date.now();
+			for (var i = 0; i < slides.length; i++) {
+				if (drawings[i]) {
+					drawings[i][0].clearCanvas();
+					for (var h = 0; h < drawings[i].length; h++) {
+				 		drawings[i][h].drawLines();
+					}
+				}
+				if (loadedDrawings[i]) {
+					loadedDrawings[i][0].clearCanvas();
+					for (var h = 0; h < loadedDrawings[i].length; h++) {
+				 		loadedDrawings[i][h].drawLines();
+					}
+				}
+			}
 		}
-		drawings[sn] = d;
 		requestAnimationFrame(drawLoop);
+	}
+	var loopStarted = false;
+	var startLoop = function() {
+		if (!loopStarted) {
+			requestAnimationFrame(drawLoop);
+			loopStarted = true;
+		}
 	}
 
 	function saveDrawing() {
 		var temp = {
 			l:drawings[slideNumber].lines,
 			w:drawings[slideNumber].w,
-			h:drawings[slideNumber].h
+			h:drawings[slideNumber].h,
+			c:drawings[slideNumber].c
 		}
 		var jsonfile = JSON.stringify(temp);
-		console.log(jsonfile);
 		var filename = prompt("Name this file:");
 		if (filename) {
 			var blob = new Blob([jsonfile], {type:"application/x-download;charset=utf-8"});
@@ -387,6 +453,15 @@ var setupSlides = function() {
 	}
 
 
+	// this doesn't work fuckkkkk
+	// $(document).on("scroll", function() {
+	// 	if (isslides) {
+	// 		var slideOkay = setSlideNumber();
+	// 		if (!scrolling && slideOkay) setTimeout(scrollToSlide, 2000);
+	// 		scrolling = true;
+	// 	}
+	// });
+
 	$(document).on("wheel", function() {
 		if (isslides) {
 			var slideOkay = setSlideNumber();
@@ -399,44 +474,32 @@ var setupSlides = function() {
 		if (Date.now() > mousetime + mousetimer) {
 			mousetimer = Date.now();
 			if (drawings[slideNumber]) {
-				if (drawings[slideNumber].drawOn) 
-					drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+				if (drawings[slideNumber][drawings[slideNumber].length-1].drawOn) 
+					drawings[slideNumber][drawings[slideNumber].length-1].addLine(event.offsetX, event.offsetY);
 			}
 		}
 	});
 
 	$(document).on('mousedown', function(event) {
 		if (drawings[slideNumber]) {
-			if (event.which == 1 && drawings[slideNumber].active) {
-				drawings[slideNumber].drawOn = true;
-				drawings[slideNumber].addLine(event.offsetX, event.offsetY);
+			if (event.which == 1 && drawings[slideNumber][drawings[slideNumber].length-1].active) {
+				drawings[slideNumber][drawings[slideNumber].length-1].drawOn = true;
+				drawings[slideNumber][drawings[slideNumber].length-1].addLine(event.offsetX, event.offsetY);
 			}
 		}
 	});
 
 	$(document).on('mouseup', function(event) {
 		if (drawings[slideNumber]) {
-			if (event.which == 1 && drawings[slideNumber].active) {
-				drawings[slideNumber].drawOn = false;
-				if (drawings[slideNumber].moves%2==1) drawings[slideNumber].lines.splice(-1,1);
-				drawings[slideNumber].moves = 0;
+			if (event.which == 1 && drawings[slideNumber][drawings[slideNumber].length-1].active) {
+				drawings[slideNumber][drawings[slideNumber].length-1].drawOn = false;
+				if (drawings[slideNumber][drawings[slideNumber].length-1].moves%2==1) drawings[slideNumber][drawings[slideNumber].length-1].lines.splice(-1,1);
+				drawings[slideNumber][drawings[slideNumber].length-1].moves = 0;
 			}
 		}
 	});
 
-	// for drawings loaded into notes
-	var fps = 10;
-	var interval = 1000/fps;
-	var timer = Date.now();
-	var drawLoop = function() {
-		requestAnimationFrame(drawLoop);
-		if (Date.now() > timer + interval) {
-			timer = Date.now();
-			for (var i = 0; i < slides.length; i++) {
-				if (drawings[i]) drawings[i].drawLines();
-			}
-		}
-	}
+
 };
 
 $(document).ready( function() {

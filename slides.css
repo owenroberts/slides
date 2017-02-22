@@ -28,6 +28,11 @@ canvas {
   left: 0;
   z-index: -99; }
 
+canvas.loaded {
+  position: relative;
+  z-index: 1;
+  margin-top: 1em; }
+
 body {
   font-family: "Karla", Helvetica, Arial, sans-serif;
   line-height: 1.45;
@@ -197,7 +202,10 @@ blockquote {
   font-size: 28px;
   color: white;
   font-family: "Karla", Helvetica, Arial, sans-serif;
-  position: relative; }
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
   .slides em {
     font-family: "Karla", Helvetica, Arial, sans-serif; }
   .slides strong {
