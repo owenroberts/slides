@@ -1,6 +1,6 @@
 var setupSlides = function() {
 
-	var dev = false;
+	var dev = true;
 
 	var container = $('#container');
 
@@ -37,7 +37,7 @@ var setupSlides = function() {
 		$.getJSON(filename, function(data) {
 			loadDrawing(parent, data);
 		});
-	})
+	});
 
 	var setSlides = function() {
 		if (!isslides || start) {
@@ -101,8 +101,6 @@ var setupSlides = function() {
 					}
 					left =  (window.innerWidth - imgw) / 2;
 					top = (window.innerHeight - imgh) / 2;
-
-					console.log(imgh, top);
 
 					var imgwrap = $('<div>')
 						.attr({id:"image-popup"})
@@ -170,7 +168,6 @@ var setupSlides = function() {
 		}
 	};
 
-	/* helpers */
 
 	function Drawing(canvas) {
 		this.lines = [];
@@ -178,6 +175,9 @@ var setupSlides = function() {
 		this.w = this.canvas.width;
 		this.h = this.canvas.height;
 		this.ctx = this.canvas.getContext('2d');
+		this.ctx.lineWidth = 2;
+		this.ctx.lineCap = 'round';
+		this.ctx.miterLimit = 1;
 		this.num  = 2;
 		this.diff = 1;
 		this.drawOn = false;
@@ -221,8 +221,7 @@ var setupSlides = function() {
 					var v = new Vector(line.e.x, line.e.y);
 					v.subtract(line.s);
 					v.divide(this.num);
-					this.ctx.lineWidth = 2;
-					this.ctx.lineCap = 'round';
+
 					this.ctx.beginPath();
 					this.ctx.moveTo( line.s.x + getRandom(-this.diff, this.diff), line.s.y + getRandom(-this.diff, this.diff) );
 					for (var i = 0; i < this.num; i++) {
@@ -284,6 +283,11 @@ var setupSlides = function() {
 			var z = this.parentNode.offsetWidth / this.width;
 			this.style.zoom = z;
 		});
+		$('.loaded').each( function() {
+			console.log(this);
+			var z = this.parentNode.offsetWidth / this.width;
+			this.style.zoom = z;
+		});
 	}
 
 	var createDrawing = function(slide) {
@@ -318,17 +322,22 @@ var setupSlides = function() {
 			})
 			.addClass("loaded");
 			slide.appendChild(canvas[0]);
-		var d = new Drawing(canvas[0]);
-		var z = slide.offsetWidth / linesData.w;
-		canvas[0].style.zoom = z;
-		// this is temp fix
-		d.lines = linesData.d[0].l;
-		d.preload = true;
-		d.active = true;
-		d.canvas.style.display = "block";
-		d.c = linesData.c;
-		if (!loadedDrawings[sn]) loadedDrawings[sn] = [];
-		loadedDrawings[sn].push(d);
+		// loops through drawings in frame
+		for (var i = 0; i < linesData.d.length; i++) {
+			if (linesData.d[i] != "x"){
+				var d = new Drawing(canvas[0]);
+				var z = slide.offsetWidth / linesData.w;
+				canvas[0].style.zoom = z;
+				// this is temp fix
+				d.lines = linesData.d[i].l;
+				d.preload = true;
+				d.active = true;
+				d.canvas.style.display = "block";
+				d.c = linesData.c;
+				if (!loadedDrawings[sn]) loadedDrawings[sn] = [];
+				loadedDrawings[sn].push(d);
+			}
+		}
 		startLoop();	
 	}
 
