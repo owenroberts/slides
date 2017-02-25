@@ -446,7 +446,7 @@ var setupSlides = function() {
 	    if (isslides) {
 	    	setOutline();
 	    	if (timeout === false) {
-	        timeout = true;
+	        	timeout = true;
 	     	   setTimeout(resizeend, delta);
 	    	}
 	    }
