@@ -1,7 +1,7 @@
 @import "fonts/key.css";
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
-@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url(https://fonts.googleapis.com/css?family=Space+Mono);
 $highlight: #5DD8C8;
 canvas#defaultCanvas0 {
 	overflow: hidden;
@@ -231,15 +231,15 @@ blockquote {
 	img + img { margin-top:1em; }
 
 	/* wtf figure out later */
-		pre { 
-			code {
-				border: 1px solid lightgray;
-				padding-left:8px;
-				border-left: 3px solid $highlight;
-				border-top-left-radius: 0;
-				border-bottom-left-radius: 0;
-			}
+	pre { 
+		code {
+			border: 1px solid lightgray;
+			padding-left:8px;
+			border-left: 3px solid $highlight;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
 		}
+	}
 	.key {
 		color:black;
 		font-size:1.75em;
