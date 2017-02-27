@@ -9,7 +9,7 @@ function Slides() {
 	this.slides =  document.getElementsByClassName('slide');
 	this.totalSlides = this.slides.length;
 	this.currentSlide = 0;
-	this.scrolling = false;
+	this.isScrolling = false;
 	this.noScroll = false;
 	this.slideHeight = window.innerHeight;
 
@@ -24,9 +24,8 @@ function Slides() {
 	this.mouseInterval = 40; 
 
 	/* draw loop setup */
-	this.fps = 10;
-	this.interval = 1000/this.fps;
-	this.timer = Date.now();
+	this.interval = 1000 / 15; // 10 frames per second
+ 	this.timer = Date.now();
 	this.loopStarted = false;
 	
 	this.setup = function() {
@@ -96,7 +95,7 @@ function Slides() {
 	/* sets container to outline, generates mag buttons or shows them if already there */
 	this.setOutline = function() {
 		if (self.isSlides || self.start) {
-			self.updateDrawingWidth();
+			
 			self.isSlides = self.start = false;
 			self.container.className = 'outline';
 			if (self.loadedBkg)
@@ -106,7 +105,7 @@ function Slides() {
 				self.slides[i].style.height = "auto";
 				self.slides[i].children[0].style.marginTop = "auto";
 			};
-
+			self.updateDrawingWidth();
 			/* check for mag buttons */
 			var magButtons = document.getElementsByClassName('mag');
 			if (magButtons.length > 0) {
@@ -181,19 +180,19 @@ function Slides() {
 
 	/* animates scroll with setInterval, kinda choppy */
 	this.scrollToSlide = function() {
-		if (!self.noScroll && !self.scrolling) {
+		if (!self.noScroll && !self.isScrolling) {
 			var startY = window.scrollY;
 			var endY = self.slides[self.currentSlide].offsetTop;
 			var dist = Math.abs(startY - endY);
-			var increment = dist / 50;
+			var increment = dist / 60;
 			if (dist > 0) {
-				self.scrolling = true;
+				self.isScrolling = true;
 				function scrollAnimate() {
 					startY += (startY < endY) ? increment : -increment;
 					window.scrollTo(0, startY);
 					if (Math.abs(startY - endY) < increment) {
 						window.scrollTo(0, endY);
-						self.scrolling = false;
+						self.isScrolling = false;
 						clearInterval(anim);
 					}
 				}
@@ -257,7 +256,10 @@ function Slides() {
 		}
 		var loadedDivs = document.getElementsByClassName('loaded');
 		for (var i = 0; i < loadedDivs.length; i++) {
-			var z = loadedDivs[i].width / loadedDivs[i].parentNode.offsetWidth ;
+			console.log(loadedDivs[i].width / loadedDivs[i].parentNode.offsetWidth * 0.96 );
+			
+			var z = (loadedDivs[i].parentNode.offsetWidth * 0.96) / loadedDivs[i].width;
+			console.log(z);
 			loadedDivs[i].style.zoom = z;
 		}
 	};
@@ -405,12 +407,12 @@ var getKey = function(ev) {
 	switch (key) {
 		case 39: 
 		case 40: // up right
-			if (!s.scrolling) s.nextSlide();
+			if (!s.isScrolling) s.nextSlide();
 		break;
 		
 		case 37:
 		case 38: // down left
-			if (!s.scrolling) s.previousSlide();
+			if (!s.isScrolling) s.previousSlide();
 		break;
 
 		case 32: // space
@@ -460,10 +462,10 @@ var scrollHandler = function(ev) {
 	if (s.isSlides) {
 		s.setCurrentSlide();
 		if (s.slides[s.currentSlide].className.indexOf("long") == -1){
-			s.scrolling = true;
+			s.isScrolling = true;
 			setTimeout(s.scrollToSlide, 2000);
 			setTimeout(function() {
-				s.scrolling = false;
+				s.isScrolling = false;
 			}, 250);
 		}
 	}
@@ -491,8 +493,6 @@ var mouseMove = function(ev) {
 	}
 };
 
-
-
 var mouseUp = function(ev) {
 	if (s.drawings[s.currentSlide]) {
 		var d = s.drawings[s.currentSlide][s.drawings[s.currentSlide].length-1];
@@ -511,12 +511,6 @@ window.onload = function() {
 	s = new Slides();
 	if (window.mobilecheck()) {
 		document.getElementById("container").className = "outline";
-		var checkExist = setInterval(function() {
-			if ($('#defaultCanvas0').length) {
-				$('#defaultCanvas0').remove();
-				clearInterval(checkExist);
-			}
-		}, 50);
 	} else {
 		/* set up slides */
 		s.setup();
@@ -524,12 +518,6 @@ window.onload = function() {
 		else {
 			s.setOutline();
 			s.loadDrawings();
-			var checkExist = setInterval(function() {
-				if (document.querySelector('#defaultCanvas0')) {
-					//document.querySelector('#defaultCanvas0').style.display = "none";
-					clearInterval(checkExist);
-				}
-			}, 50);
 		}
 		/* setup events */
 		document.onkeydown = getKey;

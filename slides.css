@@ -1,6 +1,7 @@
 @import url(fonts/key.css);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+@import url("https://fonts.googleapis.com/css?family=Space+Mono");
 canvas#defaultCanvas0 {
   overflow: hidden;
   position: fixed;
@@ -12,6 +13,11 @@ canvas.loaded {
   position: relative;
   z-index: 1;
   margin-top: 1em; }
+
+canvas.drawing {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 body {
   font-family: "Karla", Helvetica, Arial, sans-serif;
@@ -47,7 +53,7 @@ code {
   background: white;
   padding: 0 .25em;
   border-radius: 0.15em;
-  font-family: Monaco, monospace;
+  font-family: "Space Mono", Monaco, monospace;
   color: black; }
 
 note {
