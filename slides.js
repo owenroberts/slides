@@ -40,26 +40,26 @@ var Slides = {
 	setup: function() {
 
 		/* get references to contianer and slides */
-		this.container = document.getElementById('container');
-		this.slides =  document.getElementsByClassName('slide');
-		this.totalSlides = this.slides.length;
+		Slides.container = document.getElementById('container');
+		Slides.slides =  document.getElementsByClassName('slide');
+		Slides.totalSlides = Slides.slides.length;
 
 		/* creates slides/outline buttons */
-		if (this.container.className.indexOf("no") == -1) {
+		if (Slides.container.className.indexOf("no") == -1) {
 			var slidesBtn = document.createElement('button');
 			slidesBtn.id = 'slidesBtn';
 			slidesBtn.innerText = "Slides";
-			slidesBtn.onclick = this.setSlides;
+			slidesBtn.onclick = Slides.setSlides;
 			container.appendChild(slidesBtn);
 
 			var outlineBtn = document.createElement('button');
 			outlineBtn.id = 'outlineBtn';
 			outlineBtn.innerText = "Outline";
-			outlineBtn.onclick = this.setOutline;
+			outlineBtn.onclick = Slides.setOutline;
 			container.appendChild(outlineBtn);
 		}
 
-		this.loadDrawings();
+		Slides.loadDrawings();
 	},
 
 	/* advantage of literal, use Slides. instead of self */
@@ -67,12 +67,14 @@ var Slides = {
 		for (var i = 0; i < Slides.slides.length; i++){
 			for (var h = 0; h < Slides.slides[i].children.length; h++){
 				if (Slides.slides[i].children[h].dataset.src) {
+					var div = Slides.slides[i].children[h];
 					/* loading all of the drawings with Slides calling function */
 					(function(i) {
-						$.getJSON(Slides.slides[i].children[h].dataset.src, function(data) {
+						$.getJSON(div.dataset.src, function(data) {
 							Slides.loadDrawing(i, data);
 						});
 					})(i);
+					div.parentNode.removeChild(div);
 				}
 			}
 		}
@@ -90,7 +92,8 @@ var Slides = {
 				var h = Slides.slides[i].offsetHeight;
 				if (h < Slides.slideHeight) {
 					Slides.slides[i].style.height = Slides.slideHeight + "px";
-					Slides.slides[i].children[0].style.marginTop = ((Slides.slideHeight - h) / 4) + "px";
+					if (Slides.slides[i].children.length > 0) 
+						Slides.slides[i].children[0].style.marginTop = ((Slides.slideHeight - h) / 4) + "px";
 				} else {
 					Slides.slides[i].className = "long slide";
 				}
@@ -124,7 +127,8 @@ var Slides = {
 			Slides.noScroll = true;
 			for (var i = 0; i < Slides.slides.length; i++) {
 				Slides.slides[i].style.height = "auto";
-				Slides.slides[i].children[0].style.marginTop = "auto";
+				if (Slides.slides[i].children.length > 0)
+					Slides.slides[i].children[0].style.marginTop = "auto";
 			};
 			Slides.updateDrawingWidth();
 
@@ -191,11 +195,11 @@ var Slides = {
 
 	/* finds current slide but counting through slides */
 	setCurrentSlide: function() {
-		this.currentSlide = 0;
-		for (var i = 0; i < this.slides.length; i++) {
+		Slides.currentSlide = 0;
+		for (var i = 0; i < Slides.slides.length; i++) {
 			// must be .75 down slide to go to next
-			if (window.scrollY > this.slides[i].offsetTop + this.slideHeight * 0.75) {
-				this.currentSlide ++;
+			if (window.scrollY > Slides.slides[i].offsetTop + Slides.slideHeight * 0.75) {
+				Slides.currentSlide ++;
 			}
 		}
 	},
@@ -224,48 +228,48 @@ var Slides = {
 	},
 
 	nextSlide: function() {
-		if (this.currentSlide < this.totalSlides - 1) {
-			this.currentSlide ++;
-			this.scrollToSlide();
+		if (Slides.currentSlide < Slides.totalSlides - 1) {
+			Slides.currentSlide ++;
+			Slides.scrollToSlide();
 		}
 	},
 
 	previousSlide: function() {
-		if (this.currentSlide > 0) {
-			this.currentSlide --;
-			this.scrollToSlide();
+		if (Slides.currentSlide > 0) {
+			Slides.currentSlide --;
+			Slides.scrollToSlide();
 		}
 	},
 
 	/* create a new drawing on current canvas, show color menu and current canvas */
 	toggleDrawing: function() {
-		var slide = this.slides[this.currentSlide];
-		if (this.drawings[this.currentSlide]) {
-			var d = this.drawings[this.currentSlide];
+		var slide = Slides.slides[Slides.currentSlide];
+		if (Slides.drawings[Slides.currentSlide]) {
+			var d = Slides.drawings[Slides.currentSlide];
 			for (var i = 0; i < d.length; i++) {
 				d[i].toggle();
 			}
 		}
-		if (this.colorMenu) {
-			if (this.colorMenu.style.display != "block")
-				this.colorMenu.style.display = "block";
+		if (Slides.colorMenu) {
+			if (Slides.colorMenu.style.display != "block")
+				Slides.colorMenu.style.display = "block";
 			else 
-				this.colorMenu.style.display = "none";
+				Slides.colorMenu.style.display = "none";
 		} else {
-			this.colorMenu = document.createElement("div");
-			this.colorMenu.id = "color-menu";
-			this.colorMenu.style.display = "block";
-			for (var color in this.colors) {
+			Slides.colorMenu = document.createElement("div");
+			Slides.colorMenu.id = "color-menu";
+			Slides.colorMenu.style.display = "block";
+			for (var color in Slides.colors) {
 				var colorBtn = document.createElement('button');
 				colorBtn.id = color;
-				colorBtn.style.backgroundColor = "#"+this.colors[color];
+				colorBtn.style.backgroundColor = "#"+Slides.colors[color];
 				colorBtn.onclick = function() {
 					Slides.createDrawing(Slides.currentSlide);
-					Slides.drawings[Slides.currentSlide][Slides.drawings[Slides.currentSlide].length-1].c = Slides.colors[this.id];
+					Slides.drawings[Slides.currentSlide][Slides.drawings[Slides.currentSlide].length-1].c = Slides.colors[Slides.id];
 				};
-				this.colorMenu.appendChild(colorBtn);
+				Slides.colorMenu.appendChild(colorBtn);
 			}
-			this.container.appendChild(this.colorMenu);
+			Slides.container.appendChild(Slides.colorMenu);
 		}
 	}, 
 
@@ -273,14 +277,13 @@ var Slides = {
 	updateDrawingWidth: function() {
 		var drawingDivs = document.getElementsByClassName('drawing');
 		for (var i = 0; i < drawingDivs.length; i++) {
-			var z = drawingDivs[i].width / drawingDivs[i].parentNode.offsetWidth;
+			var z =  (drawingDivs[i].parentNode.offsetWidth * 0.96) / drawingDivs[i].width;
 			drawingDivs[i].style.zoom = z;
 		}
 		var loadedDivs = document.getElementsByClassName('loaded');
 		for (var i = 0; i < loadedDivs.length; i++) {
-			
+			// 0.96 for padding 2%
 			var z =  (loadedDivs[i].parentNode.offsetWidth * 0.96) / loadedDivs[i].width;
-			console.log(z);
 			loadedDivs[i].style.zoom = z;
 		}
 	},
@@ -292,37 +295,40 @@ var Slides = {
 			canvas = document.createElement('canvas');
 			canvas.id = "c"+slideNumber;
 			canvas.className = "drawing";
-			canvas.width = this.slides[slideNumber].offsetWidth;
-			canvas.height = this.slides[slideNumber].offsetHeight;
+			canvas.width = Slides.slides[slideNumber].offsetWidth;
+			canvas.height = Slides.slides[slideNumber].offsetHeight;
 		}
-		this.slides[slideNumber].appendChild(canvas);
+		Slides.slides[slideNumber].appendChild(canvas);
 		var d = new Drawing(canvas);
-		if (!this.drawings[slideNumber]) 
-			this.drawings[slideNumber] = [];
-		this.drawings[slideNumber].push(d);
-		this.startLoop();
+		if (!Slides.drawings[slideNumber]) 
+			Slides.drawings[slideNumber] = [];
+		Slides.drawings[slideNumber].push(d);
+		Slides.startLoop();
 	},
 
 	/* loads drawings from div with data-src */
 	loadDrawing: function(slideNumber, data) {
 		var canvas = document.createElement('canvas');
-		canvas.id = "#c"+slideNumber;
+		//canvas.id = "c"+slideNumber;
 		canvas.className = "loaded";
 		canvas.width = data.w
 		canvas.height = data.h;
 		Slides.slides[slideNumber].appendChild(canvas);
 		for (var i = 0; i < data.d.length; i++) {
-			var d = new Drawing(canvas);
-			var z = Slides.slides[slideNumber].offsetWidth / data.w;
-			canvas.style.zoom = z;
-			d.lines = data.d[i].l;
-			d.preload = true;
-			d.active = true;
-			d.canvas.style.display = "block";
-			d.c = data.c;
-			if (!Slides.loadedDrawings[slideNumber]) 
-				Slides.loadedDrawings[slideNumber] = [];
-			Slides.loadedDrawings[slideNumber].push(d);
+			// this is really silly: 
+			if (data.d[i] != "x") {
+				var d = new Drawing(canvas);
+				var z = (Slides.slides[slideNumber].offsetWidth * 0.96) / data.w;
+				canvas.style.zoom = z;
+				d.lines = data.d[i].l;
+				d.preload = true;
+				d.active = true;
+				d.canvas.style.display = "block";
+				d.c = data.c;
+				if (!Slides.loadedDrawings[slideNumber]) 
+					Slides.loadedDrawings[slideNumber] = [];
+				Slides.loadedDrawings[slideNumber].push(d);
+			}
 		}
 		Slides.startLoop();
 	},
@@ -335,13 +341,14 @@ var Slides = {
 				if (Slides.drawings[i]) {
 					Slides.drawings[i][0].clearCanvas();
 					for (var h = 0; h < Slides.drawings[i].length; h++) {
+
 				 		Slides.drawings[i][h].drawLines();
 					}
 				}
 				if (Slides.loadedDrawings[i]) {
 					Slides.loadedDrawings[i][0].clearCanvas();
 					for (var h = 0; h < Slides.loadedDrawings[i].length; h++) {
-				 		Slides.loadedDrawings[i][h].drawLines();
+						Slides.loadedDrawings[i][h].drawLines();
 					}
 				}
 			}
@@ -350,9 +357,9 @@ var Slides = {
 	},
 
 	startLoop: function() {
-		if (!this.loopStarted) {
-			requestAnimationFrame(this.drawLoop);
-			this.loopStarted = true;
+		if (!Slides.loopStarted) {
+			requestAnimationFrame(Slides.drawLoop);
+			Slides.loopStarted = true;
 		}
 	},
 
