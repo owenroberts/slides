@@ -1,7 +1,7 @@
 /* slides object literal, controls slides and resetting to outline, loading drawings and events */
 var Slides = {
-
 	dev: false,
+
 	isSlides: false,
 	start: true,
 
@@ -222,7 +222,9 @@ var Slides = {
 						clearInterval(anim);
 					}
 				}
-				var anim = setInterval(scrollAnimate, 1);
+				var anim = setInterval(function() {
+					window.requestAnimationFrame(scrollAnimate);
+				}, 5);
 			}
 		}
 	},
@@ -335,13 +337,14 @@ var Slides = {
 
 	/* draws all drawings */
 	drawLoop: function() {
-		if (Date.now() > Slides.timer + Slides.interval) {
+		// check for scrolling, so it doesn't slow down animateToSlide()
+		// probably a better way to handle?
+		if (Date.now() > Slides.timer + Slides.interval && !Slides.isScrolling) {
 			Slides.timer = Date.now();
 			for (var i = 0; i < Slides.slides.length; i++) {
 				if (Slides.drawings[i]) {
 					Slides.drawings[i][0].clearCanvas();
 					for (var h = 0; h < Slides.drawings[i].length; h++) {
-
 				 		Slides.drawings[i][h].drawLines();
 					}
 				}
