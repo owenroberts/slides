@@ -154,7 +154,8 @@ table {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
   .outline p code {
-    color: blue; }
+    color: blue;
+    white-space: nowrap; }
   .outline li code {
     color: blue; }
   .outline a, .outline a:visited {
