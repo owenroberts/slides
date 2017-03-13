@@ -326,7 +326,7 @@ var Slides = {
 				d.preload = true;
 				d.active = true;
 				d.canvas.style.display = "block";
-				d.c = data.c;
+				d.c = data.d[i].c;
 				if (!Slides.loadedDrawings[slideNumber]) 
 					Slides.loadedDrawings[slideNumber] = [];
 				Slides.loadedDrawings[slideNumber].push(d);
@@ -529,6 +529,7 @@ function Drawing(canvas) {
 					var p = new Vector(line.s.x + v.x * i, line.s.y + v.y * i);
 					this.ctx.lineTo( p.x + v.x + getRandom(-this.diff, this.diff), p.y + v.y + getRandom(-this.diff, this.diff) );
 				}
+
 				this.ctx.strokeStyle= "#"+this.c;
 	      		this.ctx.stroke();
 			}
