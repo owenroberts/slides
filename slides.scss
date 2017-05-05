@@ -130,6 +130,10 @@ table {
 		height: 60px;
 		border: 5px solid lightgray;
 		outline: 1px solid black;
+		cursor: -webkit-grab;
+		&:active {
+			cursor: -webkit-grabbing;
+		}
 	}
 }
 

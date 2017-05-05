@@ -240,7 +240,7 @@ var Slides = {
 	},
 
 	previousSlide: function() {
-		if (Slides.drawings[Slides.currentSlide])
+			if (Slides.drawings[Slides.currentSlide])
 			if (Slides.drawings[Slides.currentSlide][0].active)
 				Slides.toggleDrawing();
 		if (Slides.currentSlide > 0) {
@@ -252,7 +252,6 @@ var Slides = {
 	/* create a new drawing on current canvas, show color menu and current canvas */
 	toggleDrawing: function() {
 		var slide = Slides.slides[Slides.currentSlide];
-		console.log(slide);
 		if (Slides.drawings[Slides.currentSlide]) {
 			var d = Slides.drawings[Slides.currentSlide];
 			for (var i = 0; i < d.length; i++) {
@@ -276,7 +275,6 @@ var Slides = {
 				colorBtn.style.backgroundColor = "#"+Slides.colors[color];
 				colorBtn.onclick = function() {
 					Slides.createDrawing(Slides.currentSlide);
-					console.log(this.id)
 					Slides.drawings[Slides.currentSlide][Slides.drawings[Slides.currentSlide].length-1].c = Slides.colors[this.id];
 				};
 				Slides.colorMenu.appendChild(colorBtn);

@@ -134,7 +134,10 @@ table {
     width: 60px;
     height: 60px;
     border: 5px solid lightgray;
-    outline: 1px solid black; }
+    outline: 1px solid black;
+    cursor: -webkit-grab; }
+    #color-menu button:active {
+      cursor: -webkit-grabbing; }
 
 .outline {
   width: 560px;
