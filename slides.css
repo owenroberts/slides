@@ -145,7 +145,7 @@ table {
   line-height: 1.4;
   margin: 2em auto;
   /* code, pre, .note { font-size:1.1em; } */ }
-  .outline note {
+  .outline note, .outline a {
     font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline code {
     background: white;
