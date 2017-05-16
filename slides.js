@@ -199,7 +199,8 @@ var Slides = {
 		for (var i = 0; i < Slides.slides.length; i++) {
 			// must be .75 down slide to go to next
 			if (window.scrollY > Slides.slides[i].offsetTop + Slides.slideHeight * 0.75) {
-				Slides.currentSlide ++;
+				if (Slides.currentSlide < Slides.slides.length - 1)
+					Slides.currentSlide ++;
 			}
 		}
 	},
