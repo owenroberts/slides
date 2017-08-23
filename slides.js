@@ -199,7 +199,8 @@ var Slides = {
 		for (var i = 0; i < Slides.slides.length; i++) {
 			// must be .75 down slide to go to next
 			if (window.scrollY > Slides.slides[i].offsetTop + Slides.slideHeight * 0.75) {
-				Slides.currentSlide ++;
+				if (Slides.currentSlide < Slides.slides.length - 1)
+					Slides.currentSlide ++;
 			}
 		}
 	},
@@ -230,6 +231,9 @@ var Slides = {
 	},
 
 	nextSlide: function() {
+		if (Slides.drawings[Slides.currentSlide])
+			if (Slides.drawings[Slides.currentSlide][0].active)
+				Slides.toggleDrawing();
 		if (Slides.currentSlide < Slides.totalSlides - 1) {
 			Slides.currentSlide ++;
 			Slides.scrollToSlide();
@@ -237,6 +241,9 @@ var Slides = {
 	},
 
 	previousSlide: function() {
+			if (Slides.drawings[Slides.currentSlide])
+			if (Slides.drawings[Slides.currentSlide][0].active)
+				Slides.toggleDrawing();
 		if (Slides.currentSlide > 0) {
 			Slides.currentSlide --;
 			Slides.scrollToSlide();
@@ -251,6 +258,8 @@ var Slides = {
 			for (var i = 0; i < d.length; i++) {
 				d[i].toggle();
 			}
+		} else {
+			Slides.createDrawing(Slides.currentSlide);
 		}
 		if (Slides.colorMenu) {
 			if (Slides.colorMenu.style.display != "block")
@@ -267,7 +276,7 @@ var Slides = {
 				colorBtn.style.backgroundColor = "#"+Slides.colors[color];
 				colorBtn.onclick = function() {
 					Slides.createDrawing(Slides.currentSlide);
-					Slides.drawings[Slides.currentSlide][Slides.drawings[Slides.currentSlide].length-1].c = Slides.colors[Slides.id];
+					Slides.drawings[Slides.currentSlide][Slides.drawings[Slides.currentSlide].length-1].c = Slides.colors[this.id];
 				};
 				Slides.colorMenu.appendChild(colorBtn);
 			}
@@ -326,7 +335,7 @@ var Slides = {
 				d.preload = true;
 				d.active = true;
 				d.canvas.style.display = "block";
-				d.c = data.c;
+				d.c = data.d[i].c;
 				if (!Slides.loadedDrawings[slideNumber]) 
 					Slides.loadedDrawings[slideNumber] = [];
 				Slides.loadedDrawings[slideNumber].push(d);
@@ -529,6 +538,7 @@ function Drawing(canvas) {
 					var p = new Vector(line.s.x + v.x * i, line.s.y + v.y * i);
 					this.ctx.lineTo( p.x + v.x + getRandom(-this.diff, this.diff), p.y + v.y + getRandom(-this.diff, this.diff) );
 				}
+
 				this.ctx.strokeStyle= "#"+this.c;
 	      		this.ctx.stroke();
 			}
