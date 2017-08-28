@@ -203,7 +203,10 @@ table {
 		position:relative;
 		z-index: 1;
 		overflow:visible;
-	 }
+	}
+	table th {
+		border-color:black;
+	}
 }
 
 blockquote {
