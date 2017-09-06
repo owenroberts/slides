@@ -175,6 +175,18 @@ table {
     font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline img {
     max-width: 100%; }
+  .outline #menu {
+    position: fixed;
+    top: 10em;
+    left: 2em;
+    font-family: "Karla", Helvetica, Arial, sans-serif;
+    width: 180px;
+    font-size: 0.75em; }
+    .outline #menu ul {
+      padding: 0;
+      list-style: none; }
+    .outline #menu li, .outline #menu p {
+      font-family: inherit; }
   .outline .slide {
     margin: 1em 0;
     clear: both; }
@@ -191,15 +203,15 @@ table {
       left: 0;
       width: 100%;
       height: 100%; }
-  .outline .slide:first-child {
+  .outline .title {
     font-family: "Karla", Helvetica, Arial, sans-serif;
     margin: 8em 0;
     border-bottom: 1px solid #5DD8C8; }
-    .outline .slide:first-child h1 {
+    .outline .title h1 {
       margin: 0;
       padding: 0;
       border: none; }
-    .outline .slide:first-child p {
+    .outline .title p {
       margin: 0.5em 0;
       font-size: 1em;
       font-family: "Karla", Helvetica, Arial, sans-serif; }
@@ -309,6 +321,8 @@ blockquote {
   .slides .drawing {
     z-index: 99;
     cursor: url("../slides/img/pencil.ico"), crosshair; }
+  .slides #menu {
+    display: none; }
 
 .video {
   position: relative;

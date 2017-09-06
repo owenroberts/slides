@@ -169,6 +169,22 @@ table {
 	img {
 		max-width:100%;
 	}
+
+	#menu {
+		position: fixed;
+		top:10em;
+		left:2em;
+		font-family: "Karla", Helvetica, Arial, sans-serif;
+		width:180px;
+		font-size:0.75em;
+		ul {
+			padding:0;
+			list-style: none;
+		}
+		li, p {
+			font-family:inherit;
+		}
+	}
 	
 	/* code, pre, .note { font-size:1.1em; } */
 	.slide {margin:1em 0;
@@ -187,7 +203,7 @@ table {
 			height: 100%;
 		}
 	}
-	.slide:first-child {
+	.title{
 		h1 { margin: 0; padding:0; border:none; }
 		font-family: "Karla", Helvetica, Arial, sans-serif;
 		margin: 8em 0;
@@ -311,6 +327,7 @@ blockquote {
 		z-index:99;
 		cursor:url('../slides/img/pencil.ico'), crosshair;
 	}
+	#menu { display: none; }
 }
 
 
