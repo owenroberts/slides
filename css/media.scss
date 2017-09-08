@@ -1,6 +1,22 @@
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 800px) {
 	.outline {
 		width: 100%;
+		.slide { margin: 1em auto; }
+		#title { 
+			margin: 0 auto; 
+			margin-top: 8em;
+		}
+		#menu {
+			position:static;
+			width: 100%;
+			padding-top:1em;
+			max-width:600px;
+			margin:0 auto;
+			li {
+				margin-right:1em;
+				display:inline-block;
+			}
+		}
 	}
 }
 @media only screen and (min-width: 641px) and (max-width: 1024px) {

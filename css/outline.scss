@@ -1,8 +1,24 @@
 .outline {
-	width: 560px;
+	width: 800px;
 	font-size:18px;
 	line-height: 1.4;
 	margin:2em auto;
+	.slide {
+		margin:1em 0;
+		clear:both;
+		max-width: 560px;
+	}
+	#title {
+		h1 { margin: 0; padding:0; border:none; }
+		font-family: "Karla", Helvetica, Arial, sans-serif;
+		margin: 8em 0;
+		border-bottom:1px solid $highlight;
+		p { 
+			margin: 0.5em 0;
+			font-size: 1em;
+			font-family: "Karla", Helvetica, Arial, sans-serif;
+		}
+	}
 	note, a { font-family: "Karla", Helvetica, Arial, sans-serif; }
 	code { 
 		background:white;
@@ -34,10 +50,7 @@
 	
 	img { max-width:100%; }
 	/* code, pre, .note { font-size:1.1em; } */
-	.slide {
-		margin:1em 0;
-		clear:both;
-	}
+	
 	.utube {
 		position: relative;
 		width:100%;
@@ -52,17 +65,7 @@
 			height: 100%;
 		}
 	}
-	.slide:first-child {
-		h1 { margin: 0; padding:0; border:none; }
-		font-family: "Karla", Helvetica, Arial, sans-serif;
-		margin: 8em 0;
-		border-bottom:1px solid $highlight;
-		p { 
-			margin: 0.5em 0;
-			font-size: 1em;
-			font-family: "Karla", Helvetica, Arial, sans-serif;
-		}
-	}
+	
 	p, li {font-family: 'Lora', serif;}
 	p.label { font-size: 0.75em; margin: 0; }
 	canvas { 
@@ -71,4 +74,25 @@
 		overflow:visible;
 	}
 	table th { border-color:black; }
+
+	#menu {
+		position: fixed;
+		font-family: "Karla", Helvetica, Arial, sans-serif;
+		width:200px;
+		font-size:0.9em;
+		padding:1em;
+		padding-top:2em;
+		background:white;
+		p { margin: 0; }
+		ul {
+			padding:0;
+			list-style-type: none;
+			margin:0;
+		}
+		li, p { font-family:inherit; }
+		li::before {
+			content: "~";
+			margin-right:0.25em;
+		}
+	}
 }

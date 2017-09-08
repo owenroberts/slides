@@ -48,7 +48,7 @@
 	hl { color: $highlight; };
 	.slide {
 		position:relative;
-		&:first-child {
+		&#title {
 			p { text-align: center; }
 		}
 		width:100%;
@@ -92,4 +92,6 @@
 		z-index:99;
 		cursor: url('../slides/img/pencil.ico'), crosshair;
 	}
+
+	#menu { display: none; }
 }
