@@ -1,0 +1,27 @@
+.mag {
+	cursor: pointer;
+	position: relative;
+	margin-top: -30px;
+	left:2px;
+	display: block;
+	width: 24px;
+}
+
+#image-popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(207, 218, 255,0.975);
+	z-index: 999;
+
+	.img {
+		position: relative;
+	}
+	.close {
+		display: block;
+		cursor: pointer;
+		position: relative;
+	}
+}

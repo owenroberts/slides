@@ -1,0 +1,69 @@
+.outline {
+	width: 560px;
+	font-size:18px;
+	line-height: 1.4;
+	margin:2em auto;
+	note, a { font-family: "Karla", Helvetica, Arial, sans-serif; }
+	code { 
+		background:white;
+		border: 1px solid lightgray;
+	}
+	pre { 
+        code {
+        	border: none;
+        	padding-left:8px;
+        	border-left: 3px solid $highlight;
+        	border-top-left-radius: 0;
+        	border-bottom-left-radius: 0;
+        }
+    }
+	p code { color: blue; white-space: nowrap; }
+	li code {color: blue;}
+	a, a:visited { color: blue; text-decoration: underline; }
+	a:hover {  color: #3BE0CB; }
+	h1 { 
+		padding-top: 4em;
+		border-bottom:1px solid $highlight;
+		font-family: "Karla", Helvetica, Arial, sans-serif;
+	}
+	h2, h3 { padding-top: 2em; font-family: "Karla", Helvetica, Arial, sans-serif;}
+	img { max-width:100%; }
+	/* code, pre, .note { font-size:1.1em; } */
+	.slide {
+		margin:1em 0;
+		clear:both;
+	}
+	.utube {
+		position: relative;
+		width:100%;
+		padding-bottom: 56.25%; /* 16:9 */
+		padding-top: 25px;
+		height: 0;
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.slide:first-child {
+		h1 { margin: 0; padding:0; border:none; }
+		font-family: "Karla", Helvetica, Arial, sans-serif;
+		margin: 8em 0;
+		border-bottom:1px solid $highlight;
+		p { 
+			margin: 0.5em 0;
+			font-size: 1em;
+			font-family: "Karla", Helvetica, Arial, sans-serif;
+		}
+	}
+	p, li {font-family: 'Lora', serif;}
+	p.label { font-size: 0.75em; margin: 0; }
+	canvas { 
+		position:relative;
+		z-index: 1;
+		overflow:visible;
+	}
+	table th { border-color:black; }
+}
