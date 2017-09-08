@@ -26,7 +26,12 @@
 		border-bottom:1px solid $highlight;
 		font-family: "Karla", Helvetica, Arial, sans-serif;
 	}
-	h2, h3 { padding-top: 2em; font-family: "Karla", Helvetica, Arial, sans-serif;}
+	h2, h3 { 
+		padding-top: 2em; 
+		font-family: "Karla", Helvetica, Arial, sans-serif;
+		margin-bottom:0;
+	}
+	
 	img { max-width:100%; }
 	/* code, pre, .note { font-size:1.1em; } */
 	.slide {
