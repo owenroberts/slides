@@ -18,7 +18,7 @@ code {
 	color:black;
 }
 
-note { color: blue; } // i made up this tag
+note { color: $note; } // i made up this tag
 pre { 
 	word-wrap:break-word;
 	tab-size:4; 

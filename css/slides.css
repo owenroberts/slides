@@ -26,7 +26,7 @@ code {
   color: black; }
 
 note {
-  color: blue; }
+  color: #9b26ff; }
 
 pre {
   word-wrap: break-word;
@@ -150,10 +150,10 @@ canvas.drawing {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
   .outline p code {
-    color: blue;
+    color: #2480d2;
     white-space: nowrap; }
   .outline li code {
-    color: blue; }
+    color: #2480d2; }
   .outline a, .outline a:visited {
     color: blue;
     text-decoration: underline; }
@@ -350,5 +350,7 @@ canvas.drawing {
   margin-top: 0; }
 .default strong {
   font-weight: normal; }
+.default li {
+  font-family: "Karla", Helvetica, Arial, sans-serif; }
 
 /*# sourceMappingURL=slides.css.map */
