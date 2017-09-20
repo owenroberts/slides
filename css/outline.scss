@@ -11,7 +11,7 @@
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
 		font-family: "Karla", Helvetica, Arial, sans-serif;
-		margin: 8em 0;
+		margin: 6em 0;
 		border-bottom:1px solid $highlight;
 		p { 
 			margin: 0.5em 0;
@@ -46,6 +46,19 @@
 		padding-top: 2em; 
 		font-family: "Karla", Helvetica, Arial, sans-serif;
 		margin-bottom:0;
+	}
+
+	h2 {
+		a, a:visited {
+			text-decoration: none;
+			padding: 0 0.5em;
+			color: $em;
+			font-size: 0.8em;
+			position: relative;
+			top: -4px;
+			font-style: oblique;
+		}
+		a:hover { color: $highlight; }
 	}
 	
 	img { max-width:100%; }
