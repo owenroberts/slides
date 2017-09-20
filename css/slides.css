@@ -133,11 +133,27 @@ canvas.drawing {
   left: 0; }
 
 .outline {
-  width: 560px;
+  width: 800px;
   font-size: 18px;
   line-height: 1.4;
   margin: 2em auto;
   /* code, pre, .note { font-size:1.1em; } */ }
+  .outline .slide {
+    margin: 1em 0;
+    clear: both;
+    max-width: 560px; }
+  .outline #title {
+    font-family: "Karla", Helvetica, Arial, sans-serif;
+    margin: 6em 0;
+    border-bottom: 1px solid #5DD8C8; }
+    .outline #title h1 {
+      margin: 0;
+      padding: 0;
+      border: none; }
+    .outline #title p {
+      margin: 0.5em 0;
+      font-size: 1em;
+      font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline note, .outline a {
     font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline code {
@@ -167,11 +183,18 @@ canvas.drawing {
     padding-top: 2em;
     font-family: "Karla", Helvetica, Arial, sans-serif;
     margin-bottom: 0; }
+  .outline h2 a, .outline h2 a:visited {
+    text-decoration: none;
+    padding: 0 0.5em;
+    color: #D1E5F7;
+    font-size: 0.8em;
+    position: relative;
+    top: -4px;
+    font-style: oblique; }
+  .outline h2 a:hover {
+    color: #5DD8C8; }
   .outline img {
     max-width: 100%; }
-  .outline .slide {
-    margin: 1em 0;
-    clear: both; }
   .outline .utube {
     position: relative;
     width: 100%;
@@ -185,18 +208,6 @@ canvas.drawing {
       left: 0;
       width: 100%;
       height: 100%; }
-  .outline .slide:first-child {
-    font-family: "Karla", Helvetica, Arial, sans-serif;
-    margin: 8em 0;
-    border-bottom: 1px solid #5DD8C8; }
-    .outline .slide:first-child h1 {
-      margin: 0;
-      padding: 0;
-      border: none; }
-    .outline .slide:first-child p {
-      margin: 0.5em 0;
-      font-size: 1em;
-      font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline p, .outline li {
     font-family: 'Lora', serif; }
   .outline p.label {
@@ -208,6 +219,25 @@ canvas.drawing {
     overflow: visible; }
   .outline table th {
     border-color: black; }
+  .outline #menu {
+    position: fixed;
+    font-family: "Karla", Helvetica, Arial, sans-serif;
+    width: 200px;
+    font-size: 0.9em;
+    padding: 1em;
+    padding-top: 2em;
+    background: white; }
+    .outline #menu p {
+      margin: 0; }
+    .outline #menu ul {
+      padding: 0;
+      list-style-type: none;
+      margin: 0; }
+    .outline #menu li, .outline #menu p {
+      font-family: inherit; }
+    .outline #menu li::before {
+      content: "~";
+      margin-right: 0.25em; }
 
 .slides {
   width: 100%;
@@ -246,6 +276,8 @@ canvas.drawing {
   .slides h2 {
     margin: .41em 0;
     text-decoration: underline; }
+    .slides h2 a {
+      display: none; }
   .slides p {
     margin: .4em 0; }
   .slides hl {
@@ -255,7 +287,7 @@ canvas.drawing {
     width: 100%;
     padding: 2%;
     border-bottom: 1px solid white; }
-    .slides .slide:first-child p {
+    .slides .slide#title p {
       text-align: center; }
     .slides .slide.long {
       min-height: 100%;
@@ -295,7 +327,9 @@ canvas.drawing {
       height: 100%; }
   .slides .drawing {
     z-index: 99;
-    cursor: url("../slides/img/pencil.ico"), crosshair; }
+    cursor: url("/img/pencil.ico"), crosshair; }
+  .slides #menu {
+    display: none; }
 
 .mag {
   cursor: pointer;
@@ -303,7 +337,9 @@ canvas.drawing {
   margin-top: -30px;
   left: 2px;
   display: block;
-  width: 24px; }
+  width: 20px; }
+  .mag:hover {
+    opacity: 0.5; }
 
 #image-popup {
   position: fixed;
@@ -319,6 +355,8 @@ canvas.drawing {
     display: block;
     cursor: pointer;
     position: relative; }
+    #image-popup .close:hover {
+      opacity: 0.5; }
 
 #color-menu {
   position: fixed;
@@ -334,9 +372,23 @@ canvas.drawing {
     #color-menu button:active {
       cursor: -webkit-grabbing; }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 800px) {
   .outline {
-    width: 100%; } }
+    width: 100%; }
+    .outline .slide {
+      margin: 1em auto; }
+    .outline #title {
+      margin: 0 auto;
+      margin-top: 8em; }
+    .outline #menu {
+      position: static;
+      width: 100%;
+      padding-top: 1em;
+      max-width: 600px;
+      margin: 0 auto; }
+      .outline #menu li {
+        margin-right: 0.5em;
+        display: inline-block; } }
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
   .slides {
     font-size: 1.75em; } }
@@ -346,11 +398,19 @@ canvas.drawing {
 @media only screen and (min-width: 1441px) {
   .slides {
     font-size: 2.5em; } }
-.default h2 + p {
-  margin-top: 0; }
-.default strong {
-  font-weight: normal; }
-.default li {
-  font-family: "Karla", Helvetica, Arial, sans-serif; }
+.default {
+  width: 560px; }
+  .default h2 + p {
+    margin-top: 0; }
+  .default strong {
+    font-weight: normal; }
+  .default li {
+    font-family: "Karla", Helvetica, Arial, sans-serif; }
+  .default h2 + p {
+    margin-top: 0; }
+  .default strong {
+    font-weight: normal; }
+  .default #title {
+    margin-bottom: 0; }
 
 /*# sourceMappingURL=slides.css.map */

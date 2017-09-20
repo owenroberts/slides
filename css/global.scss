@@ -33,10 +33,10 @@ a, a:visited {
 	transition: color 300ms;
 }
 a:hover { 
-	color: #3BE0CB;
+	color: $hover;
 	text-decoration:underline; 
 }
-em, strong { color: #2480d2; }
+em, strong { color: $strong; }
 
 .wrap { white-space: pre-wrap; }
 

@@ -43,12 +43,13 @@
 	h2 { 
 		margin: .41em 0; 
 		text-decoration: underline; 
+		a { display:none; }
 	}
 	p { margin: .4em 0; }
 	hl { color: $highlight; };
 	.slide {
 		position:relative;
-		&:first-child {
+		&#title {
 			p { text-align: center; }
 		}
 		width:100%;
@@ -92,4 +93,6 @@
 		z-index:99;
 		cursor: url('/img/pencil.ico'), crosshair;
 	}
+
+	#menu { display: none; }
 }
