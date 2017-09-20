@@ -327,7 +327,7 @@ canvas.drawing {
       height: 100%; }
   .slides .drawing {
     z-index: 99;
-    cursor: url("/img/pencil.ico"), crosshair; }
+    cursor: url("../img/pencil.ico"), crosshair; }
   .slides #menu {
     display: none; }
 
