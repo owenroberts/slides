@@ -175,6 +175,8 @@ canvas.drawing {
     text-decoration: underline; }
   .outline a:hover {
     color: #3BE0CB; }
+  .outline a em {
+    color: blue; }
   .outline h1 {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8;
@@ -256,6 +258,8 @@ canvas.drawing {
   .slides em, .slides strong {
     font-family: "Karla", Helvetica, Arial, sans-serif;
     color: #D1E5F7; }
+  .slides a em {
+    color: darkblue; }
   .slides img + img {
     margin-top: 1em; }
   .slides pre code {
