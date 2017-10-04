@@ -417,4 +417,9 @@ canvas.drawing {
   .default #title {
     margin-bottom: 0; }
 
+div[data-src] {
+  color: darkred;
+  font-style: italic;
+  background: white; }
+
 /*# sourceMappingURL=slides.css.map */
