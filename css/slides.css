@@ -377,6 +377,9 @@ canvas.drawing {
       cursor: -webkit-grabbing; }
 
 @media only screen and (max-width: 800px) {
+  .main #title, .main #content, .notes #title, .notes #content {
+    margin: 1em auto; }
+
   .outline {
     width: 100%; }
     .outline .slide {
@@ -403,7 +406,7 @@ canvas.drawing {
   .slides {
     font-size: 2.5em; } }
 .default {
-  width: 560px; }
+  /* width:560px; */ }
   .default h2 + p {
     margin-top: 0; }
   .default strong {
@@ -416,6 +419,12 @@ canvas.drawing {
     font-weight: normal; }
   .default #title {
     margin-bottom: 0; }
+
+.notes {
+  /* max-width:560px; */ }
+
+.main #title, .main #content, .notes #title, .notes #content {
+  max-width: 560px; }
 
 div[data-src] {
   color: darkred;
