@@ -255,6 +255,10 @@ canvas.drawing {
   user-select: none;
   /* code {color:black;} */
   /* wtf figure out later */ }
+  .slides pre, .slides code {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    user-select: text; }
   .slides em, .slides strong {
     font-family: "Karla", Helvetica, Arial, sans-serif;
     color: #D1E5F7; }
