@@ -17,21 +17,14 @@
 	<script src="lib/p5.min.js"></script>
 	<script src="lib/bkg.js"></script>
 	<script src="slides.js" id="slidesScript"></script> <!-- id necessary for js to get where i am -->
+	<script src="menu.js" ></script>
 	<style>
 		.key { font-size:2em; }
 	</style>
-	<script src="lib/menu.js" ></script>
+	
 </head>
 <body>
 	<div id="container" class="slides">
-		<div id="menu">
-			<p><em>Contents</em></p>
-			<ul></ul>
-		</div>
-		<!-- 
-			menu is optional, needs #title to be first slide, plus menu div ...
-			maybe change that
-		 -->
 		<div id="title" class="slide">
 			<h1>This is slides</h1>
 		</div>
@@ -42,14 +35,14 @@
 			<p>In slides mode, use arrow keys <span class="key">K</span> and <span class="key">L</span> for next slide, <span class="key">J</span> and <span class="key">I</span> for previous slide.</p>
 		</div>
 		<div class="slide">
-			<h2>This is another slide.</h2>
+			<h2>This is another slide</h2>
 			<p>Pretty cool, eh?</p>
 			<img src="img/cat.jpg">
 			<p>Images can be magnified.</p>
 		</div>
 		<div class="slide">
 			<h2>Drawing</h2>
-			<p>Here's a drawing.</p>
+			<p>Here's a drawing. The drawings are made with my <a href="https://github.com/owenroberts/lines" target="blank">Lines</a> drawing/animation program which is in development, there's a relatively stable v1 but much better v2 coming soon maybe.</p>
 			<div data-src="img/dist.json"></div>
 		</div>
 		<div class="slide">

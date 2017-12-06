@@ -2,29 +2,29 @@
 var S = {
 	setup: function() {
 		this.dev = false;
-		this.isSlides = false;
-		this.start = true;
+		this.isSlides = false; /* current view is slides */
+		this.start = true; /* to create slides at run */
 		this.isScrolling = false; /* prevent scrolling actions while scrolling */
 		this.slideHeight = window.innerHeight;
-		
-		this.drawings = []; /* drawings made on slides */
-		this.loadedDrawings = []; /* preload drawings */
-
-		/* drawing timer */
-		this.mouseTime = 0;
-		this.mouseInterval = 30;
-
-		/* draw loop setup */
-		this.fps = 7;
-		this.interval = 1000 / this.fps;
-		this.timer = performance.now();
-		this.loopStarted = false; // this is bc draw loop triggered in too places, kinda pointless?  also pause drawings??? 
 
 		/* get references to contianer and slides */
 		this.container = document.getElementById('container');
 		this.slides =  document.getElementsByClassName('slide'); // slide elements
 		this.totalSlides = this.slides.length;
 		this.currentSlide = 0;
+		
+		this.drawings = []; /* drawings made on slides, maybe get rid of this */
+		this.loadedDrawings = []; /* preload drawings */
+		
+		/* draw loop setup */
+		this.fps = 7;
+		this.interval = 1000 / this.fps;
+		this.timer = performance.now();
+		this.loopStarted = false; // this is bc draw loop triggered in too places, kinda pointless?  also pause drawings??? 
+
+		/* drawing timer */
+		this.mouseTime = 0;
+		this.mouseInterval = 30;
 
 		/* creates slides/outline buttons 
 			in js so it does't have to be in html */
@@ -53,6 +53,9 @@ var S = {
 
 			S.updateDrawingWidth();
 
+			/* go through slides and set margin top to center vertically (ish actually closer to top)
+				css version: .slide
+					display: flex; flex-direction: column; justify-content: center; */
 			for (var i = 0; i < S.slides.length; i++) {
 				let h = S.slides[i].offsetHeight;
 				if (h < S.slideHeight) {
@@ -64,6 +67,7 @@ var S = {
 				}
 			}
 			
+			/* scroll back to the current slide */
 			S.scrollToSlide();
 			
 			/* get rid of mag buttons on images */
@@ -300,6 +304,7 @@ var S = {
 				colorBtn.id = color;
 				colorBtn.style.backgroundColor = S.colors[color];
 				colorBtn.onclick = function() {
+					/* some issue here where first drawings keeps changing color ... */
 					var d = S.createDrawing(S.currentSlide);
 					d.c = S.colors[this.id];
 				};
@@ -332,7 +337,6 @@ var S = {
 	loadDrawing: function(slideNumber, data) {
 		const canvas = document.createElement('canvas');
 		const ctx = canvas.getContext('2d');
-		//canvas.id = "c"+slideNumber;
 		canvas.className = "loaded";
 		canvas.setAttribute('data-width', data.w);
 		canvas.setAttribute('data-height', data.h);
@@ -341,10 +345,6 @@ var S = {
 		S.slides[slideNumber].appendChild(canvas);
 		const w = S.slides[slideNumber].offsetWidth * 0.96;
 		var z = w / data.w;
-		//canvas.width = w;
-		//canvas.height *= z;
-		//ctx.scale(z,z); // temp fix for zoom
-		
 		for (var i = 0; i < data.d.length; i++) {
 			// this x is really silly: 
 			if (data.d[i] != "x") {
@@ -359,17 +359,14 @@ var S = {
 				S.loadedDrawings[slideNumber].push(d);
 			}
 		}
-		
-		S.startLoop();
+		S.startLoop(); /* start drawing */
 	},
 
 	/* draws all drawings */
 	drawLoop: function() {
-		// check for scrolling, so it doesn't slow down animateToSlide()
-		// probably a better way to handle?
+		/* performance issues with many drawings */
 		if (performance.now() > S.timer + S.interval && !S.isScrolling) {
 			S.timer = performance.now();
-			
 			for (var i = 0; i < S.slides.length; i++) {
 				if (S.drawings[i]) {
 					S.drawings[i][0].clearCanvas();
@@ -390,13 +387,12 @@ var S = {
 
 	startLoop: function() {
 		if (!S.loopStarted) {
-			// requestanimframe ??
 			requestAnimFrame(S.drawLoop);
 			S.loopStarted = true;
 		}
 	},
 
-	/* events */
+	/* key board events */
 	getKey: function(ev) {
 		switch (Cool.keys[ev.which]) {
 			case "down": 
@@ -574,18 +570,13 @@ function Drawing(canvas) {
 }
 /* launch slides */
 $(window).on('load', function() {
-	console.clear();
+	if (S.dev) console.clear(); // clear net work logs for development 
 	if (window.mobilecheck()) {
 		document.getElementById("container").className = "outline";
 	} else {
 		/* set up slides */
 		S.setup();
-		if (S.dev) {
-			//S.setSlides();
-		}
-		else {
-			S.setOutline();
-		}
+		S.setOutline();
 
 		/* setup events */
 		document.addEventListener("keydown", S.getKey);

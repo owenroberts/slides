@@ -1,7 +1,16 @@
+/* creates a menu based on h1, h2 headers in document, 
+	creates anchors and menu element adds in after title element in html 
+	can just take out menu.js if no menu needed */
 var Menu = {
 	setup: function() {
+		Menu.menu = document.createElement("div");
+		Menu.menu.id = "menu";
 		const headers = document.querySelectorAll("h1, h2");
-		const menuList = document.querySelector("#menu ul");
+		const contents = document.createElement("p");
+		contents.innerHTML = "<em>Contents</em>";
+		Menu.menu.appendChild(contents);
+		const menuList = document.createElement("ul");
+		Menu.menu.appendChild(menuList);
 		for (let i = 0; i < headers.length; i++) {
 			const title = headers[i].innerText.toLowerCase().replace(/ /g, '-');
  			headers[i].setAttribute("id", title);
@@ -25,22 +34,23 @@ var Menu = {
 				anchor.href = location.href.split("#")[0] + "#" + title;
 				headers[i].appendChild(anchor);
 			}
-			
 		}
+
+		Menu.title;
+		const container = document.getElementById("container");
+		if (location.hash) {
+			Menu.title = document.getElementById(location.hash.replace("#", ""));
+			Menu.title.scrollIntoView();
+		} else {
+			Menu.title = document.getElementById('title') || container.firstElementChild.nextElementSibling;
+		}
+		
+		container.insertBefore(Menu.menu, container.firstElementChild.nextElementSibling);
 		Menu.setPosition();
 	},
 	setPosition: function() {
-		let title;
-		if (location.hash) {
-			title = document.getElementById(location.hash.replace("#", ""));
-			title.scrollIntoView();
-		} else {
-			title = document.getElementById('title');
-		}
-		const menu = document.getElementById('menu');
-
-		menu.style.left = title.getBoundingClientRect().left + title.getBoundingClientRect().width + 40 +"px";
-		menu.style.top = 0; // title.getBoundingClientRect().top + "px";
+		Menu.menu.style.left = Menu.title.getBoundingClientRect().left + Menu.title.getBoundingClientRect().width + 40 +"px";
+		Menu.menu.style.top = 0; // title.getBoundingClientRect().top + "px";
 	}
 }
 window.addEventListener('load', Menu.setup);
