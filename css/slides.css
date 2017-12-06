@@ -342,7 +342,7 @@ canvas.drawing {
   .slides #menu {
     display: none; }
 
-.mag {
+img + .mag {
   cursor: pointer;
   position: relative;
   margin-top: -30px;
@@ -351,7 +351,7 @@ canvas.drawing {
   width: 20px;
   filter: drop-shadow(1px 1px 1px black);
   -webkit-filter: drop-shadow(1px 1px 1px black); }
-  .mag:hover {
+  img + .mag:hover {
     opacity: 0.5; }
 
 #image-popup {

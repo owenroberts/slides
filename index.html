@@ -16,14 +16,23 @@
 	<script src="lib/cool/cool.js"></script>
 	<script src="lib/p5.min.js"></script>
 	<script src="lib/bkg.js"></script>
-	<script src="lib/slides.js" id="slidesScript"></script> <!-- this id is necessary for js to find where i am -->
+	<script src="slides.js" id="slidesScript"></script> <!-- id necessary for js to get where i am -->
 	<style>
 		.key { font-size:2em; }
 	</style>
+	<script src="lib/menu.js" ></script>
 </head>
 <body>
 	<div id="container" class="slides">
-		<div class="slide">
+		<div id="menu">
+			<p><em>Contents</em></p>
+			<ul></ul>
+		</div>
+		<!-- 
+			menu is optional, needs #title to be first slide, plus menu div ...
+			maybe change that
+		 -->
+		<div id="title" class="slide">
 			<h1>This is slides</h1>
 		</div>
 		<div class="slide">
@@ -39,10 +48,12 @@
 			<p>Images can be magnified.</p>
 		</div>
 		<div class="slide">
+			<h2>Drawing</h2>
 			<p>Here's a drawing.</p>
 			<div data-src="img/dist.json"></div>
 		</div>
 		<div class="slide">
+			<h2>Draw</h2>
 			<p>Press spacebar to draw here.</p>
 		</div>
 		<div class="slide">
