@@ -216,8 +216,7 @@ canvas.drawing {
   .outline p, .outline li {
     font-family: 'Lora', serif; }
   .outline p.label {
-    font-size: 0.75em;
-    margin: 0; }
+    font-size: 0.75em; }
   .outline canvas {
     position: relative;
     z-index: 1;

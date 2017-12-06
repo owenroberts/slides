@@ -1,7 +1,7 @@
 /* S = slides object literal, controls slides and resetting to outline, loading drawings and events */
 var S = {
 	setup: function() {
-		this.dev = false;
+		this.dev = true;
 		this.isSlides = false; /* current view is slides */
 		this.start = true; /* to create slides at run */
 		this.isScrolling = false; /* prevent scrolling actions while scrolling */
@@ -143,7 +143,7 @@ var S = {
 						const ratio = img.naturalWidth / img.naturalHeight;
 						const margin = 40;
 						let left, top;
-						/* sizing the magnified image */
+						/* sizing the image to make sure it fits, why is this shit so hard */
 						if (img.naturalHeight > window.innerHeight) {
 							imgHeight = window.innerHeight - margin * 2;
 							imgWidth = imgHeight * ratio;
@@ -152,8 +152,12 @@ var S = {
 								imgHeight = imgWidth / ratio;
 							}
 						} else if (img.naturalWidth > window.innerWidth) {
+
 							imgWidth = window.innerWidth - margin * 2;
-							imgWidth = imgHeight * ratio;
+							imgHeight = imgWidth / ratio;
+						} else {
+							imgWidth = img.naturalWidth - margin * 2;
+							imgHeight = img.naturalHeight - margin * 2;
 						}
 						left = (window.innerWidth - imgWidth) / 2;
 						top = (window.innerHeight - imgHeight) /2;
@@ -570,13 +574,14 @@ function Drawing(canvas) {
 }
 /* launch slides */
 $(window).on('load', function() {
-	if (S.dev) console.clear(); // clear net work logs for development 
+	
 	if (window.mobilecheck()) {
 		document.getElementById("container").className = "outline";
 	} else {
 		/* set up slides */
 		S.setup();
 		S.setOutline();
+		if (S.dev) console.clear(); // clear net work logs for development 
 
 		/* setup events */
 		document.addEventListener("keydown", S.getKey);
