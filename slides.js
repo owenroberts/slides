@@ -1,7 +1,7 @@
 /* S = slides object literal, controls slides and resetting to outline, loading drawings and events */
 var S = {
 	setup: function() {
-		this.dev = true;
+		this.dev = false;
 		this.isSlides = false; /* current view is slides */
 		this.start = true; /* to create slides at run */
 		this.isScrolling = false; /* prevent scrolling actions while scrolling */
