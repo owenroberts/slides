@@ -275,6 +275,7 @@ var S = {
 					$.getJSON(div.dataset.src, function(data) {
 						S.loadDrawing(i, data);
 						div.parentNode.removeChild(div);
+						S.updateDrawingWidth();
 					}).fail(function(data, textStatus, error) {
 						div.innerText += "Drawing data error: " + error;
 					});
