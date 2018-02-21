@@ -36,6 +36,16 @@ var Menu = {
 			}
 		}
 
+		const homeLinks = document.getElementById("home-links");
+		if (homeLinks) {
+			const home = document.createElement("p");
+			home.innerHTML = "<em>Home</em>";
+			const homeLinksClone = homeLinks.cloneNode(true);
+			Menu.menu.appendChild(document.createElement('br'));
+			Menu.menu.appendChild(home);
+			Menu.menu.appendChild(homeLinksClone);
+		}
+		
 		Menu.title;
 		const container = document.getElementById("container");
 		if (location.hash) {
