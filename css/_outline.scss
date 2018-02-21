@@ -26,14 +26,14 @@
 	}
 	pre {
 		font-size:16px;
-        code {
-        	border: none;
-        	padding-left:8px;
-        	border-left: 3px solid $highlight;
-        	border-top-left-radius: 0;
-        	border-bottom-left-radius: 0;
-        }
-    }
+		code {
+			border: none;
+			padding-left:8px;
+			border-left: 3px solid $highlight;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
 	p code { color: #2480d2; white-space: nowrap; }
 	li code {color: #2480d2;}
 	a, a:visited { color: blue; text-decoration: underline; }
