@@ -1,6 +1,8 @@
 @import "fonts/key.css";
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Asap);
+
 
 $highlight: #5DD8C8;
 $em: #D1E5F7;
@@ -8,6 +10,12 @@ $note: #9b26ff;
 $code: #2480d2;
 $strong: #2480d2;
 $hover: #3BE0CB;
+
+$headerfont: "Karla", Helvetica, Arial, sans-serif;
+$bodyfont: "Lora", serif;
+
+$headerfont: "Asap";
+$bodyfont: "Asap";
 
 @import "global";
 @import "outline";

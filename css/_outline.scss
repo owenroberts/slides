@@ -2,7 +2,7 @@
 	width: 800px;
 	font-size:18px;
 	line-height: 1.4;
-	margin:2em auto;
+	margin: 2em auto;
 	.slide {
 		margin:1em 0;
 		clear:both;
@@ -10,16 +10,16 @@
 	}
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
-		font-family: "Karla", Helvetica, Arial, sans-serif;
-		margin: 6em 0;
+		font-family: $headerfont;
+		/* margin: 6em 0; */
 		border-bottom:1px solid $highlight;
 		p { 
 			margin: 0.5em 0;
 			font-size: 1em;
-			font-family: "Karla", Helvetica, Arial, sans-serif;
+			font-family: $headerfont;
 		}
 	}
-	note, a { font-family: "Karla", Helvetica, Arial, sans-serif; }
+	note, a { font-family: $headerfont; }
 	code { 
 		background:white;
 		border: 1px solid lightgray;
@@ -42,11 +42,11 @@
 	h1 { 
 		padding-top: 4em;
 		border-bottom:1px solid $highlight;
-		font-family: "Karla", Helvetica, Arial, sans-serif;
+		font-family: $headerfont;
 	}
 	h2, h3 { 
 		padding-top: 2em; 
-		font-family: "Karla", Helvetica, Arial, sans-serif;
+		font-family: $headerfont;
 		margin-bottom:0;
 	}
 
@@ -81,7 +81,7 @@
 		}
 	}
 	
-	p, li {font-family: 'Lora', serif;}
+	p, li {font-family: $bodyfont}
 	p.label { font-size: 0.75em; }
 	canvas { 
 		position:relative;
@@ -93,13 +93,13 @@
 	// should this be part of jekylls?
 	#menu {
 		position: fixed;
-		font-family: "Karla", Helvetica, Arial, sans-serif;
+		font-family: $headerfont;
 		width:200px;
 		font-size:0.9em;
 		padding:1em;
-		padding-top:2em;
+		/* padding-top:2em; */
 		background:white;
-		p { margin: 0; }
+		/* p { margin: 0; } */
 		ul {
 			padding:0;
 			list-style-type: none;
@@ -110,5 +110,9 @@
 			content: "~";
 			margin-right:0.25em;
 		}
+	}
+
+	#content {
+		margin-left: calc(200px + 2em);
 	}
 }

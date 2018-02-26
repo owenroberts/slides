@@ -3,8 +3,11 @@
 	can just take out menu.js if no menu needed */
 var Menu = {
 	setup: function() {
-		Menu.menu = document.createElement("div");
-		Menu.menu.id = "menu";
+		// Menu.menu = document.createElement("div");
+		// Menu.menu.id = "menu";
+
+		Menu.menu = document.getElementById("menu");
+
 		const headers = document.querySelectorAll("h1, h2");
 		const contents = document.createElement("p");
 		contents.innerHTML = "<em>Contents</em>";
@@ -59,8 +62,8 @@ var Menu = {
 		Menu.setPosition();
 	},
 	setPosition: function() {
-		Menu.menu.style.left = Menu.title.getBoundingClientRect().left + Menu.title.getBoundingClientRect().width + 40 +"px";
-		Menu.menu.style.top = 0; // title.getBoundingClientRect().top + "px";
+		//Menu.menu.style.left = Menu.title.getBoundingClientRect().left + Menu.title.getBoundingClientRect().width + 40 +"px";
+	//	Menu.menu.style.top = 0; // title.getBoundingClientRect().top + "px";
 	}
 }
 window.addEventListener('load', Menu.setup);

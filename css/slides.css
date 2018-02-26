@@ -1,6 +1,7 @@
 @import url(fonts/key.css);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Asap);
 body {
   font-family: "Karla", Helvetica, Arial, sans-serif;
   line-height: 1.45;
@@ -146,8 +147,8 @@ canvas.drawing {
     clear: both;
     max-width: 560px; }
   .outline #title {
-    font-family: "Karla", Helvetica, Arial, sans-serif;
-    margin: 6em 0;
+    font-family: "Asap";
+    /* margin: 6em 0; */
     border-bottom: 1px solid #5DD8C8; }
     .outline #title h1 {
       margin: 0;
@@ -156,9 +157,9 @@ canvas.drawing {
     .outline #title p {
       margin: 0.5em 0;
       font-size: 1em;
-      font-family: "Karla", Helvetica, Arial, sans-serif; }
+      font-family: "Asap"; }
   .outline note, .outline a {
-    font-family: "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Asap"; }
   .outline code {
     background: white;
     border: 1px solid lightgray; }
@@ -185,10 +186,10 @@ canvas.drawing {
   .outline h1 {
     padding-top: 4em;
     border-bottom: 1px solid #5DD8C8;
-    font-family: "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Asap"; }
   .outline h2, .outline h3 {
     padding-top: 2em;
-    font-family: "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Asap";
     margin-bottom: 0; }
   .outline h2 a, .outline h2 a:visited {
     text-decoration: none;
@@ -216,7 +217,7 @@ canvas.drawing {
       width: 100%;
       height: 100%; }
   .outline p, .outline li {
-    font-family: 'Lora', serif; }
+    font-family: "Asap"; }
   .outline p.label {
     font-size: 0.75em; }
   .outline canvas {
@@ -227,14 +228,13 @@ canvas.drawing {
     border-color: black; }
   .outline #menu {
     position: fixed;
-    font-family: "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Asap";
     width: 200px;
     font-size: 0.9em;
     padding: 1em;
-    padding-top: 2em;
-    background: white; }
-    .outline #menu p {
-      margin: 0; }
+    /* padding-top:2em; */
+    background: white;
+    /* p { margin: 0; } */ }
     .outline #menu ul {
       padding: 0;
       list-style-type: none;
@@ -244,6 +244,8 @@ canvas.drawing {
     .outline #menu li::before {
       content: "~";
       margin-right: 0.25em; }
+  .outline #content {
+    margin-left: calc(200px + 2em); }
 
 .slides {
   width: 100%;
@@ -252,7 +254,7 @@ canvas.drawing {
   height: 100%;
   font-size: 28px;
   color: white;
-  font-family: "Karla", Helvetica, Arial, sans-serif;
+  font-family: "Asap";
   position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -264,7 +266,7 @@ canvas.drawing {
     -moz-user-select: text;
     user-select: text; }
   .slides em, .slides strong {
-    font-family: "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Asap";
     color: #D1E5F7; }
   .slides a em {
     color: darkblue; }
