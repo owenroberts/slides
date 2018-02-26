@@ -5,7 +5,7 @@
 	height:100%;
 	font-size: 28px;
 	color:white;
-	font-family:  "Karla", Helvetica, Arial, sans-serif;
+	font-family:  $headerfont;
 	position:relative;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -16,7 +16,7 @@
 		user-select: text;
 	}
 	em, strong { 
-		font-family:"Karla", Helvetica, Arial, sans-serif; 
+		font-family: $headerfont; 
 		color: $em;
 	}
 	a em {color:darkblue;}
