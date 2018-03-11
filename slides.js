@@ -47,7 +47,7 @@ var S = {
 
 	/* sets container to slides, resizes .slide, hides mag buttons and updates scroll */
 	setSlides: function() {
-		if (!S.iSlides) {
+		if (!S.isSlides) {
 			S.isSlides = true;
 			S.container.className = 'slides';
 
