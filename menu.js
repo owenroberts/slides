@@ -63,7 +63,7 @@ var Menu = {
 	},
 	setPosition: function() {
 		//Menu.menu.style.left = Menu.title.getBoundingClientRect().left + Menu.title.getBoundingClientRect().width + 40 +"px";
-	//	Menu.menu.style.top = 0; // title.getBoundingClientRect().top + "px";
+		//Menu.menu.style.top = 0; // title.getBoundingClientRect().top + "px";
 	}
 }
 window.addEventListener('load', Menu.setup);

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	{% include meta.html %}
+	{% include base.html %}
+	{% include slides.html %}
+</head>
+<body>
+	<div id="container" class="outline language-js">
+		<div id="menu">
+			<div id="title" class="slide">
+				<h1>{{page.title}}</h1>
+				<p id ="home-links"><a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> > <a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>
+			</div>
+		</div>
+		<div id="content">
+			{{ content }}
+		</div>
+	</div>
+	<script src="{{site.url}}{{site.baseurl}}/slides/menu.js"></script>
+</body>  
+</html>  
