@@ -114,8 +114,13 @@ var S = {
 				S.bkg.toggle();
 			for (let i = 0; i < S.slides.length; i++) {
 				S.slides[i].style.height = "auto";
-				if (S.slides[i].children.length > 0)
-					S.slides[i].children[0].style.marginTop = "auto";
+				if (S.slides[i].children.length > 0) {
+					if (S.slides[i].children[0].tagName != "H2")
+						S.slides[i].children[0].style.marginTop = "auto";
+					else
+						S.slides[i].children[0].style.marginTop = "2em";
+				}
+
 			};
 			S.updateDrawingWidth();
 

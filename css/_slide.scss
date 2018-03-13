@@ -3,9 +3,9 @@
 	max-width:1200px;
 	margin: 0 auto;
 	height:100%;
-	font-size: 28px;
+	font-size: 32px;
 	color:white;
-	font-family:  $headerfont;
+	font-family:  $slidefont;
 	position:relative;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -16,7 +16,7 @@
 		user-select: text;
 	}
 	em, strong { 
-		font-family: $headerfont; 
+		font-family: $slidefont; 
 		color: $em;
 	}
 	a em {color:darkblue;}

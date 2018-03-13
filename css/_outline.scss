@@ -1,12 +1,18 @@
 .outline {
-	width: 800px;
+	max-width: 960px;
 	font-size:18px;
 	line-height: 1.4;
 	margin: 2em auto;
 	.slide {
 		margin:1em 0;
 		clear:both;
-		max-width: 560px;
+		max-width: 640px;
+		p {
+			max-width: 560px;
+			margin-left: 1rem;
+			font-size:20px;
+			line-height: 1.5;
+		}
 	}
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
@@ -19,6 +25,14 @@
 			font-family: $headerfont;
 		}
 	}
+
+	#content {
+		margin-left: calc(200px + 2em);
+	}
+
+	p, li {font-family: $bodyfont}
+	p.label { font-size: 0.75em; }
+
 	note, a { font-family: $headerfont; }
 	code { 
 		background:white;
@@ -40,17 +54,18 @@
 	a:hover {  color: #3BE0CB; }
 	a em { color:blue; }
 	h1 { 
-		/* padding-top: 4em; */
+
 		border-bottom:1px solid $highlight;
 		font-family: $headerfont;
 	}
 	h2, h3 { 
-		padding-top: 2em; 
+		
 		font-family: $headerfont;
 		margin-bottom:0;
 	}
 
 	h2 {
+		margin-top: 2em;
 		a, a:visited {
 			text-decoration: none;
 			padding: 0 0.5em;
@@ -81,38 +96,11 @@
 		}
 	}
 	
-	p, li {font-family: $bodyfont}
-	p.label { font-size: 0.75em; }
 	canvas { 
 		position:relative;
 		z-index: 1;
 		overflow:visible;
 	}
+
 	table th { border-color:black; }
-
-	// should this be part of jekylls?
-	#menu {
-		position: fixed;
-		font-family: $headerfont;
-		width:200px;
-		font-size:0.9em;
-		padding:1em;
-		/* padding-top:2em; */
-		background:white;
-		/* p { margin: 0; } */
-		ul {
-			padding:0;
-			list-style-type: none;
-			margin:0;
-		}
-		li, p { font-family:inherit; }
-		li::before {
-			content: "~";
-			margin-right:0.25em;
-		}
-	}
-
-	#content {
-		margin-left: calc(200px + 2em);
-	}
 }

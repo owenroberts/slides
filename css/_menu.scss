@@ -1,0 +1,24 @@
+#menu {
+	position: fixed;
+	font-family: $headerfont;
+	width:200px;
+	font-size:0.9em;
+	padding:1em;
+	/* padding-top:2em; */
+	background:white;
+	/* p { margin: 0; } */
+	ul {
+		padding:0;
+		list-style-type: none;
+		margin:0;
+	}
+	li, p { font-family:inherit; }
+/* 	li::before {
+		content: "~";
+		margin-right:0.25em;
+	} */
+	hr {
+		border-top:none;
+		border-bottom:1px solid $highlight;
+	}
+}

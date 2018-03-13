@@ -1,0 +1,36 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+	{% include meta.html %}
+	{% include base.html %}
+</head>  
+<body>
+	<div id="container" class="outline default main">
+		<div id="menu">
+			<h3>{{ site.class }}</h3>
+			<ul>
+				<li><a href="{{site.url}}{{site.baseurl}}/">Home</a></li>
+				<li><a href="{{site.url}}{{site.baseurl}}/schedule.html">Schedule</a></li>
+			</ul>
+			<!-- <hr> -->
+			<p><em>Contents</em></p>
+		</div>
+		<div id="content">
+			<div id="title">
+				<h1>{{page.title}}</h1>
+			</div>
+			{{ content }}
+		</div>
+	</div>
+	<script src="{{site.url}}{{site.baseurl}}/slides/menu.js"></script>
+	<script>
+		// link hash helper
+		window.addEventListener('load', function() {
+			const hash = location.hash.split('#')[1];
+			const link = document.querySelectorAll('[id^="' + hash + '"]')[0];
+			location.href = '#' + link.id;
+
+		});
+	</script>
+</body>  
+</html>  

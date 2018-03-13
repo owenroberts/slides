@@ -15,13 +15,16 @@ $headerfont: "Karla", Helvetica, Arial, sans-serif;
 $bodyfont: "Lora", serif;
 
 $headerfont:  "Asap", Helvetica, sans-serif;
-$bodyfont:  "Asap", Helvetica, sans-serif;
+// $bodyfont:  "Asap", Helvetica, sans-serif;
 
 $headerfont: 'Arimo','Helvetica', sans-serif;
 $bodyfont: 'Arimo','Helvetica', sans-serif;
 
+$slidefont: "Karla", Helvetica, Arial, sans-serif;
+
 @import "global";
 @import "outline";
+@import "menu";
 @import "slide";
 @import "image-popup";
 @import "color-menu";
