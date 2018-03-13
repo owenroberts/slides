@@ -27,9 +27,10 @@
 		// link hash helper
 		window.addEventListener('load', function() {
 			const hash = location.hash.split('#')[1];
-			const link = document.querySelectorAll('[id^="' + hash + '"]')[0];
-			location.href = '#' + link.id;
-
+			if (hash) {
+				const link = document.querySelectorAll('[id^="' + hash + '"]')[0];
+				location.href = '#' + link.id;
+			}
 		});
 	</script>
 </body>  
