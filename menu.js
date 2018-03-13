@@ -3,7 +3,6 @@
 	can just take out menu.js if no menu needed */
 var Menu = {
 	setup: function() {
-
 		Menu.menu = document.getElementById("menu");
 
 		const headers = document.querySelectorAll("h1, h2");
@@ -29,12 +28,6 @@ var Menu = {
 				headers[i].appendChild(anchor);
 			}
 		}
-
-	},
-	setPosition: function() {
-		//Menu.menu.style.left = Menu.title.getBoundingClientRect().left + Menu.title.getBoundingClientRect().width + 40 +"px";
-		//Menu.menu.style.top = 0; // title.getBoundingClientRect().top + "px";
 	}
 }
 window.addEventListener('load', Menu.setup);
-window.addEventListener('resize', Menu.setPosition);

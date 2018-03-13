@@ -25,7 +25,6 @@
 			font-family: $headerfont;
 		}
 	}
-
 	#content {
 		margin-left: calc(200px + 2em);
 	}
@@ -54,12 +53,10 @@
 	a:hover {  color: #3BE0CB; }
 	a em { color:blue; }
 	h1 { 
-
 		border-bottom:1px solid $highlight;
 		font-family: $headerfont;
 	}
 	h2, h3 { 
-		
 		font-family: $headerfont;
 		margin-bottom:0;
 	}
@@ -95,7 +92,7 @@
 			height: 100%;
 		}
 	}
-	
+
 	canvas { 
 		position:relative;
 		z-index: 1;
