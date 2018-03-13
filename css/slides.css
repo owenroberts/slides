@@ -408,7 +408,7 @@ img + .mag {
       margin: 1em auto; }
     .outline #title {
       margin: 0 auto;
-      margin-top: 8em; }
+      margin-top: 2em; }
     .outline #menu {
       position: static;
       width: 100%;
@@ -417,7 +417,11 @@ img + .mag {
       margin: 0 auto; }
       .outline #menu li {
         margin-right: 0.5em;
-        display: inline-block; } }
+        display: inline-block; }
+      .outline #menu h3 {
+        display: inline-block; }
+    .outline #content {
+      margin-left: 0; } }
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
   .slides {
     font-size: 2em; } }

@@ -9,7 +9,7 @@
 		.slide { margin: 1em auto; }
 		#title { 
 			margin: 0 auto; 
-			margin-top: 8em;
+			margin-top: 2em;
 		}
 		#menu {
 			position:static;
@@ -21,6 +21,12 @@
 				margin-right:0.5em;
 				display:inline-block;
 			}
+			h3{
+				display: inline-block;
+			}
+		}
+		#content {
+			margin-left: 0;
 		}
 	}
 }
