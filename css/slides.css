@@ -252,6 +252,10 @@ canvas.drawing {
     margin: 0; }
   #menu li, #menu p {
     font-family: inherit; }
+  #menu li {
+    line-height: 1.4; }
+    #menu li:hover {
+      background: #b6d6f2; }
   #menu hr {
     border-top: none;
     border-bottom: 1px solid #5DD8C8; }

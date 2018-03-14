@@ -13,6 +13,12 @@
 		margin:0;
 	}
 	li, p { font-family:inherit; }
+	li {
+		line-height: 1.4;
+		&:hover {
+			background: lighten($strong, 35%);
+		}
+	}
 /* 	li::before {
 		content: "~";
 		margin-right:0.25em;
