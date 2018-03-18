@@ -99,5 +99,8 @@
 		overflow:visible;
 	}
 
-	table th { border-color:black; }
+	table th { 
+		border-color:black;
+		color: $note;
+	}
 }

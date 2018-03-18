@@ -57,6 +57,7 @@ var S = {
 				css version: .slide
 					display: flex; flex-direction: column; justify-content: center; */
 			for (var i = 0; i < S.slides.length; i++) {
+				S.slides[i].children[0].style.marginTop = "0";
 				let h = S.slides[i].offsetHeight;
 				if (h < S.slideHeight) {
 					S.slides[i].style.height = S.slideHeight + "px";
@@ -64,6 +65,7 @@ var S = {
 						S.slides[i].children[0].style.marginTop = ((S.slideHeight - h) / 4) + "px";
 				} else {
 					S.slides[i].className = "long slide";
+					S.slides[i].children[0].style.marginTop = "null";
 				}
 			}
 			

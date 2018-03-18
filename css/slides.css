@@ -231,7 +231,8 @@ canvas.drawing {
     z-index: 1;
     overflow: visible; }
   .outline table th {
-    border-color: black; }
+    border-color: black;
+    color: #9b26ff; }
 
 #menu {
   position: fixed;
