@@ -254,7 +254,8 @@ canvas.drawing {
   #menu li, #menu p {
     font-family: inherit; }
   #menu li {
-    line-height: 1.4; }
+    line-height: 1.4;
+    font-size: 14px; }
     #menu li:hover {
       background: #b6d6f2; }
   #menu hr {

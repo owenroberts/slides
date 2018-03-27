@@ -15,6 +15,7 @@
 	li, p { font-family:inherit; }
 	li {
 		line-height: 1.4;
+		font-size: 14px;
 		&:hover {
 			background: lighten($strong, 35%);
 		}
