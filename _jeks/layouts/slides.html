@@ -8,17 +8,17 @@
 <body>
 	<div id="container" class="outline language-js">
 		<div id="menu">
-				<h3>{{ site.class }}</h3>
-				<ul>
-					<li><a href="{{site.url}}{{site.baseurl}}/">Home</a></li>
-					<li><a href="{{site.url}}{{site.baseurl}}/schedule.html">Schedule</a></li>
-				</ul>
-				<h3>{{ page.title }}</h3>
-				<p id ="home-links">
-					<a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> 
-					> <a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a>
-				</p>
-			<p><em>Contents</em></p>
+			<h3>{{ site.class }}</h3>
+			<ul>
+				<li><a href="{{site.url}}{{site.baseurl}}/">Home</a></li>
+				<li><a href="{{site.url}}{{site.baseurl}}/schedule.html">Schedule</a></li>
+			</ul>
+			<h3>{{ page.title }}</h3>
+			<ul id ="home-links">
+				<li><a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a>
+				> <a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></li>
+			</ul>
+			<h3><em>Contents</em></h3>
 		</div>
 		<div id="content">
 			<div id="title" class="slide">
