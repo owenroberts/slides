@@ -11,9 +11,9 @@ body, html { height: 100%; }
 .karla { font-family: "Karla", Helvetica, Arial, sans-serif; }
 
 code {
-	background:white;
-	padding:0 .25em;
-	border-radius: 0.15em;
+	/* background:white; */
+	/* padding:0 .25em; */
+/* 	border-radius: 0.15em; */
 	font-family: Menlo, Monaco, monospace;
 	color:black;
 }
@@ -22,6 +22,9 @@ note { color: $note; } // i made up this tag
 pre { 
 	word-wrap:break-word;
 	tab-size:4; 
+	code {
+		background: white;
+	}
 }
 
 hl { color: $highlight; } // also made this one up, stands for highlight

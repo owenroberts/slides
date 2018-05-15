@@ -30,5 +30,27 @@
 	</div>
 	<script src="{{site.url}}{{site.baseurl}}/slides/menu.js"></script>
 
+	<script src="{{site.url}}{{site.baseurl}}/slides/aces/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		const examples = document.getElementsByClassName("ex");
+		for (let i = 0; i < examples.length; i++) {
+			const ex = examples[i];
+			let lang = ex.dataset.lang;
+			if (!lang)
+				lang = "javascript";
+			const edit = ace.edit(ex);
+			edit.setTheme('ace/theme/xcode');
+			edit.getSession().setMode('ace/mode/' + lang);
+			edit.setOption('maxLines', 1000);
+			edit.session.setTabSize(4);
+			ex.style.height = edit.getSession().getDocument().getLength() *
+					edit.renderer.lineHeight + 'px';
+    		edit.resize();
+
+
+		}
+		
+	</script>
+
 </body>  
 </html>  
