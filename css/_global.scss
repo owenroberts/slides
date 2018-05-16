@@ -40,7 +40,10 @@ a:hover {
 	color: $hover;
 	text-decoration:underline; 
 }
-em, strong { color: $strong; }
+em, strong { 
+	color: $strong; 
+	font-family: $headerfont;
+}
 
 .wrap { white-space: pre-wrap; }
 
@@ -107,18 +110,22 @@ a[name], a[name]:hover {
 	width:50px;
 }
 
-canvas#defaultCanvas0 {
+
+
+canvas#bkg {
 	overflow: hidden;
 	position:fixed;
 	top:0;
 	left:0;
 	z-index:-99;
 }
+
 canvas.loaded {
 	position:relative;
 	z-index:1;
 	margin-top:1em;
 }
+
 canvas.drawing {
 	position:absolute;
 	top:0;

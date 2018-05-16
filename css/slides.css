@@ -55,7 +55,8 @@ a:hover {
   text-decoration: underline; }
 
 em, strong {
-  color: #2480d2; }
+  color: #2480d2;
+  font-family: "Karla", Helvetica, Arial, sans-serif; }
 
 .wrap {
   white-space: pre-wrap; }
@@ -120,7 +121,7 @@ a[name], a[name]:hover {
   right: 10px;
   width: 50px; }
 
-canvas#defaultCanvas0 {
+canvas#bkg {
   overflow: hidden;
   position: fixed;
   top: 0;
