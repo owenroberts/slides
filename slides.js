@@ -84,6 +84,9 @@ var S = {
 			else 
 				S.bkg.toggle();
 
+
+			// document.body.style.backgroundColor = S.bkg.alive.toString();
+
 			S.colors = { 
 				white: "#ffffff",
 				black: "#000000",
@@ -96,7 +99,8 @@ var S = {
 				blue: "0014FF", 
 				lightblue: "0C9BE8", 
 				green:"00FFC1"*/
-			}; /* color pallette for drawings
+			}; 
+			/* color pallette for drawings
 				based on bkg, this look ok?...  */
 		}
 	},
@@ -125,6 +129,9 @@ var S = {
 
 			};
 			S.updateDrawingWidth();
+
+			// chrome scroll fix?
+			// document.body.style.backgroundColor = 'aliceblue';
 
 			/* check for mag buttons */
 			const magButtons = document.getElementsByClassName('mag');
@@ -235,6 +242,7 @@ var S = {
 			var dist = Math.abs(startY - endY);
 			var increment = dist / 60;
 			if (dist > 0) {
+				S.bkg.stoggle();
 				S.isScrolling = true;
 				function scrollAnimate() {
 					startY += (startY < endY) ? increment : -increment;
@@ -243,11 +251,10 @@ var S = {
 						window.scrollTo(0, endY);
 						S.isScrolling = false;
 						clearInterval(anim);
+						S.bkg.stoggle();
 					}
 				}
-				var anim = setInterval(function() {
-					window.requestAnimFrame(scrollAnimate);
-				}, 5);
+				var anim = setInterval(scrollAnimate, 1);
 			}
 		}
 	},
