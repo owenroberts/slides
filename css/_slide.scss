@@ -79,7 +79,18 @@
 			&.half { width: 45%; }
 		}
 		p.label { font-size: 0.5em; font-style:italic;  }
-		blockquote { color: black; }		
+		blockquote { color: black; }
+
+		.ace_editor {
+			max-width: 50%;
+		}
+		.ace_canvas {
+			position: absolute;
+			top: 200px;
+			right: 0;
+			outline: 1px solid #9b26ff;
+			z-index:99;
+		} 
 	}
 	.utube {
 		margin-top:0;

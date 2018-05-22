@@ -69,8 +69,7 @@ var S = {
 				}
 			}
 			
-			/* scroll back to the current slide */
-			S.scrollToSlide();
+			
 			
 			/* get rid of mag buttons on images */
 			const magButtons = document.getElementsByClassName('mag');
@@ -84,8 +83,8 @@ var S = {
 			else 
 				S.bkg.toggle();
 
-
-			// document.body.style.backgroundColor = S.bkg.alive.toString();
+			// fix for chrome crappiness
+			document.body.style.backgroundColor = S.bkg.alive.toString();
 
 			S.colors = { 
 				white: "#ffffff",
@@ -102,6 +101,9 @@ var S = {
 			}; 
 			/* color pallette for drawings
 				based on bkg, this look ok?...  */
+
+			/* scroll back to the current slide */
+			S.scrollToSlide();
 		}
 	},
 
@@ -130,8 +132,8 @@ var S = {
 			};
 			S.updateDrawingWidth();
 
-			// chrome scroll fix?
-			// document.body.style.backgroundColor = 'aliceblue';
+			// fix for chrome crappiness
+			document.body.style.backgroundColor = 'aliceblue';
 
 			/* check for mag buttons */
 			const magButtons = document.getElementsByClassName('mag');
@@ -242,7 +244,7 @@ var S = {
 			var dist = Math.abs(startY - endY);
 			var increment = dist / 60;
 			if (dist > 0) {
-				S.bkg.stoggle();
+				S.bkg.stoggle(); // chrome crap anim fix
 				S.isScrolling = true;
 				function scrollAnimate() {
 					startY += (startY < endY) ? increment : -increment;
@@ -251,10 +253,10 @@ var S = {
 						window.scrollTo(0, endY);
 						S.isScrolling = false;
 						clearInterval(anim);
-						S.bkg.stoggle();
+						S.bkg.stoggle(); // chrome crap anim fix
 					}
 				}
-				var anim = setInterval(scrollAnimate, 1);
+				var anim = setInterval(scrollAnimate, 1000 / 60);
 			}
 		}
 	},
@@ -413,31 +415,33 @@ var S = {
 
 	/* key board events */
 	getKey: function(ev) {
-		switch (Cool.keys[ev.which]) {
-			case "down": 
-			case "right":
-				if (!S.isScrolling) S.nextSlide();
-			break;
-			
-			case "up":
-			case "left":
-				if (!S.isScrolling) S.previousSlide();
-			break;
+		if (ev.target.classList[0] != "ace_text-input") {
+			switch (Cool.keys[ev.which]) {
+				case "down": 
+				case "right":
+					if (!S.isScrolling) S.nextSlide();
+				break;
+				
+				case "up":
+				case "left":
+					if (!S.isScrolling) S.previousSlide();
+				break;
 
-			case "space":
-				ev.preventDefault();
-				if (S.isSlides) 
-					S.toggleDrawing();
-			break;
+				case "space":
+					ev.preventDefault();
+					if (S.isSlides) 
+						S.toggleDrawing();
+				break;
 
-			case "o":
-				S.setOutline();
-			break;
+				case "o":
+					S.setOutline();
+				break;
 
-			case "s":
-				if (S.slides.length > 0) 
-					S.setSlides();
-			break;
+				case "s":
+					if (S.slides.length > 0) 
+						S.setSlides();
+				break;
+			}
 		}
 	},
 

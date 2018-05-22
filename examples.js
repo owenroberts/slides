@@ -27,7 +27,6 @@ window.addEventListener('load', function() {
 		*/
 
 		/* add preview button */
-		let canvas;
 		if (ex.dataset.preview != undefined) {
 
 			const closeBtn = document.createElement('button');
@@ -48,6 +47,7 @@ window.addEventListener('load', function() {
 				const _p5 = p5;
 				if (canvas) {
 					canvas.remove();
+					// fucture maybe reset the newp5 functions here
 				}
 				const s = function(p) {
 					if (runnable.indexOf('setup()') === -1 && runnable.indexOf('draw()') === -1) {
@@ -81,13 +81,19 @@ window.addEventListener('load', function() {
 				}
 				const newp5 = new _p5(s, ex.parentNode);
 				canvas = newp5.canvas;
-				canvas.classList.add('aces-canvas');
+				canvas.classList.add('ace_canvas');
 			};
 
 			closeBtn.onclick = function() {
 				canvas.remove();
 			}
-
+		} else {
+			edit.setOptions({
+				readOnly: true,
+				highlightActiveLine: false,
+    			highlightGutterLine: false
+			});
+			edit.renderer.$cursorLayer.element.style.opacity=0
 		}
 	}
 
