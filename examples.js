@@ -74,7 +74,7 @@ window.addEventListener('load', function() {
 						if (typeof p.setup === 'undefined') {
 							console.log('no setup');
 							p.setup = function() {
-								p.createCanvas(640, 460);
+								p.createCanvas(640, 360);
 							}
 						}
 					}

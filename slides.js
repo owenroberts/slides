@@ -11,7 +11,7 @@ var S = {
 		this.container = document.getElementById('container');
 		this.slides =  document.getElementsByClassName('slide'); // slide elements
 		this.totalSlides = this.slides.length;
-		this.currentSlide = 0;
+		this.currentSlide = localStorage.getItem(location.pathname) || 0; // mainly for testing, returns to slide after reload, good for when i need to reload in class
 		
 		this.drawings = []; /* drawings made on slides, maybe get rid of this */
 		this.loadedDrawings = []; /* preload drawings */
@@ -68,8 +68,6 @@ var S = {
 					S.slides[i].children[0].style.marginTop = "null";
 				}
 			}
-			
-			
 			
 			/* get rid of mag buttons on images */
 			const magButtons = document.getElementsByClassName('mag');
@@ -238,6 +236,7 @@ var S = {
 
 	/* animates scroll with setInterval, kinda choppy */
 	scrollToSlide: function() {
+		localStorage.setItem(location.pathname, S.currentSlide);
 		if (S.isSlides && !S.isScrolling) {
 			var startY = window.scrollY;
 			var endY = S.slides[S.currentSlide].offsetTop;
