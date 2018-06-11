@@ -46,6 +46,9 @@ c {
 c::after {
   content: "> "; }
 
+.error {
+  color: red; }
+
 a, a:visited {
   color: darkblue;
   transition: color 300ms; }

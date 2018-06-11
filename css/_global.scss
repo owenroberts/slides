@@ -31,6 +31,7 @@ hl { color: $highlight; } // also made this one up, stands for highlight
 bg { background: $highlight; }
 c { color:blue; } // this is for the console in code examples
 c::after { content: "> "; }
+.error { color: red; }
 
 a, a:visited {
 	color: darkblue;
