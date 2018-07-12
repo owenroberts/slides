@@ -1,5 +1,5 @@
 body {
-	font-family: $bodyfont;
+	font-family: $body-font;
 	line-height:1.45;
 	background:aliceblue;
 }
@@ -14,7 +14,7 @@ code {
 	/* background:white; */
 	/* padding:0 .25em; */
 /* 	border-radius: 0.15em; */
-	font-family: Menlo, Monaco, monospace;
+	font-family: $code-font;
 	color:black;
 }
 
@@ -33,6 +33,20 @@ c { color:blue; } // this is for the console in code examples
 c::after { content: "> "; }
 .error { color: red; }
 
+.ace-preview, .ace-close {
+	font-family: menlo;
+	background: lightgray;
+	margin-top: 3px;
+	margin-right: 3px;
+	margin-bottom: 1em;
+}
+.ace-preview:active, .ace-close:active {
+	border-color: $note;
+}
+.ace-preview:focus, .ace-close:focus {
+	outline:none;
+}
+
 a, a:visited {
 	color: darkblue;
 	transition: color 300ms;
@@ -43,7 +57,7 @@ a:hover {
 }
 em, strong { 
 	color: $strong; 
-	font-family: $headerfont;
+	font-family: $header-font;
 }
 
 .wrap { white-space: pre-wrap; }

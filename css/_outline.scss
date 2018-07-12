@@ -16,23 +16,23 @@
 	}
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
-		font-family: $headerfont;
+		font-family: $header-font;
 		/* margin: 6em 0; */
 		border-bottom:1px solid $highlight;
 		p { 
 			margin: 0.5em 0;
 			font-size: 1em;
-			font-family: $headerfont;
+			font-family: $header-font;
 		}
 	}
 	#content {
 		margin-left: calc(200px + 2em);
 	}
 
-	p, li {font-family: $bodyfont}
+	p, li {font-family: $body-font}
 	p.label { font-size: 0.75em; }
 
-	note, a { font-family: $headerfont; }
+	note, a { font-family: $header-font; }
 	code { 
 		/* background:white;
 		border: 1px solid lightgray; */
@@ -54,10 +54,10 @@
 	a em { color:blue; }
 	h1 { 
 		border-bottom:1px solid $highlight;
-		font-family: $headerfont;
+		font-family: $header-font;
 	}
 	h2, h3 { 
-		font-family: $headerfont;
+		font-family: $header-font;
 		margin-bottom:0;
 	}
 

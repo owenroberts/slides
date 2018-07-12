@@ -49,6 +49,19 @@ c::after {
 .error {
   color: red; }
 
+.ace-preview, .ace-close {
+  font-family: menlo;
+  background: lightgray;
+  margin-top: 3px;
+  margin-right: 3px;
+  margin-bottom: 1em; }
+
+.ace-preview:active, .ace-close:active {
+  border-color: #9b26ff; }
+
+.ace-preview:focus, .ace-close:focus {
+  outline: none; }
+
 a, a:visited {
   color: darkblue;
   transition: color 300ms; }
@@ -289,7 +302,7 @@ canvas.drawing {
     user-select: text; }
   .slides em, .slides strong {
     font-family: "Karla", Helvetica, Arial, sans-serif;
-    color: #D1E5F7; }
+    /* color: $em; */ }
   .slides a em {
     color: darkblue; }
   .slides img + img {
@@ -318,6 +331,10 @@ canvas.drawing {
     margin: 1em 0; }
   .slides hl {
     color: #5DD8C8; }
+  .slides note, .slides code, .slides em {
+    background-color: white;
+    padding: 2px 4px;
+    border-radius: 3px; }
   .slides .slide {
     position: relative;
     width: 100%;

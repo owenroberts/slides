@@ -5,7 +5,7 @@
 	height:100%;
 	font-size: 32px;
 	color:white;
-	font-family:  $slidefont;
+	font-family:  $slide-font;
 	position:relative;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -16,10 +16,10 @@
 		user-select: text;
 	}
 	em, strong { 
-		font-family: $slidefont; 
-		color: $em;
+		font-family: $slide-font; 
+		/* color: $em; */
 	}
-	a em {color:darkblue;}
+	a em { color:darkblue; }
 	/* code {color:black;} */
 	img + img { margin-top:1em; }
 
@@ -53,6 +53,12 @@
 	}
 	p { margin: 1em 0; }
 	hl { color: $highlight; };
+	note, code, em {
+		background-color: white;
+		padding: 2px 4px;
+		border-radius: 3px;
+	}
+	
 	.slide {
 		position:relative;
 		&#title {

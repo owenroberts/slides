@@ -11,8 +11,8 @@ $code: #2480d2;
 $strong: #2480d2;
 $hover: #3BE0CB;
 
-$headerfont: "Karla", Helvetica, Arial, sans-serif;
-$bodyfont: "Lora", serif;
+$header-font: "Karla", Helvetica, Arial, sans-serif;
+$body-font: "Lora", serif;
 
 // $headerfont:  "Asap", Helvetica, sans-serif;
 // $bodyfont:  "Asap", Helvetica, sans-serif;
@@ -21,7 +21,8 @@ $bodyfont: "Lora", serif;
 // $headerfont: 'Arimo','Helvetica', sans-serif;
 // $bodyfont: 'Arimo','Helvetica', sans-serif;
 
-$slidefont: 'Karla', Helvetica, Arial, sans-serif;
+$slide-font: 'Karla', Helvetica, Arial, sans-serif;
+$code-font:  Menlo, Monaco, monospace;
 
 @import "global";
 @import "outline";

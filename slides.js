@@ -241,9 +241,8 @@ var S = {
 			var startY = window.scrollY;
 			var endY = S.slides[S.currentSlide].offsetTop;
 			var dist = Math.abs(startY - endY);
-			var increment = dist / 60;
+			var increment = dist / 30;
 			if (dist > 0) {
-				S.bkg.stoggle(); // chrome crap anim fix
 				S.isScrolling = true;
 				function scrollAnimate() {
 					startY += (startY < endY) ? increment : -increment;
@@ -252,7 +251,6 @@ var S = {
 						window.scrollTo(0, endY);
 						S.isScrolling = false;
 						clearInterval(anim);
-						S.bkg.stoggle(); // chrome crap anim fix
 					}
 				}
 				var anim = setInterval(scrollAnimate, 1000 / 60);

@@ -40,9 +40,9 @@ window.addEventListener('load', function() {
 			previewBtn.textContent = "Preview Code";
 
 			let canvas;
+			console.log(canvas);
 
-			previewBtn.onclick = function() {
-
+			function loadPreview() {
 				const runnable = edit.getValue();
 				const _p5 = p5;
 				if (canvas) {
@@ -82,11 +82,24 @@ window.addEventListener('load', function() {
 				const newp5 = new _p5(s, ex.parentNode);
 				canvas = newp5.canvas;
 				canvas.classList.add('ace_canvas');
-			};
+			}
 
-			closeBtn.onclick = function() {
+			function closePreview() {
 				canvas.remove();
 			}
+
+			previewBtn.addEventListener("click", loadPreview);
+			closeBtn.addEventListener("click", closePreview);
+
+			ex.addEventListener("keydown", (ev) => {
+				if (Cool.keys[ev.which] == "enter" && ev.metaKey) {
+					if (canvas && canvas.parentNode)
+						canvas.remove();
+					else
+						loadPreview();
+				}
+			});
+
 		} else {
 			edit.setOptions({
 				readOnly: true,
