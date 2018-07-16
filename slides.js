@@ -412,6 +412,7 @@ var S = {
 
 	/* key board events */
 	getKey: function(ev) {
+		// console.log(document.activeElement);
 		if (ev.target.classList[0] != "ace_text-input") {
 			switch (Cool.keys[ev.which]) {
 				case "down": 

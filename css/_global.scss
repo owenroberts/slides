@@ -47,6 +47,10 @@ c::after { content: "> "; }
 	outline:none;
 }
 
+iframe.sketch {
+	overflow:hidden;
+}
+
 a, a:visited {
 	color: darkblue;
 	transition: color 300ms;

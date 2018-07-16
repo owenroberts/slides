@@ -1,5 +1,9 @@
+/* 
+	preview running the sketch 
+	based on
+	http://p5play.molleindustria.org/examples/index.html#
+*/
 let p5functions = [ 'preload', 'setup','draw','keyPressed','keyReleased','keyTyped','mouseMoved','mouseDragged','mousePressed','mouseReleased','mouseClicked','touchStarted','touchMoved','touchEnded'];
-
 
 window.addEventListener('load', function() {
 
@@ -20,13 +24,6 @@ window.addEventListener('load', function() {
 		edit.resize();
 		edit.setFontSize(14);
 
-		/* 
-			preview running the sketch 
-			based on
-			http://p5play.molleindustria.org/examples/index.html#
-		*/
-
-		/* add preview button */
 		if (ex.dataset.preview != undefined) {
 
 			const closeBtn = document.createElement('button');
@@ -40,14 +37,12 @@ window.addEventListener('load', function() {
 			previewBtn.textContent = "Preview Code";
 
 			let canvas;
-			console.log(canvas);
-
 			function loadPreview() {
 				const runnable = edit.getValue();
 				const _p5 = p5;
 				if (canvas) {
 					canvas.remove();
-					// fucture maybe reset the newp5 functions here
+					// future maybe reset the newp5 functions here
 				}
 				const s = function(p) {
 					if (runnable.indexOf('setup()') === -1 && runnable.indexOf('draw()') === -1) {
@@ -72,7 +67,7 @@ window.addEventListener('load', function() {
 						});
 
 						if (typeof p.setup === 'undefined') {
-							console.log('no setup');
+							// console.log('%c no setup', 'color:white;background:lightblue;');
 							p.setup = function() {
 								p.createCanvas(640, 360);
 							}
@@ -99,7 +94,6 @@ window.addEventListener('load', function() {
 						loadPreview();
 				}
 			});
-
 		} else {
 			edit.setOptions({
 				readOnly: true,
@@ -109,5 +103,4 @@ window.addEventListener('load', function() {
 			edit.renderer.$cursorLayer.element.style.opacity=0
 		}
 	}
-
 });
