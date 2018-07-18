@@ -19,6 +19,7 @@ window.addEventListener('load', function() {
 		edit.getSession().setMode('ace/mode/' + lang);
 		edit.setOption('maxLines', 1000);
 		edit.session.setTabSize(4);
+		edit.session.setUseWrapMode(true);
 		ex.style.height = edit.getSession().getDocument().getLength() *
 				edit.renderer.lineHeight + 'px';
 		edit.resize();
@@ -80,7 +81,8 @@ window.addEventListener('load', function() {
 			}
 
 			function closePreview() {
-				canvas.remove();
+				if (canvas)
+					canvas.remove();
 			}
 
 			previewBtn.addEventListener("click", loadPreview);
