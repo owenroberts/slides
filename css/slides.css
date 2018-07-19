@@ -203,7 +203,7 @@ canvas.drawing {
       border-left: 3px solid #5DD8C8;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0; }
-  .outline p code {
+  .outline p code, .outline table code {
     color: #2480d2;
     white-space: nowrap; }
   .outline li code {
