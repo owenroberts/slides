@@ -75,9 +75,13 @@ window.addEventListener('load', function() {
 						}
 					}
 				}
-				const newp5 = new _p5(s, ex.parentNode);
-				canvas = newp5.canvas;
-				canvas.classList.add('ace_canvas');
+				if (runnable.indexOf('setup()') === -1 && runnable.indexOf('draw()') === -1) {
+					eval(runnable);
+				} else {
+					const newp5 = new _p5(s, ex.parentNode);
+					canvas = newp5.canvas;
+					canvas.classList.add('ace_canvas');
+				}
 			}
 
 			function closePreview() {
