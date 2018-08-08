@@ -60,6 +60,7 @@ window.addEventListener('load', function() {
 
 						var fxns = p5functions;
 						fxns.forEach(function(f) {
+							console.log(f);
 							if (runnable.indexOf("function " + f + "()") !== -1) {
 								with (p) {
 									p[f] = eval(f);
@@ -79,8 +80,15 @@ window.addEventListener('load', function() {
 					eval(runnable);
 				} else {
 					const newp5 = new _p5(s, ex.parentNode);
-					canvas = newp5.canvas;
-					canvas.classList.add('ace_canvas');
+					/* preload delay fix */
+					const canvasInterval = setInterval(() => {
+						if (newp5.canvas) {
+							canvas = newp5.canvas;
+							canvas.classList.add('ace_canvas');
+							clearInterval(canvasInterval);
+						}
+					}, 100);
+					
 				}
 			}
 
