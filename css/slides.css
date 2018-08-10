@@ -113,6 +113,10 @@ table {
     text-align: left;
     padding: .25em;
     margin: .25em; }
+  table.code {
+    background: white;
+    margin: 0;
+    font-family: Menlo, Monaco, monospace; }
 
 blockquote {
   background: white;
@@ -168,7 +172,7 @@ canvas.drawing {
     margin: 1em 0;
     clear: both;
     max-width: 640px; }
-    .outline .slide p, .outline .slide blockquote {
+    .outline .slide p, .outline .slide blockquote, .outline .slide table {
       max-width: 560px;
       /* margin-left: 1rem; */
       font-size: 20px;

@@ -60,7 +60,6 @@ window.addEventListener('load', function() {
 
 						var fxns = p5functions;
 						fxns.forEach(function(f) {
-							console.log(f);
 							if (runnable.indexOf("function " + f + "()") !== -1) {
 								with (p) {
 									p[f] = eval(f);

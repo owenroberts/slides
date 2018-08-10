@@ -98,7 +98,12 @@ table {
 	  	text-align: left;
 		padding: .25em;
 		margin:.25em;
-	}	
+	}
+	&.code {
+		background: white;
+		margin: 0;
+		font-family: $code-font;
+	}
 }
 
 blockquote {
