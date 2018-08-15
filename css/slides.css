@@ -30,6 +30,7 @@ note {
 
 pre {
   word-wrap: break-word;
+  white-space: pre-line;
   tab-size: 4; }
   pre code {
     background: white; }
@@ -376,7 +377,7 @@ canvas.drawing {
     .slides .slide .ace_editor {
       /* max-width: 50%; */
       zoom: 1.5; }
-    .slides .slide .ace_canvas {
+    .slides .slide .ace_canvas, .slides .slide .p5Canvas {
       position: absolute;
       top: 200px;
       right: 0;

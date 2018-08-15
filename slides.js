@@ -412,7 +412,6 @@ var S = {
 
 	/* key board events */
 	getKey: function(ev) {
-		// console.log(document.activeElement);
 		if (ev.target.classList[0] != "ace_text-input") {
 			switch (Cool.keys[ev.which]) {
 				case "down": 
@@ -426,6 +425,7 @@ var S = {
 				break;
 
 				case "space":
+					console.log('here');
 					ev.preventDefault();
 					if (S.isSlides) 
 						S.toggleDrawing();

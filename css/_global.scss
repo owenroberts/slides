@@ -20,11 +20,10 @@ code {
 
 note { color: $note; } // i made up this tag
 pre { 
-	word-wrap:break-word;
+	word-wrap: break-word;
+	white-space: pre-line;
 	tab-size:4; 
-	code {
-		background: white;
-	}
+	code { background: white; }
 }
 
 hl { color: $highlight; } // also made this one up, stands for highlight

@@ -11,7 +11,6 @@ window.addEventListener('load', function() {
 	for (let i = 0; i < examples.length; i++) {
 		const ex = examples[i];
 		let lang = ex.dataset.lang;
-		
 		if (!lang)
 			lang = "javascript";
 		const edit = ace.edit(ex);
@@ -24,6 +23,12 @@ window.addEventListener('load', function() {
 				edit.renderer.lineHeight + 'px';
 		edit.resize();
 		edit.setFontSize(14);
+
+		ex.addEventListener('keydown', function(ev) {
+			if (Cool.keys[ev.which] == 'escape') {
+				edit.blur();
+			}
+		});
 
 		if (ex.dataset.preview != undefined) {
 
@@ -83,21 +88,21 @@ window.addEventListener('load', function() {
 					const canvasInterval = setInterval(() => {
 						if (newp5.canvas) {
 							canvas = newp5.canvas;
-							canvas.classList.add('ace_canvas');
+							console.log(canvas, newp5);
 							clearInterval(canvasInterval);
 						}
 					}, 100);
-					
+
+					function closePreview() {
+						if (canvas) {
+							canvas.remove();
+							canvas = undefined;
+						}
+					}
+					closeBtn.addEventListener("click", closePreview);
 				}
 			}
-
-			function closePreview() {
-				if (canvas)
-					canvas.remove();
-			}
-
 			previewBtn.addEventListener("click", loadPreview);
-			closeBtn.addEventListener("click", closePreview);
 
 			ex.addEventListener("keydown", (ev) => {
 				if (Cool.keys[ev.which] == "enter" && ev.metaKey) {
