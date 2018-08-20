@@ -18,6 +18,9 @@ body, html {
 .karla {
   font-family: "Karla", Helvetica, Arial, sans-serif; }
 
+#container {
+  min-width: 320px; }
+
 code {
   /* background:white; */
   /* padding:0 .25em; */

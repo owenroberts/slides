@@ -10,6 +10,10 @@ body, html { height: 100%; }
 .key {color:#3E5F7B;}
 .karla { font-family: "Karla", Helvetica, Arial, sans-serif; }
 
+#container {
+	min-width: 320px;
+}
+
 code {
 	/* background:white; */
 	/* padding:0 .25em; */
