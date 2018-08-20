@@ -383,6 +383,12 @@ canvas.drawing {
       right: 0;
       outline: 1px solid #9b26ff;
       z-index: 99; }
+    .slides .slide .reveal {
+      opacity: 0;
+      transition: opacity 300ms; }
+    .slides .slide .show {
+      opacity: 1;
+      transition: opacity 300ms; }
   .slides .utube {
     margin-top: 0;
     position: relative;

@@ -49,23 +49,36 @@ var S = {
 	setSlides: function() {
 		if (!S.isSlides) {
 			S.isSlides = true;
-			S.container.className = 'slides';
-
+			S.container.classList.add('slides');
+			S.container.classList.remove('outline');
 			S.updateDrawingWidth();
+
 
 			/* go through slides and set margin top to center vertically (ish actually closer to top)
 				css version: .slide
 					display: flex; flex-direction: column; justify-content: center; */
-			for (var i = 0; i < S.slides.length; i++) {
-				S.slides[i].children[0].style.marginTop = "0";
-				let h = S.slides[i].offsetHeight;
+			for (let i = 0; i < S.slides.length; i++) {
+				const slide =  S.slides[i];
+				slide.children[0].style.marginTop = "0";
+				let h = slide.offsetHeight;
 				if (h < S.slideHeight) {
-					S.slides[i].style.height = S.slideHeight + "px";
-					if (S.slides[i].children.length > 0) 
-						S.slides[i].children[0].style.marginTop = ((S.slideHeight - h) / 4) + "px";
+					slide.style.height = S.slideHeight + "px";
+					if (slide.children.length > 0) 
+						slide.children[0].style.marginTop = ((S.slideHeight - h) / 4) + "px";
 				} else {
-					S.slides[i].className = "long slide";
-					S.slides[i].children[0].style.marginTop = "null";
+					slide.className = "long slide";
+					slide.children[0].style.marginTop = "null";
+				}
+
+				if (S.container.classList.contains('reveal') && i > 0) {
+					for (let j = 1; j < slide.children.length; j++) {
+						const child = slide.children[j];
+						if (child.tagName != "H1" && 
+							child.tagName != "H2" && 
+							child.tagName != "BUTTON") {
+							child.classList.add('reveal');
+						}
+					}
 				}
 			}
 			
@@ -105,13 +118,30 @@ var S = {
 		}
 	},
 
+	revealItem: function() {
+		const children = S.slides[S.currentSlide].children;
+		for (let i = 0; i < children.length; i++) {
+			const child = children[i];
+			if (child.classList.contains('reveal')) {
+				child.classList.add('show');
+				child.classList.remove('reveal');
+				break;
+			}
+		}
+	},
+
+	focusCode: function() {
+		S.slides[S.currentSlide].children[0].firstElementChild.focus();
+	},
+
 	/* sets container to outline, generates mag buttons or shows them if already there */
 	setOutline: function() {
 		if (S.isSlides || S.start) {
 			if (S.start) 
 				S.start = false;
 			S.isSlides = false;
-			S.container.className = 'outline';
+			S.container.classList.add('outline');
+			S.container.classList.remove('slides');
 			/* hide current drawings */
 			if (S.drawings[S.currentSlide])
 				if (S.drawings[S.currentSlide][0].active)
@@ -425,7 +455,6 @@ var S = {
 				break;
 
 				case "space":
-					console.log('here');
 					ev.preventDefault();
 					if (S.isSlides) 
 						S.toggleDrawing();
@@ -438,6 +467,15 @@ var S = {
 				case "s":
 					if (S.slides.length > 0) 
 						S.setSlides();
+				break;
+
+				case "r":
+					S.revealItem();
+				break;
+
+				case "c":
+					ev.preventDefault();
+					S.focusCode();
 				break;
 			}
 		}

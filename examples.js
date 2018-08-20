@@ -88,7 +88,6 @@ window.addEventListener('load', function() {
 					const canvasInterval = setInterval(() => {
 						if (newp5.canvas) {
 							canvas = newp5.canvas;
-							console.log(canvas, newp5);
 							clearInterval(canvasInterval);
 						}
 					}, 100);
