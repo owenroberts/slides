@@ -131,7 +131,12 @@ var S = {
 	},
 
 	focusCode: function() {
-		S.slides[S.currentSlide].children[0].firstElementChild.focus();
+		if (S.isSlides) {
+			const c = S.slides[S.currentSlide].children[0].firstElementChild;
+			if (c.tagName == "TEXTAREA") {
+				c.focus();
+			}
+		}
 	},
 
 	/* sets container to outline, generates mag buttons or shows them if already there */
