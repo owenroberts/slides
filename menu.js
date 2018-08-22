@@ -10,6 +10,9 @@ var Menu = {
 		Menu.menu.appendChild(menuList);
 		
 		for (let i = 0; i < headers.length; i++) {
+
+			const slideNumber = headers[i].parentNode.dataset.number;
+
 			const title = headers[i].innerText.toLowerCase().replace(/ /g, '-');
  			headers[i].setAttribute("id", title);
 			const link = document.createElement('li');
@@ -19,6 +22,17 @@ var Menu = {
 			let subtitle = "";
 			a.innerText = headers[i].innerText + subtitle;
 			menuList.appendChild(link);
+
+			a.addEventListener('click', function(ev) {
+				console.log(ev);
+				if (S.isSlides) {
+					console.log(this);
+					S.currentSlide = slideNumber;
+					S.scrollToSlide();
+				}
+			});
+
+
 			if (headers[i].tagName == "H1") {
 				link.style.fontWeight = "bold";
 			} else {

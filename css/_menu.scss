@@ -31,4 +31,7 @@
 		border-top:none;
 		border-bottom:1px solid $highlight;
 	}
+	h3 + p {
+		margin: 0;
+	}
 }

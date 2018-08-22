@@ -128,5 +128,24 @@
 		cursor: url('../img/pencil.ico'), crosshair;
 	}
 
-	#menu { display: none; }
+	#menu { 
+		display: none; 
+		&.show-menu {
+			display: block;
+			z-index: 9;
+			width: auto;
+			padding: 0.25em;
+			margin-right: 4em;
+			h3, p {
+				display: none;
+			}
+			li {
+				display: inline-block;
+				margin-right: 0.5em;
+				font-size: 18px;
+				line-height: 1;
+			}
+		}
+
+	}
 }

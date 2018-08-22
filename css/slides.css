@@ -293,6 +293,8 @@ canvas.drawing {
   #menu hr {
     border-top: none;
     border-bottom: 1px solid #5DD8C8; }
+  #menu h3 + p {
+    margin: 0; }
 
 .slides {
   width: 100%;
@@ -410,6 +412,19 @@ canvas.drawing {
     cursor: url("../img/pencil.ico"), crosshair; }
   .slides #menu {
     display: none; }
+    .slides #menu.show-menu {
+      display: block;
+      z-index: 9;
+      width: auto;
+      padding: 0.25em;
+      margin-right: 4em; }
+      .slides #menu.show-menu h3, .slides #menu.show-menu p {
+        display: none; }
+      .slides #menu.show-menu li {
+        display: inline-block;
+        margin-right: 0.5em;
+        font-size: 18px;
+        line-height: 1; }
 
 img + .mag {
   cursor: pointer;

@@ -155,6 +155,7 @@ var S = {
 				S.bkg.toggle();
 			for (let i = 0; i < S.slides.length; i++) {
 				S.slides[i].style.height = "auto";
+				S.slides[i].dataset.number = i;
 				if (S.slides[i].children.length > 0) {
 					if (S.slides[i].children[0].tagName != "H2")
 						S.slides[i].children[0].style.marginTop = "auto";
@@ -481,6 +482,15 @@ var S = {
 				case "c":
 					ev.preventDefault();
 					S.focusCode();
+				break;
+
+				case "m":
+					const m = document.getElementById('menu');
+					if (m.classList.contains('show-menu')) {
+						m.classList.remove('show-menu');
+					} else {
+						m.classList.add('show-menu')
+					}
 				break;
 			}
 		}
