@@ -25,7 +25,7 @@ code {
 note { color: $note; } // i made up this tag
 pre { 
 	word-wrap: break-word;
-	white-space: pre-line;
+	white-space: pre-wrap;
 	tab-size:4; 
 	code { background: white; }
 }
