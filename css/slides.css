@@ -420,6 +420,8 @@ canvas.drawing {
       margin-right: 4em; }
       .slides #menu.show-menu h3, .slides #menu.show-menu p {
         display: none; }
+      .slides #menu.show-menu ul {
+        line-height: 1; }
       .slides #menu.show-menu li {
         display: inline-block;
         margin-right: 0.5em;
