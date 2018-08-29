@@ -75,8 +75,13 @@ var S = {
 						const child = slide.children[j];
 						if (child.tagName != "H1" && 
 							child.tagName != "H2" && 
-							child.tagName != "BUTTON") {
+							child.tagName != "BUTTON" &&
+							child.tagName != "UL") {
 							child.classList.add('reveal');
+						} else if (child.tagName == "UL") {
+							for (let k = 0; k < child.children.length; k++) {
+								child.children[k].classList.add('reveal');
+							}
 						}
 					}
 				}
@@ -122,6 +127,16 @@ var S = {
 		const children = S.slides[S.currentSlide].children;
 		for (let i = 0; i < children.length; i++) {
 			const child = children[i];
+			if (child.tagName == "UL") {
+				for (let j = 0; j < child.children.length; j++) {
+					const ch = child.children[j];
+					if (ch.classList.contains('reveal')) {
+						ch.classList.add('show');
+						ch.classList.remove('reveal');
+						break;
+					}
+				}
+			}
 			if (child.classList.contains('reveal')) {
 				child.classList.add('show');
 				child.classList.remove('reveal');
