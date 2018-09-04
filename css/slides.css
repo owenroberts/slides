@@ -120,7 +120,8 @@ table {
   table.code {
     background: white;
     margin: 0;
-    font-family: Menlo, Monaco, monospace; }
+    font-family: Menlo, Monaco, monospace;
+    color: black; }
 
 blockquote {
   background: white;
