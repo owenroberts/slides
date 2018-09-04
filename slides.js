@@ -76,7 +76,8 @@ var S = {
 						if (child.tagName != "H1" && 
 							child.tagName != "H2" && 
 							child.tagName != "BUTTON" &&
-							child.tagName != "UL") {
+							child.tagName != "UL" &&
+							!child.classList.contains('label')) {
 							child.classList.add('reveal');
 						} else if (child.tagName == "UL") {
 							for (let k = 0; k < child.children.length; k++) {
