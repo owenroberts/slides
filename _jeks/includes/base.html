@@ -4,10 +4,6 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <script src="{{site.url}}{{site.baseurl}}/slides/lib/jquery-1.12.3.min.js"></script>
 
-<style>
-	body {
-		background: 
-		linear-gradient( rgba(240, 248, 255, 0.95), rgba(240, 248, 255, 0.95) ), 
-		url({{site.url}}{{site.baseurl}}/perlin_fractal_max.jpg);
-	}
-</style>
+{% if site.background %}
+<link  href="{{site.url}}{{site.baseurl}}/background.css" type="text/css"  rel="stylesheet">
+{% endif %}
