@@ -54,7 +54,7 @@ c::after {
   color: red; }
 
 .ace-preview, .ace-close {
-  font-family: menlo;
+  font-family: Menlo, Monaco, monospace;
   background: lightgray;
   margin-top: 3px;
   margin-right: 3px;
