@@ -24,11 +24,11 @@ var Menu = {
 			menuList.appendChild(link);
 
 			a.addEventListener('click', function(ev) {
-				console.log(ev);
-				if (S.isSlides) {
-					console.log(this);
-					S.currentSlide = slideNumber;
-					S.scrollToSlide();
+				if (typeof S != 'undefined') {
+					if (S.isSlides) {
+						S.currentSlide = slideNumber;
+						S.scrollToSlide();
+					}
 				}
 			});
 
