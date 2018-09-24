@@ -12,19 +12,6 @@ var S = {
 		this.slides =  document.getElementsByClassName('slide'); // slide elements
 		this.totalSlides = this.slides.length;
 		this.currentSlide = localStorage.getItem(location.pathname) || 0; // mainly for testing, returns to slide after reload, good for when i need to reload in class
-		
-		this.drawings = []; /* drawings made on slides, maybe get rid of this */
-		this.loadedDrawings = []; /* preload drawings */
-		
-		/* draw loop setup */
-		this.fps = 7;
-		this.interval = 1000 / this.fps;
-		this.timer = performance.now();
-		this.loopStarted = false; // this is bc draw loop triggered in too places, kinda pointless?  also pause drawings??? 
-
-		/* drawing timer */
-		this.mouseTime = 0;
-		this.mouseInterval = 30;
 
 		/* creates slides/outline buttons 
 			in js so it does't have to be in html */
@@ -41,8 +28,6 @@ var S = {
 			outlineBtn.onclick = this.setOutline;
 			container.appendChild(outlineBtn);
 		}
-
-		this.loadDrawings();
 	},
 
 	/* sets container to slides, resizes .slide, hides mag buttons and updates scroll */
@@ -51,8 +36,6 @@ var S = {
 			S.isSlides = true;
 			S.container.classList.add('slides');
 			S.container.classList.remove('outline');
-			S.updateDrawingWidth();
-
 
 			/* go through slides and set margin top to center vertically (ish actually closer to top)
 				css version: .slide
@@ -90,8 +73,9 @@ var S = {
 			
 			/* get rid of mag buttons on images */
 			const magButtons = document.getElementsByClassName('mag');
-			for (let i = 0; i < magButtons.length; i++)
+			for (let i = 0; i < magButtons.length; i++) {
 				magButtons[i].style.display = "none";
+			}
 
 			/* load bkg if not loaded */
 			/* p5 cellular automata bkg, maybe make some new ones? */
@@ -99,28 +83,8 @@ var S = {
 				S.bkg = new p5(BKG);
 			else 
 				S.bkg.toggle();
-
-			// fix for chrome crappiness
-			document.body.style.backgroundColor = S.bkg.alive.toString();
-
-			S.colors = { 
-				white: "#ffffff",
-				black: "#000000",
-				alive: S.bkg.aliveOpp.toString(),
-				born: S.bkg.bornOpp.toString(),
-				died: S.bkg.diedOpp.toString(),
-				nothing: S.bkg.nothingOpp.toString()
-				/*pink:"FF0DD0", 
-				purple:"7C0CE8", 
-				blue: "0014FF", 
-				lightblue: "0C9BE8", 
-				green:"00FFC1"*/
-			}; 
-			/* color pallette for drawings
-				based on bkg, this look ok?...  */
-
-			/* scroll back to the current slide */
-			S.scrollToSlide();
+			
+			S.scrollToSlide(); /* scroll back to the current slide */
 		}
 	},
 
@@ -163,10 +127,7 @@ var S = {
 			S.isSlides = false;
 			S.container.classList.add('outline');
 			S.container.classList.remove('slides');
-			/* hide current drawings */
-			if (S.drawings[S.currentSlide])
-				if (S.drawings[S.currentSlide][0].active)
-					S.toggleDrawing();
+
 			if (S.bkg)
 				S.bkg.toggle();
 			for (let i = 0; i < S.slides.length; i++) {
@@ -178,9 +139,7 @@ var S = {
 					else
 						S.slides[i].children[0].style.marginTop = "2em";
 				}
-
-			};
-			S.updateDrawingWidth();
+			}
 
 			// fix for chrome crappiness
 			document.body.style.backgroundColor = 'aliceblue';
@@ -256,24 +215,6 @@ var S = {
 		}
 	},
 
-	/* for switching between slides and outlines */
-		/* added drawings are hidden and don't need to be upated .... */
-	updateDrawingWidth: function() {
-		const loadedCanvases = document.getElementsByClassName('loaded');
-		for (var i = 0; i < loadedCanvases.length; i++) {
-			const canvas = loadedCanvases[i];
-			const ctx = canvas.getContext('2d');
-			// 0.96 for padding 2%
-			const z =  (canvas.parentNode.offsetWidth * 0.96) / +canvas.dataset.width;
-			canvas.width = canvas.parentNode.offsetWidth * 0.96;
-			canvas.height = +canvas.dataset.height * z;
-			ctx.scale(z,z);
-			ctx.miterLimit = 1;
-			ctx.lineWidth = 2;
-
-		}
-	},
-
 	/* finds current slide by ounting through slides */
 	setCurrentSlide: function() {
 		S.currentSlide = 0;
@@ -311,9 +252,6 @@ var S = {
 	},
 
 	nextSlide: function() {
-		if (S.drawings[S.currentSlide])
-			if (S.drawings[S.currentSlide][0].active)
-				S.toggleDrawing();
 		if (S.currentSlide < S.totalSlides - 1) {
 			S.currentSlide ++;
 			S.scrollToSlide();
@@ -321,144 +259,9 @@ var S = {
 	},
 
 	previousSlide: function() {
-		if (S.drawings[S.currentSlide])
-			if (S.drawings[S.currentSlide][0].active)
-				S.toggleDrawing();
 		if (S.currentSlide > 0) {
 			S.currentSlide --;
 			S.scrollToSlide();
-		}
-	},
-
-	/* advantage of literal, use S. instead of self */
-	loadDrawings: function() {
-		for (let i = 0; i < S.slides.length; i++){
-			for (let h = 0; h < S.slides[i].children.length; h++){
-				if (S.slides[i].children[h].dataset.src) {
-					const div = S.slides[i].children[h];
-					/* loading all of the drawings with Slides calling function */
-					$.getJSON(div.dataset.src, function(data) {
-						S.loadDrawing(i, data);
-						div.parentNode.removeChild(div);
-						S.updateDrawingWidth();
-					}).fail(function(data, textStatus, error) {
-						div.innerText += "Drawing data error: " + error;
-					});
-				}
-			}
-		}
-	},
-
-	/* create a new drawing on current canvas, show color menu and current canvas */
-	toggleDrawing: function() {
-		var slide = S.slides[S.currentSlide];
-		if (S.drawings[S.currentSlide]) {
-			var d = S.drawings[S.currentSlide];
-			for (var i = 0; i < d.length; i++) {
-				d[i].toggle();
-			}
-		} else {
-			S.createDrawing(S.currentSlide);
-		}
-		if (S.colorMenu) {
-			if (S.colorMenu.style.display != "block")
-				S.colorMenu.style.display = "block";
-			else 
-				S.colorMenu.style.display = "none";
-		} else {
-			S.colorMenu = document.createElement("div");
-			S.colorMenu.id = "color-menu";
-			S.colorMenu.style.display = "block";
-			for (var color in S.colors) {
-				var colorBtn = document.createElement('button');
-				colorBtn.id = color;
-				colorBtn.style.backgroundColor = S.colors[color];
-				colorBtn.onclick = function() {
-					/* some issue here where first drawings keeps changing color ... */
-					var d = S.createDrawing(S.currentSlide);
-					d.c = S.colors[this.id];
-				};
-				S.colorMenu.appendChild(colorBtn);
-			}
-			S.container.appendChild(S.colorMenu);
-		}
-	}, 
-
-	/* adds new drawing on slide  */
-	createDrawing: function(slideNumber) {
-		var canvas = document.querySelector("#c"+slideNumber);
-		if (!canvas) {
-			canvas = document.createElement('canvas');
-			canvas.id = "c"+slideNumber;
-			canvas.className = "drawing";
-			canvas.width = S.slides[slideNumber].offsetWidth;
-			canvas.height = S.slides[slideNumber].offsetHeight;
-		}
-		S.slides[slideNumber].appendChild(canvas);
-		var d = new Drawing(canvas);
-		if (!S.drawings[slideNumber]) 
-			S.drawings[slideNumber] = [];
-		S.drawings[slideNumber].push(d);
-		S.startLoop();
-		return d;
-	},
-
-	/* loads drawings from div with data-src */
-	loadDrawing: function(slideNumber, data) {
-		const canvas = document.createElement('canvas');
-		const ctx = canvas.getContext('2d');
-		canvas.className = "loaded";
-		canvas.setAttribute('data-width', data.w);
-		canvas.setAttribute('data-height', data.h);
-		canvas.width = data.w;
-		canvas.height = data.h;
-		S.slides[slideNumber].appendChild(canvas);
-		const w = S.slides[slideNumber].offsetWidth * 0.96;
-		var z = w / data.w;
-		for (var i = 0; i < data.d.length; i++) {
-			// this x is really silly: 
-			if (data.d[i] != "x") {
-				var d = new Drawing(canvas);
-				d.lines = data.d[i].l;
-				d.preload = true;
-				d.active = true;
-				d.canvas.style.display = "block";
-				d.c = data.d[i].c;
-				if (!S.loadedDrawings[slideNumber]) 
-					S.loadedDrawings[slideNumber] = [];
-				S.loadedDrawings[slideNumber].push(d);
-			}
-		}
-		S.startLoop(); /* start drawing */
-	},
-
-	/* draws all drawings */
-	drawLoop: function() {
-		/* performance issues with many drawings */
-		if (performance.now() > S.timer + S.interval && !S.isScrolling) {
-			S.timer = performance.now();
-			for (var i = 0; i < S.slides.length; i++) {
-				if (S.drawings[i]) {
-					S.drawings[i][0].clearCanvas();
-					for (var h = 0; h < S.drawings[i].length; h++) {
-				 		S.drawings[i][h].drawLines();
-					}
-				}
-				if (S.loadedDrawings[i]) {
-					S.loadedDrawings[i][0].clearCanvas();
-					for (var h = 0; h < S.loadedDrawings[i].length; h++) {
-						S.loadedDrawings[i][h].drawLines();
-					}
-				}
-			}
-		}
-		window.requestAnimFrame(S.drawLoop);
-	},
-
-	startLoop: function() {
-		if (!S.loopStarted) {
-			requestAnimFrame(S.drawLoop);
-			S.loopStarted = true;
 		}
 	},
 
@@ -474,12 +277,6 @@ var S = {
 				case "up":
 				case "left":
 					if (!S.isScrolling) S.previousSlide();
-				break;
-
-				case "space":
-					ev.preventDefault();
-					if (S.isSlides) 
-						S.toggleDrawing();
 				break;
 
 				case "o":
@@ -507,6 +304,10 @@ var S = {
 					} else {
 						m.classList.add('show-menu')
 					}
+				break;
+
+				case "space":
+					ev.preventDefault();
 				break;
 			}
 		}
@@ -550,137 +351,20 @@ var S = {
 			}
 		}
 	},
-
-	/* events for drawing on canvas */
-	mouseDown: function(ev) {
-		if (S.drawings[S.currentSlide]) {
-			var d = S.drawings[S.currentSlide][S.drawings[S.currentSlide].length-1];
-			if (ev.which ==1 && d.active) {
-				d.drawOn = true;
-				d.addLine(ev.offsetX, ev.offsetY);
-			}
-		}
-	},
-
-	mouseMove: function(ev) {
-		if (Date.now() > S.mouseTime + S.mouseInterval) {
-			S.mouseTime = Date.now();
-			if (S.drawings[S.currentSlide]) {
-				var d = S.drawings[S.currentSlide][S.drawings[S.currentSlide].length-1];
-				if (d.drawOn) 
-					d.addLine(ev.offsetX, ev.offsetY);
-			}
-		}
-	},
-
-	mouseUp: function(ev) {
-		if (S.drawings[S.currentSlide]) {
-			var d = S.drawings[S.currentSlide][S.drawings[S.currentSlide].length-1];
-			if (ev.which ==1 && d.active) {
-				d.drawOn = false;
-				if (d.moves%2==1) 
-					d.lines.splice(-1,1);
-				d.moves = 0;
-			}
-		}
-	}
 }
 
-/* drawing constructor */
-function Drawing(canvas) {
-	this.lines = [];
-	this.canvas = canvas;
-	this.w = this.canvas.width;
-	this.h = this.canvas.height;
-	this.ctx = this.canvas.getContext('2d');
-	this.ctx.lineWidth = 2;
-	this.ctx.lineCap = 'round';
-	this.ctx.miterLimit = 1;
-	this.num  = 2;
-	this.diff = 1;
-	this.drawOn = false;
-	this.moves = 0;
-	this.active = true;
-	this.preload = false;
-	this.c = "000";
-
-	this.toggle = function() {
-		if (!this.preload) {
-			if (this.active) {
-				this.active = false;
-				this.canvas.style.display = "none";
-				this.drawOn = false;
-			} else {
-				this.active = true;
-				this.canvas.style.display = "block";
-			}
-		}
-	};
-
-	this.addLine = function(mx, my) {
-		var newVec = new Cool.Vector(event.offsetX, event.offsetY);
-		this.lines.push({
-			s: newVec
-		});
-		if (this.moves > 0)
-			this.lines[this.lines.length - 2].e = newVec; 
-		this.moves++;
-	};
-
-	this.clearCanvas = function() {
-		this.ctx.clearRect(0, 0, this.w, this.h);
-	};
-
-	this.setScale = function(s) {
-		this.ctx.scale(s, s);
-	}
-
-	this.drawLines = function() {
-		this.ctx.beginPath();
-		for (var h = 0; h < this.lines.length; h++) {
-			var line = this.lines[h];
-			if (line.e) {
-				var v = new Cool.Vector(line.e.x, line.e.y);
-				v.subtract(line.s);
-				v.divide(this.num);
-				
-				this.ctx.moveTo( line.s.x + Cool.random(-this.diff, this.diff), line.s.y + Cool.random(-this.diff, this.diff) );
-				for (var i = 0; i < this.num; i++) {
-					var p = new Cool.Vector(line.s.x + v.x * i, line.s.y + v.y * i);
-					this.ctx.lineTo( p.x + v.x + Cool.random(-this.diff, this.diff), p.y + v.y + Cool.random(-this.diff, this.diff) );
-				}
-				if (this.ctx.strokeStyle != this.c) {
-					this.ctx.strokeStyle = this.c;
-				}
-	      		
-			}
-		}
-		this.ctx.stroke();
-	};
-}
 /* launch slides */
 $(window).on('load', function() {
-	
 	if (window.mobilecheck()) {
 		document.getElementById("container").className = "outline";
 	} else {
 		/* set up slides */
 		S.setup();
 		S.setOutline();
-		if (S.dev) console.clear(); // clear net work logs for development 
-
-		/* setup events */
-		document.addEventListener("keydown", S.getKey);
-
-		/* resize handler */
-		window.addEventListener("resize", S.resizeHandler);
-
-		/* scroll events */
-		document.addEventListener("wheel", S.scrollHandler);
-
-		/* drawing events */
-		document.addEventListener("mousedown", S.mouseDown);
-		document.addEventListener("mousemove", S.mouseMove);
-		document.addEventListener("mouseup", S.mouseUp);
+		if (S.dev) 
+			console.clear(); // clear net work logs for development 
+		document.addEventListener("keydown", S.getKey); /* setup events */
+		window.addEventListener("resize", S.resizeHandler); /* resize handler */
+		document.addEventListener("wheel", S.scrollHandler); /* scroll events */
 	}
 });
