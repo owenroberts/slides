@@ -239,8 +239,7 @@ canvas.drawing {
       color: #D1E5F7;
       font-size: 0.8em;
       position: relative;
-      top: -4px;
-      font-style: oblique; }
+      top: -4px; }
     .outline h2 a:hover {
       color: #5DD8C8; }
   .outline img {
