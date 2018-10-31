@@ -25,7 +25,6 @@ var Menu = {
 
 			a.addEventListener('click', function(ev) {
 				if (typeof S !== 'undefined') {
-				if (typeof S != 'undefined') {
 					if (S.isSlides) {
 						S.currentSlide = slideNumber;
 						S.scrollToSlide();
