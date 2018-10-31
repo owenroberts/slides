@@ -54,7 +54,7 @@ c::after {
   color: red; }
 
 .ace-preview, .ace-close {
-  font-family: menlo;
+  font-family: Menlo, Monaco, monospace;
   background: lightgray;
   margin-top: 3px;
   margin-right: 3px;
@@ -239,8 +239,7 @@ canvas.drawing {
       color: #D1E5F7;
       font-size: 0.8em;
       position: relative;
-      top: -4px;
-      font-style: oblique; }
+      top: -4px; }
     .outline h2 a:hover {
       color: #5DD8C8; }
   .outline img {
@@ -299,7 +298,7 @@ canvas.drawing {
 
 .slides {
   width: 100%;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
   height: 100%;
   font-size: 32px;
