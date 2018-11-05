@@ -19,10 +19,12 @@ window.addEventListener('load', function() {
 		edit.setOption('maxLines', 1000);
 		edit.session.setTabSize(4);
 		edit.session.setUseWrapMode(true);
-		ex.style.height = edit.getSession().getDocument().getLength() *
-				edit.renderer.lineHeight + 'px';
+		ex.style.height = edit.getSession().getDocument().getLength() * edit.renderer.lineHeight + 'px';
 		edit.resize();
 		edit.setFontSize(14);
+
+		if (ex.dataset.err != undefined)
+			edit.getSession().setUseWorker(false);
 
 		ex.addEventListener('keydown', function(ev) {
 			if (Cool.keys[ev.which] == 'escape') {
