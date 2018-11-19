@@ -10,22 +10,24 @@
 	<div id="container" class="outline language-js {{ page.reveal }}">
 		<div id="menu">
 			<h3><a href="{{site.url}}{{site.baseurl}}/">{{ site.class }}</a></h3>
-			<p><a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>
+			{% if page.week %}
+				<p><a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>
+			{% else %}
+			<p><a href="{{site.url}}{{site.baseurl}}/schedule.html">Schedule</a></p>
+			{% endif %}
 			</ul>
 			<p><em>Contents</em></p>
 		</div>
 		<div id="content">
 			<div id="title" class="slide">
 				<h1>{{page.title}}</h1>
-				<p id ="home-links"><a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> > <a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>
+				<p id ="home-links"><a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> {% if page.week %}> <a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>{% endif %}
 			</div>
 			{{ content }}
 		</div>
 	</div>
 	<script src="{{site.url}}{{site.baseurl}}/slides/menu.js"></script>
-
 	<script src="{{site.url}}{{site.baseurl}}/slides/aces/ace.js" type="text/javascript"></script>
 	<script src="{{site.url}}{{site.baseurl}}/slides/examples.js" type="text/javascript"></script>
-
 </body>  
 </html>
