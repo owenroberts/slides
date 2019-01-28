@@ -4,12 +4,12 @@
 // @import url(https://fonts.googleapis.com/css?family=Asap);
 // @import url(https://fonts.googleapis.com/css?family=Arimo);
 
-$highlight: #5DD8C8;
-$em: #D1E5F7;
-$note: #9b26ff;
-$code: #2480d2;
-$strong: #2480d2;
-$hover: #3BE0CB;
+$highlight: #5DD8C8; /* aqua */
+$em: #D1E5F7; /* blue desaturated */
+$note: #9b26ff; /* purple */
+$code: #2480d2; /* blue */
+$strong: #2480d2; /* also blue */
+$hover: $hover; 
 
 $header-font: "Karla", Helvetica, Arial, sans-serif;
 $body-font: "Lora", serif;
