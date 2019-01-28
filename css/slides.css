@@ -232,7 +232,7 @@ canvas.drawing {
     font-family: "Karla", Helvetica, Arial, sans-serif;
     margin-bottom: 0; }
   .outline h2 {
-    margin-top: 2em; }
+    /*margin-top: 2em;*/ }
     .outline h2 a, .outline h2 a:visited {
       text-decoration: none;
       padding: 0 0.5em;
