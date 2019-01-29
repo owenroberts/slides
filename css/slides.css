@@ -1,6 +1,17 @@
 @import url(fonts/key.css);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
+/*@import url(https://fonts.googleapis.com/css?family=Asap);*/
+/*@import url(https://fonts.googleapis.com/css?family=Arimo);*/
+/* aqua */
+/* blue desaturated */
+/* purple */
+/* blue */
+/* also blue */
+/*$header-font:  "Asap", Helvetica, sans-serif;*/
+/*$body-font:  "Asap", Helvetica, sans-serif;*/
+/*$header-font: 'Arimo','Helvetica', sans-serif;*/
+/*$body-font: 'Arimo','Helvetica', sans-serif;*/
 body {
   font-family: "Lora", serif;
   line-height: 1.45;
@@ -74,7 +85,7 @@ a, a:visited {
   transition: color 300ms; }
 
 a:hover {
-  color: #3BE0CB;
+  color: #5DD8C8;
   text-decoration: underline; }
 
 em, strong {
