@@ -92,6 +92,9 @@ em, strong {
   color: #2480d2;
   font-family: "Karla", Helvetica, Arial, sans-serif; }
 
+select {
+  font-size: 1rem; }
+
 .wrap {
   white-space: pre-wrap; }
 

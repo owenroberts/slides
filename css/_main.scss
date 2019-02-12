@@ -67,6 +67,10 @@ em, strong {
 	font-family: $header-font;
 }
 
+select {
+	font-size: 1rem;
+}
+
 .wrap { white-space: pre-wrap; }
 
 img.floated {
@@ -138,8 +142,6 @@ a[name], a[name]:hover {
 	right:10px;
 	width:50px;
 }
-
-
 
 canvas#bkg {
 	overflow: hidden;
