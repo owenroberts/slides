@@ -67,8 +67,9 @@ em, strong {
 	font-family: $header-font;
 }
 
-select {
+select, button, label {
 	font-size: 1rem;
+	font-family: $code-font;
 }
 
 .wrap { white-space: pre-wrap; }
@@ -129,19 +130,16 @@ a[name], a[name]:hover {
 	text-decoration: inherit;
 }
 
-#slidesBtn {
+#slidesBtn, #outlineBtn {
 	position: fixed;
 	top:10px;
 	right:60px;
-	width:50px;
-	border-radius-right-top:0px;
+	/* width:50px; */
+	font-size: 11px;
+	font-family: sans-serif;
 }
-#outlineBtn {
-	position: fixed;
-	top:10px;
-	right:10px;
-	width:50px;
-}
+#slidesBtn { right:60px; }
+#outlineBtn { right:10px; }
 
 canvas#bkg {
 	overflow: hidden;

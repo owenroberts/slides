@@ -92,8 +92,9 @@ em, strong {
   color: #2480d2;
   font-family: "Karla", Helvetica, Arial, sans-serif; }
 
-select {
-  font-size: 1rem; }
+select, button, label {
+  font-size: 1rem;
+  font-family: Menlo, Monaco, monospace; }
 
 .wrap {
   white-space: pre-wrap; }
@@ -151,18 +152,19 @@ a[name], a[name]:hover {
   color: inherit;
   text-decoration: inherit; }
 
-#slidesBtn {
+#slidesBtn, #outlineBtn {
   position: fixed;
   top: 10px;
   right: 60px;
-  width: 50px;
-  border-radius-right-top: 0px; }
+  /* width:50px; */
+  font-size: 11px;
+  font-family: sans-serif; }
+
+#slidesBtn {
+  right: 60px; }
 
 #outlineBtn {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  width: 50px; }
+  right: 10px; }
 
 canvas#bkg {
   overflow: hidden;
