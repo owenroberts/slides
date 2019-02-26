@@ -93,8 +93,31 @@ em, strong {
   font-family: "Karla", Helvetica, Arial, sans-serif; }
 
 select, button, label {
-  font-size: 1rem;
+  font-size: 1em;
   font-family: Menlo, Monaco, monospace; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 100%;
+  /* Specific width is required for Firefox. */
+  background: white;
+  /* Otherwise white in Chrome */
+  border: 1px solid #D1E5F7; }
+  input[type=range]:focus {
+    outline: none;
+    border: 1px solid #5DD8C8; }
+    input[type=range]:focus::-webkit-slider-thumb {
+      background: #5DD8C8; }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    outline: none;
+    background: #2480d2;
+    height: 2em;
+    width: 2em; }
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer; }
 
 .wrap {
   white-space: pre-wrap; }
@@ -103,6 +126,7 @@ img.floated {
   margin: 1em;
   float: left; }
 
+/* not sure if i still use these.... */
 video {
   max-width: 100%; }
 
@@ -137,6 +161,8 @@ table {
     margin: 0;
     font-family: Menlo, Monaco, monospace;
     color: black; }
+  table.sliders td, table.sliders th {
+    border: none; }
 
 blockquote {
   background: white;
@@ -193,7 +219,7 @@ canvas.drawing {
     margin: 1em 0;
     clear: both;
     max-width: 640px; }
-    .outline .slide p, .outline .slide blockquote, .outline .slide table {
+    .outline .slide p, .outline .slide blockquote {
       max-width: 560px;
       /* margin-left: 1rem; */
       font-size: 20px;
@@ -395,6 +421,8 @@ canvas.drawing {
       font-style: italic; }
     .slides .slide blockquote {
       color: black; }
+    .slides .slide select, .slides .slide button, .slides .slide label {
+      /*font-size: 1em;*/ }
     .slides .slide .ace_editor {
       /* max-width: 50%; */
       zoom: 1.5; }
@@ -514,7 +542,9 @@ img + .mag {
       margin-left: 0; } }
 @media only screen and (min-width: 641px) and (max-width: 1024px) {
   .slides {
-    font-size: 2em; } }
+    font-size: 2em; }
+    .slides pre {
+      font-size: 0.75em; } }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
   .slides {
     font-size: 2.5em; } }

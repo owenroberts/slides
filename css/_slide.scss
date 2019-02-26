@@ -87,6 +87,10 @@
 		p.label { font-size: 0.5em; font-style:italic;  }
 		blockquote { color: black; }
 
+		select, button, label {
+			/*font-size: 1em;*/
+		}
+
 		.ace_editor {
 			/* max-width: 50%; */
 			zoom: 1.5;
