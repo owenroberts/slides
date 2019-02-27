@@ -148,7 +148,7 @@ div.floated {
   height: 100%; }
 
 table {
-  width: 100%;
+  /*width:100%;*/
   border-collapse: collapse;
   margin: 1em 0; }
   table td, table th {
@@ -161,8 +161,14 @@ table {
     margin: 0;
     font-family: Menlo, Monaco, monospace;
     color: black; }
-  table.sliders td, table.sliders th {
-    border: none; }
+  table.sliders {
+    font-family: Menlo, Monaco, monospace; }
+    table.sliders td, table.sliders th {
+      border: none; }
+    table.sliders td {
+      white-space: nowrap; }
+    table.sliders td:last-child {
+      width: 100%; }
 
 blockquote {
   background: white;

@@ -125,7 +125,7 @@ div.floated { float:left; }
 }
 
 table {
-	width:100%;
+	/*width:100%;*/
 	border-collapse: collapse;
 	margin: 1em 0;
 	td, th {
@@ -141,7 +141,10 @@ table {
 		color: black;
 	}
 	&.sliders {
+		font-family: $code-font;
 		td, th { border: none; }
+		td { white-space: nowrap; }
+		td:last-child { width: 100%; }
 	}
 }
 
