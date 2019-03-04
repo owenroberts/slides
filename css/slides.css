@@ -69,7 +69,8 @@ c::after {
   background: lightgray;
   margin-top: 3px;
   margin-right: 3px;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  font-size: 0.75em; }
 
 .ace-preview:active, .ace-close:active {
   border-color: #9b26ff; }
