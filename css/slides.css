@@ -15,7 +15,8 @@
 body {
   font-family: "Lora", serif;
   line-height: 1.45;
-  background: aliceblue; }
+  background: aliceblue;
+  margin: 0; }
 
 body, html {
   height: 100%; }
@@ -96,6 +97,9 @@ em, strong {
 select, button, label {
   font-size: 1em;
   font-family: Menlo, Monaco, monospace; }
+
+h2 {
+  padding-top: 2em; }
 
 input[type=range] {
   -webkit-appearance: none;
@@ -220,7 +224,6 @@ canvas.drawing {
   max-width: 960px;
   font-size: 18px;
   line-height: 1.4;
-  margin: 2em auto;
   /* code, pre, .note { font-size:1.1em; } */ }
   .outline .slide {
     margin: 1em 0;
@@ -244,7 +247,9 @@ canvas.drawing {
       font-size: 1em;
       font-family: "Karla", Helvetica, Arial, sans-serif; }
   .outline #content {
-    margin-left: calc(200px + 2em); }
+    padding-top: 5em;
+    margin: 0 auto;
+    max-width: 560px; }
   .outline p, .outline li {
     font-family: "Lora", serif; }
   .outline p.label {
@@ -318,32 +323,35 @@ canvas.drawing {
 #menu {
   position: fixed;
   font-family: "Karla", Helvetica, Arial, sans-serif;
-  width: 200px;
-  font-size: 0.9em;
-  padding: 1em;
-  /* padding-top:2em; */
-  background: white;
+  width: 100%;
+  /* padding:1em; */
+  background: #353846;
+  border-bottom: 1px solid #5DD8C8;
   /* p { margin: 0; } */
-  /* 	li::before {
-  		content: "~";
-  		margin-right:0.25em;
-  	} */ }
-  #menu ul {
-    padding: 0;
-    list-style-type: none;
-    margin: 0; }
-  #menu li, #menu p {
-    font-family: inherit;
-    font-size: 14px; }
-  #menu li {
-    line-height: 1.4; }
-    #menu li:hover {
-      background: #b6d6f2; }
-  #menu hr {
-    border-top: none;
-    border-bottom: 1px solid #5DD8C8; }
-  #menu h3 + p {
-    margin: 0; }
+  z-index: 9; }
+  #menu .sub {
+    display: flex;
+    flex-wrap: wrap; }
+  #menu .item {
+    /* flex-basis: 130px; */
+    padding: 0.25em 1em; }
+  #menu #content-menu {
+    display: none;
+    flex-wrap: wrap; }
+    #menu #content-menu a {
+      color: #D1E5F7; }
+    #menu #content-menu a:hover {
+      color: #5DD8C8; }
+  #menu #page-menu {
+    color: #5DD8C8;
+    text-decoration: underline;
+    cursor: pointer; }
+    #menu #page-menu:hover {
+      color: #D1E5F7; }
+  #menu a {
+    color: #5DD8C8; }
+    #menu a:hover {
+      color: #D1E5F7; }
 
 .slides {
   width: 100%;
