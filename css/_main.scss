@@ -74,7 +74,7 @@ select, button, label {
 	font-family: $code-font;
 }
 
-h2 { padding-top: 2em; }
+h1, h2 { padding-top: 2em; }
 
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
@@ -129,7 +129,7 @@ div.floated { float:left; }
 }
 
 table {
-	/*width:100%;*/
+	width:100%;
 	border-collapse: collapse;
 	margin: 1em 0;
 	td, th {
@@ -155,8 +155,7 @@ table {
 blockquote {
 	background: white;
 	padding: 1em;
-	margin:0;
-	margin-left: 0.25em;
+	margin: 1em 0;
 	box-shadow: -0.25em 0.25em 0 $highlight;
 	font-family: "Karla", Helvetica, Arial, sans-serif;
 	a { font-size: 0.75em;  }
@@ -177,6 +176,11 @@ a[name], a[name]:hover {
 }
 #slidesBtn { right:60px; }
 #outlineBtn { right:10px; }
+
+#firepad {
+	width: 800px;
+	margin: 0 auto;
+}
 
 canvas#bkg {
 	overflow: hidden;

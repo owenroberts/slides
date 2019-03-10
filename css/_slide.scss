@@ -137,18 +137,11 @@
 		&.show-menu {
 			display: block;
 			z-index: 9;
-			width: auto;
 			padding: 0.25em;
-			margin-right: 4em;
+			font-size: 1rem;
+			
 			h3, p {
 				display: none;
-			}
-			ul { line-height: 1; }
-			li {
-				display: inline-block;
-				margin-right: 0.5em;
-				font-size: 18px;
-				line-height: 1;
 			}
 		}
 

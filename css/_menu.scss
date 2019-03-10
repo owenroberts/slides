@@ -7,20 +7,26 @@
 	background: $bg;
 	border-bottom: 1px solid $highlight;
 	/* p { margin: 0; } */
-	
+	font-size: 1rem;
 	z-index: 9;
 	.sub {
 		display: flex;
 		flex-wrap: wrap;
 		// justify-content: center;
+		max-width: 840px;
+		margin: 0 auto;
 	}
 	.item {
 		/* flex-basis: 130px; */
 		padding: 0.25em 1em;
 	}
+	#pad-link {
+		flex: 1;
+	}
 	#content-menu {
 		display: none;
 		flex-wrap: wrap;
+		justify-content: flex-end;
 		a { color: $em; }
 		a:hover {color: $highlight; }
 	}
