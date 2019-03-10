@@ -2,7 +2,7 @@
 	max-width: 960px;
 	font-size:18px;
 	line-height: 1.4;
-	margin: 2em auto;
+	
 	.slide {
 		margin:1em 0;
 		clear:both;
@@ -13,6 +13,7 @@
 			font-size:20px;
 			line-height: 1.5;
 		}
+		
 	}
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
@@ -26,7 +27,9 @@
 		}
 	}
 	#content {
-		margin-left: calc(200px + 2em);
+		padding-top: 5em;
+		margin: 0 auto;
+		max-width: 560px;
 	}
 
 	p, li {font-family: $body-font}
