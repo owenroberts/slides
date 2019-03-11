@@ -5,7 +5,7 @@ var Menu = {
 	setup: function() {
 		Menu.menu = document.getElementById("menu");
 
-		const headers = document.querySelectorAll("h2");
+		const headers = document.querySelectorAll("h1, h2");
 		const menuList = document.createElement("div");
 		menuList.id = "content-menu";
 		menuList.classList.add('sub');
@@ -42,7 +42,7 @@ var Menu = {
 			});
 
 			if (headers[i].tagName == "H1") {
-				link.style.fontWeight = "bold";
+				div.style.fontWeight = "bold";
 			} else {
 				const anchor = document.createElement('a');
 				anchor.innerText = "§";

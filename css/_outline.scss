@@ -1,19 +1,19 @@
 .outline {
-	max-width: 960px;
+	/*max-width: 960px;*/
 	font-size:18px;
 	line-height: 1.4;
 	
 	.slide {
-		margin:1em 0;
+		margin: 1em 0;
 		clear:both;
 		max-width: 640px;
-		p, blockquote {
+		margin: 1em auto;
+		p {
 			max-width: 560px;
-			/* margin-left: 1rem; */
-			font-size:20px;
+			/*margin-left: 1rem; */
+			font-size: 20px;
 			line-height: 1.5;
 		}
-		
 	}
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
@@ -29,7 +29,13 @@
 	#content {
 		padding-top: 5em;
 		margin: 0 auto;
-		max-width: 560px;
+		/*max-width: 560px;*/
+		margin: 0 auto;
+		h1, h2, p, ul {
+			max-width: 560px;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 
 	p, li {font-family: $body-font}
@@ -61,7 +67,7 @@
 	}
 	h2, h3 { 
 		font-family: $header-font;
-		margin-bottom:0;
+		margin-bottom: 1em;
 	}
 
 	h2 {
