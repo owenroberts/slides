@@ -69,7 +69,8 @@ c::after {
   background: lightgray;
   margin-top: 3px;
   margin-right: 3px;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  font-size: 0.75em; }
 
 .ace-preview:active, .ace-close:active {
   border-color: #9b26ff; }
@@ -393,7 +394,7 @@ canvas.drawing {
     margin: 1em 0; }
   .slides hl {
     color: #5DD8C8; }
-  .slides note, .slides code, .slides em {
+  .slides note, .slides code {
     background-color: white;
     padding: 2px 4px;
     border-radius: 3px; }
