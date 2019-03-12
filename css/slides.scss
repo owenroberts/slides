@@ -25,6 +25,9 @@ $body-font: "Lora", serif;
 $slide-font: 'Karla', Helvetica, Arial, sans-serif;
 $code-font:  Menlo, Monaco, monospace;
 
+$outer-width: 720px;
+$inner-width: 560px;
+
 @import "main";
 @import "outline";
 @import "menu";

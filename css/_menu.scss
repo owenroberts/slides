@@ -13,12 +13,13 @@
 		display: flex;
 		flex-wrap: wrap;
 		// justify-content: center;
-		max-width: 840px;
+		max-width: $outer-width;
 		margin: 0 auto;
 	}
 	.item {
 		/* flex-basis: 130px; */
 		padding: 0.25em 1em;
+		padding-left: 0;
 	}
 	#pad-link {
 		flex: 1;
@@ -26,14 +27,19 @@
 	#content-menu {
 		display: none;
 		flex-wrap: wrap;
-		justify-content: flex-end;
+		// justify-content: flex-end;
 		a { color: $em; }
 		a:hover {color: $highlight; }
+		// .item {
+		// 	padding-left: 1em;
+		// 	padding-right: 0;
+		// }
 	}
 	#page-menu {
 		color: $highlight;
 		text-decoration: underline;
 		cursor: pointer;
+		padding-right: 0;
 		&:hover {color: $em; }
 	}
 

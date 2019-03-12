@@ -130,6 +130,7 @@ div.floated { float:left; }
 
 table {
 	width:100%;
+	max-width: 640px;
 	border-collapse: collapse;
 	margin: 1em 0;
 	td, th {
