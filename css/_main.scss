@@ -140,6 +140,7 @@ table {
 		font-family: $code-font;
 		color: black;
 	}
+	/* sliders not best name, was working on range input when named */
 	&.sliders {
 		font-family: $code-font;
 		td, th { border: none; }
