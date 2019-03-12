@@ -1,17 +1,16 @@
 img + .mag {
 	cursor: pointer;
 	position: relative;
-	margin-top: -30px;
+	margin-top: -2.5em;
 	left:2px;
 	display: block;
 	width: 20px;
-	filter: drop-shadow(1px 1px 1px black);
-	-webkit-filter: drop-shadow(1px 1px 1px black);
+	filter: drop-shadow(1px 1px 0 black);
+	-webkit-filter: drop-shadow(1px 1px 0 black);
 	&:hover {
 		opacity:0.5;
 	}
 }
-
 
 #image-popup {
 	position: fixed;

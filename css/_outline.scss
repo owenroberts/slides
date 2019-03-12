@@ -1,16 +1,18 @@
 .outline {
 	/*max-width: 960px;*/
-	font-size:18px;
+	/*font-size:18px;*/
 	line-height: 1.4;
 
-	p, h1, h2, table, ul {
+	p, h1, h2, ul, pre {
 		max-width: $inner-width;
 		margin-left: auto;
 		margin-right: auto;
 	}
+	table {
+		margin-left: auto;
+		margin-right: auto;
+	}
 
-
-	
 	.slide {
 		/* margin: 1em 0; */
 		clear:both;
@@ -20,11 +22,15 @@
 		margin-top: 1em;
 		p {
 			/*margin-left: 1rem; */
-			font-size: 20px;
-			line-height: 1.5;
+			/*font-size: 20px;*/
+			font-size: 1em;
+			line-height: 1.4;
 		}
 	}
 	#title {
+		margin-left: 0;
+		margin-right: 0;
+		max-width: 100%;
 		h1 { 
 			padding: 0; 
 			border: none;
@@ -38,8 +44,9 @@
 			// margin: 0.5em 0;
 			margin-top: 0;
 			margin-bottom: 0;
-			font-size: 1em;
-			font-family: $header-font;
+			font-size: 0.75em;
+			font-family: $menu-font;
+			a { font-family: $menu-font; }
 		}
 	}
 	#content {
@@ -52,7 +59,6 @@
 	p, li {font-family: $body-font}
 	p.label { font-size: 0.75em; }
 
-	note, a { font-family: $header-font; }
 	code { 
 		/* background:white;
 		border: 1px solid lightgray; */
@@ -96,7 +102,10 @@
 		a:hover { color: $highlight; }
 	}
 	
-	img { max-width:100%; }
+	img { 
+		max-width:100%; 
+		margin: 1em 0;
+	}
 	/* code, pre, .note { font-size:1.1em; } */
 	
 	.utube {

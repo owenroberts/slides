@@ -1,6 +1,6 @@
 #menu {
 	position: fixed;
-	font-family: $header-font;
+	* { font-family: $menu-font; }
 	width: 100%;
 	// font-size:0.9em;
 	/* padding:1em; */

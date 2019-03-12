@@ -10,13 +10,7 @@
 </head>
 <body>	
 	<div id="container" class="outline notes">
-		<div id="menu">
-			<h3><a href="{{site.url}}{{site.baseurl}}/">{{ site.class }}</a></h3>
-			<ul>
-				{% if page.week %}<li><a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></li>{% endif %}
-			</ul>
-			<p><em>Contents</em></p>
-		</div>
+		{% include menu.html %}
 		<div id="content">
 			<div id="title" class="slide">
 				<h1>{{page.title}}</h1>
