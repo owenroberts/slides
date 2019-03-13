@@ -1,10 +1,7 @@
 @import url(fonts/key.css);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
-@import url("https://fonts.googleapis.com/css?family=Yrsa");
 @import url("https://fonts.googleapis.com/css?family=Ovo");
-@import url("https://fonts.googleapis.com/css?family=Mate");
-@import url("https://fonts.googleapis.com/css?family=Work+Sans");
 /* aqua */
 /* blue desaturated */
 /* purple */
@@ -308,6 +305,9 @@ canvas.drawing {
       top: -4px; }
     .outline h2 a:hover {
       color: #5DD8C8; }
+  .outline ul {
+    margin-top: 0;
+    margin-bottom: 0; }
   .outline img {
     max-width: 100%;
     margin: 1em 0; }
