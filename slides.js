@@ -354,7 +354,8 @@ var S = {
 }
 
 /* launch slides */
-$(window).on('load', function() {
+window.addEventListener('load', init);
+function init() {
 	if (window.mobilecheck()) {
 		document.getElementById("container").className = "outline";
 	} else {
@@ -367,4 +368,4 @@ $(window).on('load', function() {
 		window.addEventListener("resize", S.resizeHandler); /* resize handler */
 		document.addEventListener("wheel", S.scrollHandler); /* scroll events */
 	}
-});
+}

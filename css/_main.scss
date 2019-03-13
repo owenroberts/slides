@@ -14,6 +14,7 @@ body, html { height: 100%; }
 
 #container {
 	min-width: 320px;
+	padding-bottom: 2em;
 }
 
 code {
@@ -165,14 +166,12 @@ a[name], a[name]:hover {
 
 #slidesBtn, #outlineBtn {
 	position: fixed;
-	top:10px;
-	right:60px;
-	/* width:50px; */
+	bottom: 10px;
 	font-size: 11px;
 	font-family: sans-serif;
 }
-#slidesBtn { right:60px; }
-#outlineBtn { right:10px; }
+#slidesBtn { right: 60px; }
+#outlineBtn { right: 10px; }
 
 #firepad {
 	width: 800px;

@@ -3,7 +3,7 @@
 	based on
 	http://p5play.molleindustria.org/examples/index.html#
 */
-let p5functions = [ 'preload', 'setup','draw','keyPressed','keyReleased','keyTyped','mouseMoved','mouseDragged','mousePressed','mouseReleased','mouseClicked','touchStarted','touchMoved','touchEnded'];
+let p5functions = [ 'preload', 'setup','draw','keyPressed','keyReleased','keyTyped','mouseMoved','mouseDragged','mousePressed','mouseReleased','mouseClicked','touchStarted','touchMoved','touchEnded', 'save'];
 
 window.addEventListener('load', function() {
 

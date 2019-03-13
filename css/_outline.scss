@@ -2,12 +2,17 @@
 	/*max-width: 960px;*/
 	/*font-size:18px;*/
 	line-height: 1.4;
-
+	
 	p, h1, h2, ul, pre {
-		max-width: $inner-width;
+		max-width: $outer-width;
 		margin-left: auto;
 		margin-right: auto;
 	}
+
+	.slide {
+		p, h1, h2, ul, pre { max-width: $inner-width; }
+	}
+
 	table {
 		margin-left: auto;
 		margin-right: auto;
@@ -37,7 +42,6 @@
 			margin-top: 0;
 			margin-bottom: 0;
 		}
-		font-family: $header-font;
 		/* margin: 6em 0; */
 		border-bottom: 1px solid $highlight;
 		p { 
