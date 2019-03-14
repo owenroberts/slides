@@ -13,8 +13,13 @@
 		{% include menu.html %}
 		<div id="content">
 			<div id="title" class="slide">
+				<p id ="home-links">
+					<a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> 
+					{% if page.week %}~
+					<a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a>
+					{% endif %}
+				</p>
 				<h1>{{page.title}}</h1>
-				{% if page.week %}<p id ="home-links"><a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> > <a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>{% endif %}
 			</div>
 			{{ content }}
 		</div>

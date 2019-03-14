@@ -3,14 +3,21 @@
 	/*font-size:18px;*/
 	line-height: 1.4;
 	
-	p, h1, h2, ul, pre {
+	p, h1, h2, ul {
 		max-width: $outer-width;
 		margin-left: auto;
 		margin-right: auto;
 	}
 
-	.slide {
-		p, h1, h2, ul, pre { max-width: $inner-width; }
+	.slide, &.notes {
+		p, h1, h2, ul { max-width: $inner-width; }
+	}
+	#footer {
+		font-size: 0.75em;
+		max-width: $inner-width;
+		margin-left: auto;
+		margin-right: auto;	
+		* { font-family: $menu-font; }
 	}
 
 	table {

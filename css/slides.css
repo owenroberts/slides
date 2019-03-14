@@ -217,12 +217,19 @@ canvas.drawing {
   /*font-size:18px;*/
   line-height: 1.4;
   /* code, pre, .note { font-size:1.1em; } */ }
-  .outline p, .outline h1, .outline h2, .outline ul, .outline pre {
+  .outline p, .outline h1, .outline h2, .outline ul {
     max-width: 640px;
     margin-left: auto;
     margin-right: auto; }
-  .outline .slide p, .outline .slide h1, .outline .slide h2, .outline .slide ul, .outline .slide pre {
+  .outline .slide p, .outline .slide h1, .outline .slide h2, .outline .slide ul, .outline.notes p, .outline.notes h1, .outline.notes h2, .outline.notes ul {
     max-width: 560px; }
+  .outline #footer {
+    font-size: 0.75em;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto; }
+    .outline #footer * {
+      font-family: Menlo, Monaco, monospace; }
   .outline table {
     margin-left: auto;
     margin-right: auto; }
