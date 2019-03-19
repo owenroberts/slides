@@ -27,8 +27,7 @@ body, html {
   font-family: "Karla", Helvetica, Arial, sans-serif; }
 
 #container {
-  min-width: 320px;
-  padding-bottom: 2em; }
+  min-width: 320px; }
 
 code {
   background: white;
@@ -225,11 +224,21 @@ canvas.drawing {
     max-width: 560px; }
   .outline #footer {
     font-size: 0.75em;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto; }
+    background: #353846;
+    border-top: 1px solid #5DD8C8;
+    padding: 1em 0;
+    width: 100%;
+    color: #5DD8C8; }
+    .outline #footer #footer-menu {
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto; }
     .outline #footer * {
       font-family: Menlo, Monaco, monospace; }
+    .outline #footer a {
+      color: #5DD8C8; }
+      .outline #footer a:hover {
+        color: #D1E5F7; }
   .outline table {
     margin-left: auto;
     margin-right: auto; }
@@ -267,7 +276,8 @@ canvas.drawing {
     padding-top: 5em;
     margin: 0 auto;
     /*max-width: 560px;*/
-    margin: 0 auto; }
+    margin: 0 auto;
+    padding-bottom: 2em; }
   .outline p, .outline li {
     font-family: "Ovo", serif; }
   .outline p.label {
@@ -508,6 +518,8 @@ canvas.drawing {
       font-size: 1rem; }
       .slides #menu.show-menu h3, .slides #menu.show-menu p {
         display: none; }
+  .slides #footer {
+    display: none; }
 
 img + .mag {
   cursor: pointer;

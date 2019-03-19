@@ -11,7 +11,7 @@
 		{% include menu.html %}
 		<div id="content">
 			<div id="title" class="slide">
-				<p id ="home-links">
+				<p id="home-links">
 					<a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> 
 					{% if page.week %}~
 					<a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a>
@@ -20,7 +20,11 @@
 				<h1>{{page.title}}</h1>
 			</div>
 			{{ content }}
-			<div id="footer">
+			
+		</div>
+		<div id="footer">
+			<div id="footer-menu">
+				<a href="#title">Top</a> ~ 
 				<a href="{{site.url}}{{site.baseurl}}/">{{site.class}}</a> 
 				{% if page.week %}~
 				<a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a>
