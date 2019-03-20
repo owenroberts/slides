@@ -3,20 +3,9 @@
 	can just take out menu.js if no menu needed */
 var Menu = {
 	setup: function() {
-		Menu.menu = document.getElementById("menu");
+		Menu.menu = document.getElementById("page-menu");
 
 		const headers = document.querySelectorAll("h1, h2");
-		const menuList = document.createElement("div");
-		menuList.id = "content-menu";
-		menuList.classList.add('sub');
-		Menu.menu.appendChild(menuList);
-
-		const pageMenu = document.getElementById('page-menu');
-
-		pageMenu.addEventListener('click', () => {
-			if (menuList.style.display != 'flex') menuList.style.display = 'flex'; 
-			else menuList.style.display = 'none';
-		});
 		
 		for (let i = 0; i < headers.length; i++) {
 			const slideNumber = headers[i].parentNode.dataset.number;
@@ -29,7 +18,7 @@ var Menu = {
 			a.href = "#" + title;
 			let subtitle = "";
 			a.innerText = headers[i].innerText + subtitle;
-			menuList.appendChild(div);
+			Menu.menu .appendChild(div);
 
 			a.addEventListener('click', function(ev) {
 				if (typeof S !== 'undefined') {

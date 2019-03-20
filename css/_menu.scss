@@ -24,25 +24,26 @@
 	#pad-link {
 		flex: 1;
 	}
-	#content-menu {
-		display: none;
-		flex-wrap: wrap;
-		// justify-content: flex-end;
-		a { color: $em; }
-		a:hover {color: $highlight; }
-		// .item {
-		// 	padding-left: 1em;
-		// 	padding-right: 0;
-		// }
-	}
-	#page-menu {
+
+	a {
+		// font-family: $body-font;
 		color: $highlight;
-		text-decoration: underline;
-		cursor: pointer;
-		padding-right: 0;
 		&:hover {color: $em; }
 	}
+}
 
+#page-menu {
+	position: fixed;
+	* { font-family: $menu-font; }
+	background: $bg;
+	color: $highlight;
+	text-decoration: underline;
+	cursor: pointer;
+	padding-right: 0;
+	font-size: 0.75em;
+	right: 1em;
+	top: 4em;
+	&:hover {color: $em; }
 	a {
 		// font-family: $body-font;
 		color: $highlight;

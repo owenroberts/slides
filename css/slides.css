@@ -372,23 +372,28 @@ canvas.drawing {
     padding-left: 0; }
   #menu #pad-link {
     flex: 1; }
-  #menu #content-menu {
-    display: none;
-    flex-wrap: wrap; }
-    #menu #content-menu a {
-      color: #D1E5F7; }
-    #menu #content-menu a:hover {
-      color: #5DD8C8; }
-  #menu #page-menu {
-    color: #5DD8C8;
-    text-decoration: underline;
-    cursor: pointer;
-    padding-right: 0; }
-    #menu #page-menu:hover {
-      color: #D1E5F7; }
   #menu a {
     color: #5DD8C8; }
     #menu a:hover {
+      color: #D1E5F7; }
+
+#page-menu {
+  position: fixed;
+  background: #353846;
+  color: #5DD8C8;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-right: 0;
+  font-size: 0.75em;
+  right: 1em;
+  top: 4em; }
+  #page-menu * {
+    font-family: Menlo, Monaco, monospace; }
+  #page-menu:hover {
+    color: #D1E5F7; }
+  #page-menu a {
+    color: #5DD8C8; }
+    #page-menu a:hover {
       color: #D1E5F7; }
 
 .slides {
