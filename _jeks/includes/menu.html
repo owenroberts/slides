@@ -1,0 +1,11 @@
+<div id="menu">
+	<h3><a href="{{site.url}}{{site.baseurl}}/">{{ site.class }}</a></h3>
+	{% if page.week %}
+		<p><a href="{{site.url}}{{site.baseurl}}/schedule.html#week-{{page.week}}">Week {{page.week}}</a></p>
+	{% else %}
+	<p><a href="{{site.url}}{{site.baseurl}}/schedule.html">Schedule</a></p>
+	{% endif %}
+	</ul>
+	<p><a href="{{site.url}}{{site.baseurl}}/pad.html">Public Pad</a></p>
+	<p><em>Contents</em></p>
+</div>

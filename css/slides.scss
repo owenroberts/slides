@@ -1,28 +1,26 @@
 @import "fonts/key.css";
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
-/*@import url(https://fonts.googleapis.com/css?family=Asap);*/
-/*@import url(https://fonts.googleapis.com/css?family=Arimo);*/
 
+@import url('https://fonts.googleapis.com/css?family=Ovo');
 
 $highlight: #5DD8C8; /* aqua */
 $em: #D1E5F7; /* blue desaturated */
 $note: #9b26ff; /* purple */
 $code: #2480d2; /* blue */
 $strong: #2480d2; /* also blue */
+$bg: #353846;
 $hover: $highlight; 
 
-$header-font: "Karla", Helvetica, Arial, sans-serif;
-$body-font: "Lora", serif;
-
-/*$header-font:  "Asap", Helvetica, sans-serif;*/
-/*$body-font:  "Asap", Helvetica, sans-serif;*/
-
-/*$header-font: 'Arimo','Helvetica', sans-serif;*/
-/*$body-font: 'Arimo','Helvetica', sans-serif;*/
+$menu-font:  Menlo, Monaco, monospace;
+$header-font: 'Ovo', Helvetica, Arial, sans-serif;
+$body-font: 'Ovo', serif;
 
 $slide-font: 'Karla', Helvetica, Arial, sans-serif;
 $code-font:  Menlo, Monaco, monospace;
+
+$outer-width: 640px;
+$inner-width: 560px;
 
 @import "main";
 @import "outline";

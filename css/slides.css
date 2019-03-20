@@ -1,19 +1,14 @@
 @import url(fonts/key.css);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
-/*@import url(https://fonts.googleapis.com/css?family=Asap);*/
-/*@import url(https://fonts.googleapis.com/css?family=Arimo);*/
+@import url("https://fonts.googleapis.com/css?family=Ovo");
 /* aqua */
 /* blue desaturated */
 /* purple */
 /* blue */
 /* also blue */
-/*$header-font:  "Asap", Helvetica, sans-serif;*/
-/*$body-font:  "Asap", Helvetica, sans-serif;*/
-/*$header-font: 'Arimo','Helvetica', sans-serif;*/
-/*$body-font: 'Arimo','Helvetica', sans-serif;*/
 body {
-  font-family: "Lora", serif;
+  font-family: "Ovo", serif;
   line-height: 1.45;
   background: aliceblue; }
 
@@ -91,7 +86,7 @@ a:hover {
 
 em, strong {
   color: #2480d2;
-  font-family: "Karla", Helvetica, Arial, sans-serif; }
+  font-family: "Ovo", Helvetica, Arial, sans-serif; }
 
 select, button, label {
   font-size: 1em;
@@ -151,7 +146,8 @@ div.floated {
 table {
   /*width:100%;*/
   border-collapse: collapse;
-  margin: 1em 0; }
+  margin: 1em 0;
+  /* sliders not best name, was working on range input when named */ }
   table td, table th {
     border: 1px dotted;
     text-align: left;
@@ -232,7 +228,7 @@ canvas.drawing {
       font-size: 20px;
       line-height: 1.5; }
   .outline #title {
-    font-family: "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Ovo", Helvetica, Arial, sans-serif;
     /* margin: 6em 0; */
     border-bottom: 1px solid #5DD8C8; }
     .outline #title h1 {
@@ -242,15 +238,15 @@ canvas.drawing {
     .outline #title p {
       margin: 0.5em 0;
       font-size: 1em;
-      font-family: "Karla", Helvetica, Arial, sans-serif; }
+      font-family: "Ovo", Helvetica, Arial, sans-serif; }
   .outline #content {
     margin-left: calc(200px + 2em); }
   .outline p, .outline li {
-    font-family: "Lora", serif; }
+    font-family: "Ovo", serif; }
   .outline p.label {
     font-size: 0.75em; }
   .outline note, .outline a {
-    font-family: "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Ovo", Helvetica, Arial, sans-serif; }
   .outline code {
     /* background:white;
     border: 1px solid lightgray; */ }
@@ -276,9 +272,9 @@ canvas.drawing {
     color: blue; }
   .outline h1 {
     border-bottom: 1px solid #5DD8C8;
-    font-family: "Karla", Helvetica, Arial, sans-serif; }
+    font-family: "Ovo", Helvetica, Arial, sans-serif; }
   .outline h2, .outline h3 {
-    font-family: "Karla", Helvetica, Arial, sans-serif;
+    font-family: "Ovo", Helvetica, Arial, sans-serif;
     margin-bottom: 0; }
   .outline h2 {
     /*margin-top: 2em;*/ }
@@ -317,17 +313,21 @@ canvas.drawing {
 
 #menu {
   position: fixed;
-  font-family: "Karla", Helvetica, Arial, sans-serif;
+  font-family: "Ovo", Helvetica, Arial, sans-serif;
+  background: #353846;
   width: 200px;
   font-size: 0.9em;
   padding: 1em;
-  /* padding-top:2em; */
-  background: white;
-  /* p { margin: 0; } */
   /* 	li::before {
   		content: "~";
   		margin-right:0.25em;
   	} */ }
+  #menu * {
+    font-family: Menlo, Monaco, monospace; }
+  #menu a {
+    color: #5DD8C8; }
+    #menu a:hover {
+      color: #D1E5F7; }
   #menu ul {
     padding: 0;
     list-style-type: none;
@@ -342,7 +342,7 @@ canvas.drawing {
   #menu hr {
     border-top: none;
     border-bottom: 1px solid #5DD8C8; }
-  #menu h3 + p {
+  #menu p, #menu h3 {
     margin: 0; }
 
 .slides {
@@ -565,7 +565,7 @@ img + .mag {
   .default strong {
     font-weight: normal; }
   .default li {
-    font-family: "Lora", serif; }
+    font-family: "Ovo", serif; }
   .default h2 + p {
     margin-top: 0; }
   .default strong {
