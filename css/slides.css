@@ -151,7 +151,8 @@ div.floated {
 table {
   /*width:100%;*/
   border-collapse: collapse;
-  margin: 1em 0; }
+  margin: 1em 0;
+  /* sliders not best name, was working on range input when named */ }
   table td, table th {
     border: 1px dotted;
     text-align: left;
@@ -578,6 +579,11 @@ img + .mag {
 
 .main #title, .main #content, .notes #title, .notes #content {
   max-width: 560px; }
+
+.side-by-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px; }
 
 div[data-src] {
   color: darkred;

@@ -11,8 +11,7 @@ window.addEventListener('load', function() {
 	for (let i = 0; i < examples.length; i++) {
 		const ex = examples[i];
 		let lang = ex.dataset.lang;
-		if (!lang)
-			lang = "javascript";
+		if (!lang) lang = "javascript";
 		const edit = ace.edit(ex);
 		edit.setTheme('ace/theme/xcode');
 		edit.getSession().setMode('ace/mode/' + lang);
@@ -25,6 +24,8 @@ window.addEventListener('load', function() {
 
 		if (ex.dataset.err != undefined)
 			edit.getSession().setUseWorker(false);
+		if (ex.dataset.nogutter != undefined)
+			edit.renderer.setShowGutter(false);
 
 		ex.addEventListener('keydown', function(ev) {
 			if (Cool.keys[ev.which] == 'escape') {

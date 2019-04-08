@@ -17,3 +17,9 @@
 		max-width:560px;
 	}
 }
+
+.side-by-side {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
