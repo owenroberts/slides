@@ -219,6 +219,9 @@ canvas.drawing {
   top: 0;
   left: 0; }
 
+.slide button {
+  margin-top: 0.5em; }
+
 .outline {
   max-width: 960px;
   font-size: 18px;
