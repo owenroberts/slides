@@ -140,6 +140,9 @@ table {
 		margin: 0;
 		font-family: $code-font;
 		color: black;
+		&.define {
+			td:last-child { font-family: auto; }
+		}
 	}
 	/* sliders not best name, was working on range input when named */
 	&.sliders {

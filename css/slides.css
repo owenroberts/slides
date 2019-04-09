@@ -163,6 +163,8 @@ table {
     margin: 0;
     font-family: Menlo, Monaco, monospace;
     color: black; }
+    table.code.define td:last-child {
+      font-family: auto; }
   table.sliders {
     font-family: Menlo, Monaco, monospace; }
     table.sliders td, table.sliders th {
