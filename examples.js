@@ -44,6 +44,7 @@ window.addEventListener('load', function() {
 			ex.parentNode.insertBefore(previewBtn, ex.nextSibling);
 			previewBtn.classList.add('ace-preview');
 			previewBtn.textContent = "Preview Code";
+			previewBtn.addEventListener("click", loadPreview);
 
 			let canvas;
 			function loadPreview() {
@@ -104,7 +105,6 @@ window.addEventListener('load', function() {
 					closeBtn.addEventListener("click", closePreview);
 				}
 			}
-			previewBtn.addEventListener("click", loadPreview);
 
 			ex.addEventListener("keydown", (ev) => {
 				if (Cool.keys[ev.which] == "enter" && ev.metaKey) {
