@@ -68,12 +68,12 @@ em, strong {
 	font-family: $header-font;
 }
 
-select, button, label {
-	font-size: 1em;
-	font-family: $code-font;
-}
+// select, button, label {
+// 	font-size: 1em;
+// 	font-family: $code-font;
+// }
 
-input[type=range] {
+input[type=range].example {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: white; /* Otherwise white in Chrome */
