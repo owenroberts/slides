@@ -1,7 +1,7 @@
 @import "fonts/key.css";
+
 @import url(https://fonts.googleapis.com/css?family=Karla:400,400i,700);
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic);
-
 @import url('https://fonts.googleapis.com/css?family=Ovo');
 
 $highlight: #5DD8C8; /* aqua */
@@ -11,13 +11,15 @@ $code: #2480d2; /* blue */
 $strong: #2480d2; /* also blue */
 $bg: #353846;
 $hover: $highlight; 
+$link: blue;
+$theme-blue: aliceblue;
 
-$menu-font:  Menlo, Monaco, monospace;
-$header-font: 'Ovo', Helvetica, Arial, sans-serif;
-$body-font: 'Ovo', serif;
+$menu-font:  'Karla', Helvetica, Arial, sans-serif;
+$header-font: 'Karla', Helvetica, Arial, sans-serif;
+$body-font: 'Lora', serif;
 
-$slide-font: 'Karla', Helvetica, Arial, sans-serif;
-$code-font:  Menlo, Monaco, monospace;
+$slide-font: Verdana, sans-serif;  // 'Karla', Helvetica, Arial, sans-serif;
+$code-font:  Monaco, monospace;
 
 $outer-width: 640px;
 $inner-width: 560px;

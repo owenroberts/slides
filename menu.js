@@ -36,7 +36,7 @@ var Menu = {
 				const anchor = document.createElement('a');
 				anchor.innerText = "§";
 				anchor.href = location.href.split("#")[0] + "#" + title;
-				headers[i].appendChild(anchor);
+				headers[i].appendChild(anchor);	
 			}
 		}
 	}

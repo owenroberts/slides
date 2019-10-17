@@ -1,7 +1,7 @@
 body {
 	font-family: $body-font;
-	line-height:1.45;
-	background:aliceblue;
+	line-height: 1.45;
+	background: $theme-blue;
 	margin: 0;
 	font-size: 20px;
 }
@@ -76,7 +76,7 @@ select, button, label {
 	font-family: $code-font;
 }
 
-h1, h2 { padding-top: 2em; }
+// h1, h2 { padding-top: 1em; }
 
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
