@@ -68,18 +68,14 @@ em, strong {
 	font-family: $header-font;
 }
 
-// select, button, label {
-// 	font-size: 1em;
-// 	font-family: $code-font;
-// }
 
-input[type=range].example {
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 100%; /* Specific width is required for Firefox. */
-  background: white; /* Otherwise white in Chrome */
-  border: 1px solid $em;
+input[type=range].example, .sliders input[type=range] {
+	-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+	width: 100%; /* Specific width is required for Firefox. */
+	background: white; /* Otherwise white in Chrome */
+	border: 1px solid $em;
 
-  &:focus {
+	&:focus {
 		outline: none;
 		border: 1px solid $highlight;
 		&::-webkit-slider-thumb {
@@ -93,7 +89,11 @@ input[type=range].example {
 		background: $strong;
 		height: 2em;
 		width: 2em;
+		cursor: grab;
+		&:active { cursor: grabbing; }
+
 	}
+
 	&::-ms-track {
 		width: 100%;
 		cursor: pointer;
@@ -144,12 +144,15 @@ table {
 			td:last-child { font-family: auto; }
 		}
 	}
+	
 	/* sliders not best name, was working on range input when named */
 	&.sliders {
 		font-family: $code-font;
 		td, th { border: none; }
 		td { white-space: nowrap; }
 		td:last-child { width: 100%; }
+
+
 	}
 }
 

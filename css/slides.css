@@ -115,7 +115,7 @@ em, strong {
   font-family: "Karla", Helvetica, Arial, sans-serif;
 }
 
-input[type=range].example {
+input[type=range].example, .sliders input[type=range] {
   -webkit-appearance: none;
   /* Hides the slider so that custom slider can be made */
   width: 100%;
@@ -124,21 +124,25 @@ input[type=range].example {
   /* Otherwise white in Chrome */
   border: 1px solid #D1E5F7;
 }
-input[type=range].example:focus {
+input[type=range].example:focus, .sliders input[type=range]:focus {
   outline: none;
   border: 1px solid #5DD8C8;
 }
-input[type=range].example:focus::-webkit-slider-thumb {
+input[type=range].example:focus::-webkit-slider-thumb, .sliders input[type=range]:focus::-webkit-slider-thumb {
   background: #5DD8C8;
 }
-input[type=range].example::-webkit-slider-thumb {
+input[type=range].example::-webkit-slider-thumb, .sliders input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   outline: none;
   background: #2480d2;
   height: 2em;
   width: 2em;
+  cursor: grab;
 }
-input[type=range].example::-ms-track {
+input[type=range].example::-webkit-slider-thumb:active, .sliders input[type=range]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+input[type=range].example::-ms-track, .sliders input[type=range]::-ms-track {
   width: 100%;
   cursor: pointer;
 }
