@@ -401,14 +401,23 @@ canvas.drawing {
   font-family: "Karla", Helvetica, Arial, sans-serif;
   width: 200px;
   font-size: 0.9em;
-  padding: 1em;
-  /* padding-top:2em; */
-  background: white;
-  /* p { margin: 0; } */
   /* 	li::before {
   		content: "~";
   		margin-right:0.25em;
   	} */
+}
+#menu #site-menu {
+  margin-bottom: 0.5em;
+}
+#menu #site-menu, #menu #page-menu {
+  background-color: white;
+  padding: 1em;
+}
+#menu #site-menu p, #menu #page-menu p {
+  margin: 0;
+}
+#menu #site-menu li:first-child, #menu #page-menu li:first-child {
+  font-weight: bold;
 }
 #menu ul {
   padding: 0;
@@ -664,6 +673,7 @@ img + .mag:hover {
 
   .outline {
     width: 100%;
+    margin-top: 0;
   }
   .outline .slide {
     margin: 1em auto;
@@ -675,8 +685,6 @@ img + .mag:hover {
   .outline #menu {
     position: static;
     width: 100%;
-    padding-top: 1em;
-    max-width: 600px;
     margin: 0 auto;
   }
   .outline #menu li {

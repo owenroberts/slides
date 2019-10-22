@@ -3,7 +3,7 @@
 	can just take out menu.js if no menu needed */
 var Menu = {
 	setup: function() {
-		Menu.menu = document.getElementById("menu");
+		Menu.menu = document.getElementById("page-menu");
 
 		const headers = document.querySelectorAll("h1, h2");
 		const menuList = document.createElement("ul");
@@ -33,7 +33,7 @@ var Menu = {
 			});
 
 			if (headers[i].tagName == "H1") {
-				link.style.fontWeight = "bold";
+				// link.style.fontWeight = "bold";
 			} else {
 				const anchor = document.createElement('a');
 				anchor.innerText = "§";

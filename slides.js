@@ -132,7 +132,7 @@ var S = {
 				S.bkg.toggle();
 			for (let i = 0; i < S.slides.length; i++) {
 				S.slides[i].style.height = "auto";
-				S.slides[i].dataset.number = i;
+				S.slides[i].dataset.index = i;
 				if (S.slides[i].children.length > 0) {
 					if (S.slides[i].children[0].tagName != "H2")
 						S.slides[i].children[0].style.marginTop = "auto";

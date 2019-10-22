@@ -3,14 +3,26 @@
 	font-family: $header-font;
 	width:200px;
 	font-size:0.9em;
-	padding:1em;
-	/* padding-top:2em; */
-	background:white;
-	/* p { margin: 0; } */
+
+	#site-menu {
+		margin-bottom: 0.5em;
+	}
+	
+	#site-menu, #page-menu {
+		background-color: white;
+		padding: 1em;
+
+		p { margin: 0; }
+
+		li:first-child {
+			font-weight: bold;
+		}
+	}
+	
 	ul {
-		padding:0;
+		padding: 0;
 		list-style-type: none;
-		margin:0;
+		margin: 0;
 	}
 	li, p { 
 		font-family:inherit; 
