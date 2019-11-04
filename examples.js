@@ -54,6 +54,7 @@ window.addEventListener('load', function() {
 					canvas.remove();
 					// future maybe reset the newp5 functions here
 				}
+
 				const s = function(p) {
 					if (runnable.indexOf('setup()') === -1 && runnable.indexOf('draw()') === -1) {
 						p.setup = function() {
@@ -84,6 +85,7 @@ window.addEventListener('load', function() {
 						}
 					}
 				}
+
 				if (runnable.indexOf('setup()') === -1 && runnable.indexOf('draw()') === -1) {
 					eval(runnable);
 				} else {
@@ -123,7 +125,7 @@ window.addEventListener('load', function() {
 				highlightActiveLine: false,
     			highlightGutterLine: false
 			});
-			edit.renderer.$cursorLayer.element.style.opacity=0
+			edit.renderer.$cursorLayer.element.style.opacity = 0;
 		}
 	}
 });
