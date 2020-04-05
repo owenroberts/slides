@@ -51,6 +51,9 @@ window.addEventListener('load', function() {
 				const runnable = edit.getValue();
 				const _p5 = p5;
 				if (canvas) {
+					while (canvas.nextSibling) {
+						canvas.nextSibling.remove();
+					} // get rid of previous dom elements
 					canvas.remove();
 					// future maybe reset the newp5 functions here
 				}

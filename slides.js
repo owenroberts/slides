@@ -267,7 +267,7 @@ var S = {
 
 	/* key board events */
 	getKey: function(ev) {
-		if (ev.target.classList[0] != "ace_text-input") {
+		if (ev.target.tagName == "BODY") {
 			switch (Cool.keys[ev.which]) {
 				case "down": 
 				case "right":
@@ -354,15 +354,14 @@ var S = {
 }
 
 /* launch slides */
-$(window).on('load', function() {
-	if (window.mobilecheck()) {
+window.addEventListener('load', function() {
+	if (Cool.mobilecheck()) {
 		document.getElementById("container").className = "outline";
 	} else {
 		/* set up slides */
 		S.setup();
 		S.setOutline();
-		if (S.dev) 
-			console.clear(); // clear net work logs for development 
+		if (S.dev) console.clear(); // clear net work logs for development 
 		document.addEventListener("keydown", S.getKey); /* setup events */
 		window.addEventListener("resize", S.resizeHandler); /* resize handler */
 		document.addEventListener("wheel", S.scrollHandler); /* scroll events */
