@@ -309,6 +309,11 @@ var S = {
 				case "space":
 					ev.preventDefault();
 				break;
+
+				case "f":
+					console.log('f');
+					document.body.requestFullscreen();
+				break;
 			}
 		}
 	},
