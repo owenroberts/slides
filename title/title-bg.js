@@ -94,7 +94,7 @@ var BG = function( p ) {
 			p.textFont('Karla');
 			p.fill(255);
 			p.textSize(250);
-			p.text(title, 0, 0, p.width, p.height);
+			p.text(title, 0, -100, p.width, p.height);
 		}
 
 		if (sub) {

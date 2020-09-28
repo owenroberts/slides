@@ -11,6 +11,7 @@ const sub = document.getElementById('sub');
 const update = document.getElementById('update');
 const capture = document.getElementById('capture');
 const fullscreen = document.getElementById('fullscreen');
+const reset = document.getElementById('reset');
 
 
 
@@ -27,15 +28,6 @@ capture.onclick = function() {
 	bg.startCapture();
 };
 
-
-document.addEventListener("keydown", ev => {
-	switch (Cool.keys[ev.which]) {
-		case "o":
-			input.style.display = 'block';
-		break;
-
-		case "s":
-			
-		break;
-	}
-});
+reset.onclick = function() {
+	bg.setup();
+};
