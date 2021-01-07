@@ -15,13 +15,12 @@
 			{{ content }}
 		</div>
 	</div>
-	<script src="{{site.url}}{{site.baseurl}}/slides/menu.js"></script>
+	<script src="{{site.url}}{{site.baseurl}}slides/menu.js"></script>
 	<script>
 		// link hash helper
 		window.addEventListener('load', function() {
 			const hash = location.hash.split('#')[1];
 			if (hash) {
-				
 				const link = document.querySelectorAll('[id^="' + hash + '"]')[0];
 				location.href = '#' + link.id;
 			}
