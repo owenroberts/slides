@@ -79,6 +79,14 @@ c::after {
   color: red;
 }
 
+p.source,
+.slide p.source,
+.outline .slide p.source {
+  font-family: "Karla", Helvetica, Arial, sans-serif;
+  margin: 0.5em 0;
+  font-size: 0.75em;
+}
+
 .ace-preview, .ace-close {
   font-family: Menlo, Monaco, monospace;
   background: lightgray;
@@ -501,6 +509,9 @@ canvas.drawing {
 .slides h2 a {
   display: none;
 }
+.slides h3 {
+  text-decoration: underline;
+}
 .slides p {
   margin: 1em 0;
 }
@@ -516,7 +527,6 @@ canvas.drawing {
   position: relative;
   width: 100%;
   padding: 2%;
-  border-bottom: 1px solid white;
 }
 .slides .slide#title p {
   text-align: center;
@@ -546,7 +556,7 @@ canvas.drawing {
 .slides .slide img.half {
   width: 45%;
 }
-.slides .slide p.label {
+.slides .slide p.label, .slides .slide p.source {
   font-size: 0.5em;
   font-style: italic;
 }

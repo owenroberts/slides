@@ -36,6 +36,14 @@ c { color:blue; } // this is for the console in code examples
 c::after { content: "> "; }
 .error { color: red; }
 
+p.source,
+.slide p.source,
+.outline .slide p.source {
+	font-family: $header-font;
+	margin: 0.5em 0;
+	font-size: 0.75em;
+}
+
 .ace-preview, .ace-close {
 	font-family: $code-font;
 	background: lightgray;
@@ -59,10 +67,12 @@ a, a:visited {
 	color: darkblue;
 	transition: color 300ms;
 }
+
 a:hover { 
 	color: $hover;
 	text-decoration:underline; 
 }
+
 em, strong { 
 	color: $strong; 
 	font-family: $header-font;

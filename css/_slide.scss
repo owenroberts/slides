@@ -1,4 +1,5 @@
 .slides {
+
 	width:100%;
 	max-width: 960px;
 	margin: 0 auto;
@@ -10,15 +11,18 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	user-select: none;
+
 	pre, code {
 		-webkit-user-select: text;
 		-moz-user-select: text;
 		user-select: text;
 	}
+
 	em, strong { 
 		font-family: $slide-font; 
 		/* color: $em; */
 	}
+
 	a em { color:darkblue; }
 	/* code {color:black;} */
 	img + img { margin-top:1em; }
@@ -33,6 +37,7 @@
 			border-bottom-left-radius: 0;
 		}
 	}
+
 	.key {
 		color:black;
 		font-size:1.75em;
@@ -51,8 +56,14 @@
 		text-decoration: underline; 
 		a { display:none; }
 	}
+
+	h3 {
+		text-decoration: underline; 
+	}
+
 	p { margin: 1em 0; }
-	hl { color: $highlight; };
+	hl { color: $highlight; }
+
 	note, code {
 		background-color: white;
 		padding: 2px 4px;
@@ -60,17 +71,21 @@
 	}
 	
 	.slide {
-		position:relative;
+
+		position: relative;
+		width: 100%;
+		padding: 2%;
+		// border-bottom: 1px solid white;
+		
 		&#title {
 			p { text-align: center; }
 		}
-		width:100%;
+		
 		&.long {
 			min-height:100%;
 			height:auto;
 		}
-		padding:2%;
-		border-bottom:1px solid white;
+		
 		img {
 			max-height: 90%;
 			max-width:100%;
@@ -84,7 +99,11 @@
 			&.full { width:600px; }
 			&.half { width: 45%; }
 		}
-		p.label { font-size: 0.5em; font-style:italic;  }
+
+		p.label, p.source { 
+			font-size: 0.5em; 
+			font-style:italic;  
+		}
 		blockquote { color: black; }
 
 		select, button, label {
@@ -95,6 +114,7 @@
 			/* max-width: 50%; */
 			zoom: 1.5;
 		}
+
 		.ace_canvas, .p5Canvas {
 			position: absolute;
 			top: 200px;
@@ -113,6 +133,7 @@
 			transition: opacity 300ms;
 		}
 	}
+
 	.utube {
 		margin-top:0;
 		position: relative;
@@ -127,6 +148,7 @@
 			height: 100%;
 		}
 	}
+
 	.drawing {
 		z-index:99;
 		cursor: url('../img/pencil.ico'), crosshair;
@@ -151,6 +173,5 @@
 				line-height: 1;
 			}
 		}
-
 	}
 }

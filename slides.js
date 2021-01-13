@@ -13,6 +13,9 @@ var S = {
 		this.totalSlides = this.slides.length;
 		this.currentSlide = localStorage.getItem(location.pathname) || 0; // mainly for testing, returns to slide after reload, good for when i need to reload in class
 
+		/* reveal items in slides */
+		this.isReveal = S.container.classList.contains('reveal');
+
 		/* creates slides/outline buttons 
 			in js so it does't have to be in html */
 		if (this.container.className.indexOf("no") == -1) {
@@ -32,6 +35,7 @@ var S = {
 
 	/* sets container to slides, resizes .slide, hides mag buttons and updates scroll */
 	setSlides: function() {
+		this.slideHeight = window.innerHeight;
 		if (!S.isSlides) {
 			S.isSlides = true;
 			S.container.classList.add('slides');
@@ -53,14 +57,16 @@ var S = {
 					slide.children[0].style.marginTop = "null";
 				}
 
-				if (S.container.classList.contains('reveal') && i > 0) {
+				if (S.isReveal && i > 0 && !slide.classList.contains('no-reveal')) {
 					for (let j = 1; j < slide.children.length; j++) {
 						const child = slide.children[j];
 						if (child.tagName != "H1" && 
 							child.tagName != "H2" && 
 							child.tagName != "BUTTON" &&
 							child.tagName != "UL" &&
-							!child.classList.contains('label')) {
+							!child.classList.contains('label') &&
+							!child.classList.contains('mag') &&
+							!child.classList.contains('source')) {
 							child.classList.add('reveal');
 						} else if (child.tagName == "UL") {
 							for (let k = 0; k < child.children.length; k++) {
@@ -92,20 +98,19 @@ var S = {
 		const children = S.slides[S.currentSlide].children;
 		for (let i = 0; i < children.length; i++) {
 			const child = children[i];
-			if (child.tagName == "UL") {
+			if (child.classList.contains('reveal')) {
+				child.classList.add('show');
+				child.classList.remove('reveal');
+				return;
+			} else if (child.tagName == "UL") {
 				for (let j = 0; j < child.children.length; j++) {
 					const ch = child.children[j];
 					if (ch.classList.contains('reveal')) {
 						ch.classList.add('show');
 						ch.classList.remove('reveal');
-						break;
+						return;
 					}
 				}
-			}
-			if (child.classList.contains('reveal')) {
-				child.classList.add('show');
-				child.classList.remove('reveal');
-				break;
 			}
 		}
 	},
@@ -252,7 +257,27 @@ var S = {
 	},
 
 	nextSlide: function() {
-		if (S.currentSlide < S.totalSlides - 1) {
+		let hasReveal = false;
+		const children = S.slides[S.currentSlide].children;
+		for (let i = 0; i < children.length; i++) {
+			const child = children[i];
+			if (child.classList.contains('reveal')) {
+				hasReveal = true;
+				break;
+			} else if (child.tagName == "UL") {
+				for (let j = 0; j < child.children.length; j++) {
+					if (child.children[j].classList.contains('reveal')) {
+						hasReveal = true;
+						break;
+					}
+				}
+			}
+		}
+
+		if (S.isReveal && hasReveal) {
+			S.revealItem();
+		}
+		else if (S.currentSlide < S.totalSlides - 1) {
 			S.currentSlide ++;
 			S.scrollToSlide();
 		}
@@ -311,8 +336,16 @@ var S = {
 				break;
 
 				case "f":
-					console.log('f');
+				/* 
+					scrolling on window doesn't work and chnage fires before window changes
+					work on this later
+				*/
 					document.body.requestFullscreen();
+					document.addEventListener('fullscreenchange', ev => {
+						console.log(document.fullscreenElement)
+						console.log(window.innerHeight);
+						S.setSlides();
+					});
 				break;
 			}
 		}

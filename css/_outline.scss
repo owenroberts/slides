@@ -1,8 +1,10 @@
 .outline {
+
 	max-width: 960px;
 	font-size:18px;
 	line-height: 1.4;
 	margin: 2em auto;
+
 	.slide {
 		margin:1em 0;
 		clear:both;
@@ -14,6 +16,7 @@
 			line-height: 1.5;
 		}
 	}
+
 	#title {
 		h1 { margin: 0; padding:0; border:none; }
 		font-family: $header-font;
@@ -25,6 +28,7 @@
 			font-family: $header-font;
 		}
 	}
+
 	#content {
 		margin-left: calc(200px + 2em);
 	}
@@ -37,6 +41,7 @@
 		/* background:white;
 		border: 1px solid lightgray; */
 	}
+
 	pre {
 		font-size:16px;
 		code {
@@ -47,15 +52,18 @@
 			border-bottom-left-radius: 0;
 		}
 	}
+
 	p code, table code { color: #2480d2; white-space: nowrap; }
 	li code {color: #2480d2;}
 	a, a:visited { color: blue; text-decoration: underline; }
 	a:hover {  color: #3BE0CB; }
 	a em { color:blue; }
+
 	h1 { 
 		border-bottom:1px solid $highlight;
 		font-family: $header-font;
 	}
+	
 	h2, h3 { 
 		font-family: $header-font;
 		margin-bottom:0;

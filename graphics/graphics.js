@@ -3,9 +3,6 @@
 	v0.5 - mmp
 */
 
-
-
-
 let p5functions = [ 'preload', 'setup','draw','keyPressed','keyReleased','keyTyped','mouseMoved','mouseDragged','mousePressed','mouseReleased','mouseClicked','touchStarted','touchMoved','touchEnded', 'save'];
 
 const ex = document.getElementById('edit');
