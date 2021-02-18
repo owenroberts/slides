@@ -10,11 +10,9 @@ const title = document.getElementById('title');
 const sub = document.getElementById('sub');
 const update = document.getElementById('update');
 const capture = document.getElementById('capture');
+const captureImage = document.getElementById('image');
 const fullscreen = document.getElementById('fullscreen');
 const reset = document.getElementById('reset');
-
-
-
 
 fullscreen.onclick = function() {
 	bg.startFullscreen();
@@ -26,6 +24,10 @@ update.onclick = function() {
 
 capture.onclick = function() {
 	bg.startCapture();
+};
+
+captureImage.onclick = function() {
+	bg.captureImage();
 };
 
 reset.onclick = function() {

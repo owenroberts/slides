@@ -82,7 +82,6 @@ var BG = function( p ) {
 	let capturer = new CCapture( { format: 'webm' } );
 	let captureCount = 0;
 
-
 	p.draw = function() {
 		// p.background('blue');
 		if (lerper < 1) {
@@ -225,7 +224,11 @@ var BG = function( p ) {
 		title = _title;
 		sub = _sub;
 		_graph = _graph;
+	};
 
+	p.captureImage = function() {
+		const cap = canvas.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+		window.location.href = cap;
 	};
 
 	p.startCapture = function() {
