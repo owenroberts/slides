@@ -755,6 +755,9 @@ img + .mag:hover {
 .notes {
   /* max-width:560px; */
 }
+.notes ol > li {
+  margin-bottom: 1em;
+}
 
 .main #title, .main #content, .notes #title, .notes #content {
   max-width: 560px;

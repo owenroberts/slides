@@ -10,6 +10,9 @@
 
 .notes {
 	/* max-width:560px; */
+	ol > li {
+		margin-bottom: 1em;
+	}
 }
 
 .main, .notes {
