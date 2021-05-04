@@ -235,6 +235,27 @@ blockquote a {
   font-size: 0.75em;
 }
 
+.outline .slide .quote,
+.slides .slide .quote,
+.quote {
+  color: black;
+  background: white;
+  padding: 0.25em 0.5em;
+  margin: 0;
+  box-shadow: -0.25em 0 0 #5DD8C8;
+  font-size: inherit;
+  line-height: 1.25;
+  margin-left: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.outline .slide ul.quote,
+.slides .slide ul.quote,
+ul.quote {
+  padding-left: 2em;
+  max-width: 560px;
+}
+
 a[name], a[name]:hover {
   color: inherit;
   text-decoration: inherit;
