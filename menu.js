@@ -36,7 +36,7 @@ var Menu = {
 				// link.style.fontWeight = "bold";
 			} else {
 				const anchor = document.createElement('a');
-				anchor.innerText = "🔗";
+				anchor.innerText = "§";
 				anchor.href = location.href.split("#")[0] + "#" + title;
 				headers[i].appendChild(anchor);
 			}
