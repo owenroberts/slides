@@ -106,8 +106,10 @@ var BG = function( p ) {
 		if (captureCount > 0) {
 			capturer.capture( canvas.canvas );
 			captureCount--;
+			console.log(captureCount);
 			if (captureCount <= 0) p.stopCapture();
 			if (captureCount % 50 == 0) {
+				console.log(captureCount);
 				generate();
 			}
 			p.draw();
@@ -232,9 +234,11 @@ var BG = function( p ) {
 	};
 
 	p.startCapture = function() {
+		console.log('start');
 		capturer.start();
 		captureOn = true;
 		captureCount = 60 * 5;
+		console.log(captureCount);
 		p.draw();
 	};
 

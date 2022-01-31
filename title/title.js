@@ -23,6 +23,7 @@ update.onclick = function() {
 };
 
 capture.onclick = function() {
+	console.log('start');
 	bg.startCapture();
 };
 
