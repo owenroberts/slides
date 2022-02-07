@@ -405,7 +405,9 @@ canvas.drawing {
     user-select: text; }
   .slides em, .slides strong {
     font-family: "Karla", Helvetica, Arial, sans-serif;
-    /* color: $em; */ }
+    /* color: $em; */
+    background-color: white;
+    padding: 0 0.125em; }
   .slides a em {
     color: darkblue; }
   .slides img + img {

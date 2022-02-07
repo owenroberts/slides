@@ -21,6 +21,8 @@
 	em, strong { 
 		font-family: $slide-font; 
 		/* color: $em; */
+		background-color: white;
+		padding: 0 0.125em;
 	}
 
 	a em { color:darkblue; }
